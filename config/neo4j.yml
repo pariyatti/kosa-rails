@@ -1,0 +1,11 @@
+development:
+  type: bolt
+  url: bolt://zighost:7000
+
+test:
+  type: bolt
+  url: bolt://localhost:7575
+
+production:
+  type: bolt
+  url: bolt://neo4j:password@localhost:7000

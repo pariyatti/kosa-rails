@@ -23,8 +23,6 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-install
 rbenv init # follow the instructions
 rbenv install 2.7.1
 rbenv local 2.7.1
-gem install rails --version 6.0.2.2            # optional - any 6.x variant should be fine
-gem install neo4j neo4j-core neo4j-rake_tasks  # run latest in dev
 ```
 
 #### Install Neo4j
@@ -49,6 +47,31 @@ sudo apt-get install neo4j
 
 https://neo4j.com/download/
 
+- Make the AppImage executable, run it, and then trim the whitespace from the software key the website gave you.
+- Create a `Pariyatti` project with a db named `kosa`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
+
+```
+dbms.security.auth_enabled=false
+dbms.connector.bolt.listen_address=:7000
+dbms.connector.http.listen_address=:7001
+```
+
+#### Setup Rails
+
+```
+cd kosa
+bundle install
+# use neo4j:install if you don't want neo4j desktop.
+# this didn't work for me but i'm on side-of-a-mountain internet:
+rake neo4j:install[community-latest,development] # 3.4.1
+
+# install yarn:
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+
+rails webpacker:install
+```
 
 ## Old RSS Feeds
 
