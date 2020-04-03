@@ -12,6 +12,10 @@ Kosa is a library, editorial, and publishing service.
 
 In general, pin versions in development the way you would in any other environment. For the time-being, we'll make exceptions for neo4j and the neo4j/activegraph gem and run them both on `latest`.
 
+The neo4j.rb docs are here:
+
+https://neo4jrb.readthedocs.io/en/v9.4.0/
+
 ### Linux (Ubuntu 19.10)
 
 #### Install Rails
@@ -77,3 +81,7 @@ rails webpacker:install
 
 - [Dhamma Podcast Feed](http://feeds.pariyatti.org/dhammapodcasts)
 - [Daily RSS Feed](https://www.pariyatti.org/Free-Resources/Daily-Words/RSS-Feeds)
+
+## Contributing
+
+The contribution guidelines can be found [here](https://github.com/pariyatti/agga/blob/master/CONTRIBUTING.md).
