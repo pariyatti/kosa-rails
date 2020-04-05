@@ -8,6 +8,10 @@ Kosa is a library, editorial, and publishing service.
 - [What is a (relational) database?](https://docs.google.com/document/d/1QuiWPaAUH9_UOeBouGGCgF_FyRRhoL4uLkfKvSsbw2o/edit#)
 - [What is a graph database?](https://neo4j.com/developer/graph-database/)
 
+## Mobile App API
+
+The Pariyatti mobile app will consume the API as specified [here](https://github.com/pariyatti/kosa/blob/master/docs/api.md).
+
 ## Development
 
 In general, pin versions in development the way you would in any other environment. For the time-being, we'll make exceptions for neo4j and the neo4j/activegraph gem and run them both on `latest`.
