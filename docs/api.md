@@ -29,6 +29,7 @@ None - we'll try to implement real APIs over neo4j now but we might stub APIs if
 ## Implemented ##
 
 ```
+http://localhost:3000/api/today.json
 http://localhost:3000/api/topics.json
 ```
 
@@ -78,7 +79,7 @@ http://localhost:3000/api/topics.json
     "text": "We'll keep you updated with the latest news and updates."}
 
 => {"id": 123, "type": "words_of_the_buddha",  
-    "sutta_reference": " Dhammapada 17.223", 
+    "sutta_reference": "Dhammapada 17.223", 
     "pali": "Akkodhena jine kodhaṃ;\nasādhuṃ sādhunā jine;\njine kadariyaṃ dānena;\nsaccenālikavādinaṃ.", 
     "translation_language": "en",
     "translation": "Overcome the angry by non-anger;\novercome the wicked by goodness;\novercome the miser by generosity;\novercome the liar by truth."

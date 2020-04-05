@@ -1,10 +1,13 @@
-class TopicsController < ApplicationController
+class Api::TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics
   # GET /topics.json
   def index
     @topics = Topic.all
+    respond_to do |format|
+      format.json { render json: @topics }
+     end
   end
 
   # GET /topics/1

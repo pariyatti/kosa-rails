@@ -4,7 +4,7 @@ Links that don't work simply haven't been implemented yet. :)
 
 Use the links below to create and publish content to the Pariyatti mobile app.
 
-<div>Cards</div>
+<div><a href="<%= url_for(action: 'index', controller: 'cards') %>">Cards</a></div>
 <div>Pages</div>
 
 <h2>Library</h2>
@@ -24,3 +24,7 @@ Use the links below to create and publish content to the Pariyatti mobile app.
 <div><a href="<%= url_for(action: 'index', controller: 'topics') %>">Topics</a></div>
 <div>Collections</div>
 
+<h2>Test the APIs (for developers)</h2>
+
+<div><a href="/api/today">/api/today.json</a></div>
+<div><a href="/api/topics.json">/api/topics.json</a></div>

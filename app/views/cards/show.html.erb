@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @card.type %>
+</p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @card.flag %>
+</p>
+
+<p>
+  <strong>Bookmarkable:</strong>
+  <%= @card.bookmarkable %>
+</p>
+
+<p>
+  <strong>Shareable:</strong>
+  <%= @card.shareable %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @card.title %>
+</p>
+
+<p>
+  <strong>Header:</strong>
+  <%= @card.header %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @card.image %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @card.text %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>
