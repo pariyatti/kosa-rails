@@ -1,0 +1,32 @@
+<%= form_with(model: excerpt, local: true) do |form| %>
+  <% if excerpt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(excerpt.errors.count, "error") %> prohibited this excerpt from being saved:</h2>
+
+      <ul>
+        <% excerpt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference %>
+    <%= form.text_field :reference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

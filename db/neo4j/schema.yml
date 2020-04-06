@@ -14,14 +14,25 @@
 :constraints:
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
+- CONSTRAINT ON ( asset:Asset ) ASSERT asset.uuid IS UNIQUE
+- CONSTRAINT ON ( audience:Audience ) ASSERT audience.uuid IS UNIQUE
 - CONSTRAINT ON ( author:Author ) ASSERT author.uuid IS UNIQUE
 - CONSTRAINT ON ( card:Card ) ASSERT card.uuid IS UNIQUE
+- CONSTRAINT ON ( document:Document ) ASSERT document.uuid IS UNIQUE
+- CONSTRAINT ON ( excerpt:Excerpt ) ASSERT excerpt.uuid IS UNIQUE
 - CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
 - CONSTRAINT ON ( tag:Tag ) ASSERT tag.name IS UNIQUE
 - CONSTRAINT ON ( topic:Topic ) ASSERT topic.uuid IS UNIQUE
 - CONSTRAINT ON ( user:User ) ASSERT user.username IS UNIQUE
-:indexes: []
+:indexes:
+- INDEX ON :Card(type)
 :versions:
 - '20200403114840'
 - '20200403162044'
 - '20200405132737'
+- '20200406104217'
+- '20200406111201'
+- '20200406112229'
+- '20200406112909'
+- '20200406114217'
+- '20200406115223'

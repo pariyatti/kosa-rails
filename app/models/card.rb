@@ -9,6 +9,14 @@ class Card
   property :image, type: String
   property :text, type: String
 
-
+  enum type: [:generic,
+              :words_of_the_buddha,
+              :pali_word_of_the_day, 
+              :doha, 
+              :inspriation, 
+              :topic_of_the_week, 
+              :donation, 
+              :pilgrimage, 
+              :recommended_read]
 
 end

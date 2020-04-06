@@ -127,9 +127,15 @@ http://localhost:3000/api/topics.json
 These are just easier to list with a schema snippet than an example.
 
 ```
-# Card type: { "type": { "enum": [ "generic", "words_of_the_buddha", "pali_word_of_the_day", "doha", 
-                                    "inspriation", "topic_of_the_week", 
-                                    "donation", "pilgrimage", "recommended_read" ] } }
+# Card type: { "type": { "enum": [ "generic",
+                                    "words_of_the_buddha",
+                                    "pali_word_of_the_day", 
+                                    "doha", 
+                                    "inspriation", 
+                                    "topic_of_the_week", 
+                                    "donation", 
+                                    "pilgrimage", 
+                                    "recommended_read" ] } }
 # Inspiration alignment: { "alignment": {"enum": [ "stacked", "overlay" ]}}
 # Topic of the Week alignment: { "alignment": {"enum": [ "list", "blurb" ]}}
 ```

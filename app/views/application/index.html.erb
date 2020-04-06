@@ -7,9 +7,13 @@ Use the links below to create and publish content to the Pariyatti mobile app.
 <div><a href="<%= url_for(action: 'index', controller: 'cards') %>">Cards</a></div>
 <div>Pages</div>
 
-<h2>Library</h2>
+<h2>Library Assets</h2>
 
-<div>Documents (book, essay, article, transcripts, excerpt, quote)</div>
+<h3>Documents:</h3>
+<div>(book, essay, article, transcripts, excerpt, quote)</div>
+<div><a href="<%= url_for(action: 'index', controller: 'excerpts') %>">Excerpts</a></div>
+
+<h3>Media:</h3>
 <div>Images</div>
 <div>Audio</div>
 <div>Videos</div>
@@ -21,6 +25,7 @@ Use the links below to create and publish content to the Pariyatti mobile app.
 
 <h2>Metadata: Abstract</h2>
 
+<div><a href="<%= url_for(action: 'index', controller: 'audiences') %>">Audiences</a></div>
 <div><a href="<%= url_for(action: 'index', controller: 'topics') %>">Topics</a></div>
 <div>Collections</div>
 

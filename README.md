@@ -12,6 +12,13 @@ Kosa is a library, editorial, and publishing service.
 
 The Pariyatti mobile app will consume the API as specified [here](https://github.com/pariyatti/kosa/blob/master/docs/api.md).
 
+Once you have the service up and running (see `Development`) you will probably want to seed the database with some sample data to test against:
+
+```
+rake neo4j:seed   # sets static data like Topics and Audiences
+rake neo4j:import # imports Nishant's samples Excerpts
+```
+
 ## Development
 
 In general, pin versions in development the way you would in any other environment. For the time-being, we'll make exceptions for neo4j and the neo4j/activegraph gem and run them both on `latest`.
