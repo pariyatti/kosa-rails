@@ -23,9 +23,10 @@ rake neo4j:import # imports Nishant's samples Excerpts
 
 In general, pin versions in development the way you would in any other environment. For the time-being, we'll make exceptions for neo4j and the neo4j/activegraph gem and run them both on `latest`.
 
-The neo4j.rb docs are here:
+There is a lot of old documentation out there. Use these:
 
-https://neo4jrb.readthedocs.io/en/v9.4.0/
+- https://neo4jrb.readthedocs.io/en/v9.4.0/
+- https://neo4j.com/developer/ruby/
 
 ### Linux (Ubuntu 19.10)
 
