@@ -60,5 +60,6 @@ Kosa:
 
 ```
 ansible-galaxy install ansistrano.deploy ansistrano.rollback
-ansible-playbook -i hosts -u root kosa.yml
+# you will need to get the master password from someone on staff:
+ansible-playbook -i hosts -u root kosa.yml --ask-vault-pass
 ```

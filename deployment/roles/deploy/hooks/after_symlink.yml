@@ -9,7 +9,7 @@
 #     RBENV_ROOT: '{{ rbenv_root }}'
 #     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
 
-- name: DEPLOY HOOK | Install required gems
+- name: Deploy Hook | Install required gems
   environment:
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
@@ -23,7 +23,18 @@
   become: true
   become_user: "{{ deploy_user }}"
 
-# - name: DEPLOY HOOK | Update yarn
+# TODO: this is very temporary to see if the app still bombs
+#       - see deployment/roles/deploy/tasks/main.yml for the correct solution
+#       - `dotenv-rails` doesn't seem to be picking up the 
+#         `.env.production` symlink, for some reason. -sd
+- name: Deploy | HACK - Copy .env template file to master.key
+  template:
+    src: "../templates/.env.j2"
+    dest: "{{ ansistrano_release_path.stdout }}/config/master.key"
+  tags: update-app-config
+
+
+# - name: Deploy Hook | Update yarn
 #   environment:
 #     RBENV_ROOT: '{{ rbenv_root }}'
 #     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
@@ -34,15 +45,15 @@
 #   become_user: "{{ deploy_user }}"
 
 # TODO: add the /role/nodejs from simple to get yarn
-# - name: DEPLOY HOOK | Precompile assets
-#   environment:
-#     RBENV_ROOT: '{{ rbenv_root }}'
-#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
-#   command: "{{ bundle_path }} exec rake assets:precompile"
-#   args:
-#     chdir: "{{ ansistrano_release_path.stdout }}"
-#   become: true
-#   become_user: "{{ deploy_user }}"
+- name: Deploy Hook | Precompile assets
+  environment:
+    RBENV_ROOT: '{{ rbenv_root }}'
+    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+  command: "{{ bundle_path }} exec rake assets:precompile"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  become: true
+  become_user: "{{ deploy_user }}"
 
 
 # TODO: actually migrate the indexes/constraints (once neo4j db is created)
