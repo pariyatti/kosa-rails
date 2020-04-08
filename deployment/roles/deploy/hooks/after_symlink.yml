@@ -9,7 +9,7 @@
 #     RBENV_ROOT: '{{ rbenv_root }}'
 #     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
 
-- name: Install required gems
+- name: DEPLOY HOOK | Install required gems
   environment:
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
@@ -23,9 +23,18 @@
   become: true
   become_user: "{{ deploy_user }}"
 
+# - name: DEPLOY HOOK | Update yarn
+#   environment:
+#     RBENV_ROOT: '{{ rbenv_root }}'
+#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+#   command: "yarn install --check-files"
+#   args:
+#     chdir: "{{ ansistrano_release_path.stdout }}"
+#   become: true
+#   become_user: "{{ deploy_user }}"
 
 # TODO: add the /role/nodejs from simple to get yarn
-# - name: precompile assets
+# - name: DEPLOY HOOK | Precompile assets
 #   environment:
 #     RBENV_ROOT: '{{ rbenv_root }}'
 #     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'

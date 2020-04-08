@@ -17,13 +17,12 @@ ansistrano_shared_paths:
   - tmp/sockets
   - public/system
   - vendor/bundle
-# TODO: set up environment files
-# ansistrano_shared_files:
-#   - .env.sandbox
+ansistrano_shared_files:
+  - .env.production
 ansistrano_deploy_via: "git"
 ansistrano_git_repo: "https://github.com/pariyatti/kosa.git"
 ansistrano_after_symlink_shared_tasks_file: "roles/deploy/hooks/after_symlink.yml"
 # TODO: add db creation task
 # neo4j:
 #   database_name: "{{ deploy_env }}-{{ app_name }}-db"
-rails_env: "development" # TODO: use a real environment
+rails_env: "production"

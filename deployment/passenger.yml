@@ -9,9 +9,11 @@
     ansible_distribution_version: "18.04"
     ansible_processor_count: 1
     ansistrano_root: "/opt/pariyatti/kosa"
+    passenger_root: "{{ rbenv_root }}/versions/2.7.1/lib/ruby/vendor_ruby/phusion_passenger/locations.ini"
+    passenger_ruby: "{{ rbenv_root }}/shims/ruby"
     passenger_server_name: 139.59.41.132
     passenger_app_root: "/opt/pariyatti/kosa/current/public"
-    passenger_app_env: development # TODO: make env host-specific
+    passenger_app_env: production
   roles:
     - geerlingguy.passenger
 
