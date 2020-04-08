@@ -1,0 +1,41 @@
+---
+- hosts: all
+  remote_user: root
+  gather_facts: false
+  vars:
+    ansible_os_family: "Debian"
+    ansible_distribution: "Ubuntu"
+    ansible_distribution_release: "bionic"
+    ansible_distribution_version: "18.04"
+    ansible_processor_count: 1
+    ansistrano_root: "/opt/pariyatti/kosa"
+    passenger_server_name: 139.59.41.132
+    passenger_app_root: "/opt/pariyatti/kosa/current/public"
+    passenger_app_env: development # TODO: make env host-specific
+  roles:
+    - geerlingguy.passenger
+
+  tasks:
+    - name: Chown Passenger app root to 'deploy'
+      file: dest={{ ansistrano_root }} owner=deploy group=deploy recurse=yes
+
+  # tasks:
+  #   - name: Install Rails prerequisites
+  #     apt:
+  #       name:
+  #         - build-essential
+  #         - libssl-dev 
+  #         - libyaml-dev 
+  #         - libreadline-dev 
+  #         - openssl 
+  #         - curl 
+  #         - git-core 
+  #         - zlib1g-dev 
+  #         - bison 
+  #         - libxml2-dev 
+  #         - libxslt1-dev 
+  #         - libcurl4-openssl-dev 
+  #         - nodejs 
+  #         - libsqlite3-dev 
+  #         - sqlite3
+

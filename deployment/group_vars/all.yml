@@ -1,0 +1,7 @@
+---
+root_user: "root"
+deploy_user: "deploy"
+ruby_version: "2.7.1"
+rbenv_root: "/home/{{ deploy_user }}/.rbenv"
+bundle_path: "{{ rbenv_root }}/shims/bundle"
+bundler_version: "2.1.4"

@@ -31,6 +31,8 @@ ansible all -i hosts -u root -m ping
 
 ### Provision the box
 
+TODO: Large packages like neo4j, rbenv, passenger, and the kosa deployment should be carved out into their own roles and called from a central playbook.
+
 Base packages:
 
 ```
@@ -46,10 +48,16 @@ ansible-galaxy install kevincoakley.neo4j
 ansible-playbook -i hosts -u root neo4j.yml --extra-vars "neo4j_password=$SECRET"
 ```
 
-Rails:
+Ruby:
 
 ```
-ansible-galaxy install geerlingguy.ruby
+ansible-playbook -i hosts -u root ruby.yml
 ansible-galaxy install geerlingguy.passenger
-ansible-playbook -i hosts -u root rails.yml
+ansible-playbook -i hosts -u root passenger.yml
+```
+
+Kosa:
+
+```
+ansible-galaxy install ansistrano.deploy ansistrano.rollback
 ```

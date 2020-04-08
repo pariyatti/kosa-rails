@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  remote_user: root
+  remote_user: "{{ deploy_user }}"
   gather_facts: false
   vars:
     ansistrano_deploy_from: "{{ playbook_dir }}/.."
