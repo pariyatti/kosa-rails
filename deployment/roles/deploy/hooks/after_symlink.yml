@@ -1,0 +1,44 @@
+# Ansistrano after symlink tasks
+# `ansistrano_release_path` is defined internally within ansistrano
+---
+# - name: test rbenv/ruby installation
+#   shell: "rbenv version"
+#   become: true
+#   become_user: "{{ deploy_user }}"
+#   environment:
+#     RBENV_ROOT: '{{ rbenv_root }}'
+#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+
+- name: Install required gems
+  environment:
+    RBENV_ROOT: '{{ rbenv_root }}'
+    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+  bundler:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+    executable: "{{ bundle_path }}"
+    deployment_mode: yes
+    exclude_groups:
+      - development
+      - test
+  become: true
+  become_user: "{{ deploy_user }}"
+
+
+# TODO: add the /role/nodejs from simple to get yarn
+# - name: precompile assets
+#   environment:
+#     RBENV_ROOT: '{{ rbenv_root }}'
+#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+#   command: "{{ bundle_path }} exec rake assets:precompile"
+#   args:
+#     chdir: "{{ ansistrano_release_path.stdout }}"
+#   become: true
+#   become_user: "{{ deploy_user }}"
+
+
+# TODO: actually migrate the indexes/constraints (once neo4j db is created)
+# - name: migrate the db
+#   command: "{{ bundle_path }} exec rake db:migrate"
+#   run_once: true
+#   args:
+#     chdir: "{{ ansistrano_release_path.stdout }}"

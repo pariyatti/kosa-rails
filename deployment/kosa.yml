@@ -1,21 +1,16 @@
 ---
+# this no-op task works around this really lame bug:
+# https://github.com/ansible/ansible/issues/14655
+- hosts: all
+  remote_user: "{{ deploy_user }}" # for some reason, root hangs
+
 - hosts: all
   remote_user: "{{ deploy_user }}"
-  gather_facts: false
-  vars:
-    ansistrano_deploy_from: "{{ playbook_dir }}/.."
-    ansistrano_deploy_to: "/opt/pariyatti/kosa"
-    ansistrano_deploy_via: "git"
-    ansistrano_git_repo: https://github.com/pariyatti/kosa.git
-    rails_env: "development" # TODO: use a real environment
+  gather_facts: true
+  environment:
+    RAILS_ENV: development # TODO: set a real environment
+    RBENV_ROOT: '{{ rbenv_root }}'
+    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   roles:
-    - ansistrano.deploy
-
-  tasks:
-    # TODO: is this necessary at all? -sd
-    - name: Set RAILS_ENV
-      lineinfile:
-        path: /etc/environment
-        regexp: '^RAILS_ENV='
-        line: "RAILS_ENV={{rails_env}}"
-
+    - { role: deploy, tags: ['deploy'] }
+    - { role: ansistrano.deploy, tags: ['ansistrano.deploy'] }

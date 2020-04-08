@@ -1,7 +1,29 @@
 ---
+ansible_port: 22
 root_user: "root"
 deploy_user: "deploy"
 ruby_version: "2.7.1"
+bundler_version: "2.1.4"
 rbenv_root: "/home/{{ deploy_user }}/.rbenv"
 bundle_path: "{{ rbenv_root }}/shims/bundle"
-bundler_version: "2.1.4"
+app_name: "kosa"
+
+ansistrano_deploy_to: "/opt/pariyatti/{{ app_name }}"
+ansistrano_shared_paths:
+  - .bundle
+  - log
+  - tmp/pids
+  - tmp/cache
+  - tmp/sockets
+  - public/system
+  - vendor/bundle
+# TODO: set up environment files
+# ansistrano_shared_files:
+#   - .env.sandbox
+ansistrano_deploy_via: "git"
+ansistrano_git_repo: "https://github.com/pariyatti/kosa.git"
+ansistrano_after_symlink_shared_tasks_file: "roles/deploy/hooks/after_symlink.yml"
+# TODO: add db creation task
+# neo4j:
+#   database_name: "{{ deploy_env }}-{{ app_name }}-db"
+rails_env: "development" # TODO: use a real environment

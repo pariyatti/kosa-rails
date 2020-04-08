@@ -60,4 +60,5 @@ Kosa:
 
 ```
 ansible-galaxy install ansistrano.deploy ansistrano.rollback
+ansible-playbook -i hosts -u root kosa.yml
 ```
