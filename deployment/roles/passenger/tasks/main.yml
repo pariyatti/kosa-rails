@@ -1,0 +1,103 @@
+---
+# nginx + passenger tasks
+
+- name: install PGP key supprt
+  apt: 
+    pkg: ['dirmngr', 'gnupg'] 
+    state: latest
+  become: true
+  
+- name: add passenger PGP key
+  apt_key: keyserver=keyserver.ubuntu.com id=561F9B9CAC40B2F7 state=present
+  become: true
+
+- name: install apt https/certs
+  apt: 
+    pkg: ['apt-transport-https', 'ca-certificates']
+    state: latest
+  become: true
+  notify: restart nginx
+
+- name: add passenger apt repo
+  apt_repository: repo='deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main' state=present
+  become: true
+  register: passenger_repo
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+  become: true
+  when: passenger_repo.changed
+
+- name: install passenger packages
+  apt: 
+    pkg: 'libnginx-mod-http-passenger'
+    state: latest
+  become: true
+  notify: restart nginx
+
+- name: ensure passenger module is enabled (ubuntu 18.04 only)
+  file:
+    src: /usr/share/nginx/modules-available/mod-http-passenger.load
+    dest: /etc/nginx/modules-enabled/50-mod-http-passenger.conf
+    state: link
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_version == '18.04'
+
+- name: ignore default mod-http-passenger.conf
+  copy: 
+    src: "etc/nginx/conf.d/mod-http-passenger.conf"
+    dest: "/etc/nginx/conf.d/mod-http-passenger.conf"
+  become: true
+  notify: restart nginx
+
+- name: re-configure nginx with passenger
+  copy: 
+    src: "etc/nginx/nginx.conf"
+    dest: "/etc/nginx/nginx.conf"
+  become: true
+  notify: restart nginx
+
+- name: disable the default nginx config
+  file: path={{ item }} state=absent
+  become: true
+  with_items:
+    - /etc/nginx/sites-enabled/default
+  notify: restart nginx
+
+- name: get installed site configs
+  shell: ls -1 /etc/nginx/sites-available
+  register: sites_available_contents
+
+- name: get enabled site configs
+  shell: ls -1 /etc/nginx/sites-enabled
+  register: sites_enabled_contents
+
+- name: add site configs
+  template:
+    src: etc/nginx/sites-available/kosa.conf
+    dest: /etc/nginx/sites-available/{{ domain_name }}
+  become: true
+  notify: restart nginx
+
+- name: enable site configs
+  file:
+    state: link
+    src: /etc/nginx/sites-available/{{ domain_name }}
+    dest: /etc/nginx/sites-enabled/{{ domain_name }}
+  become: true
+
+- name: restart nginx
+  become: true
+  command: /bin/true
+  notify: restart nginx
+  tags: restart-passenger
+
+- name: enable monit for nginx
+  file: >
+    state=link
+    src=/etc/monit/conf-available/nginx
+    dest=/etc/monit/conf-enabled/nginx
+  become: true
+  notify: restart monit

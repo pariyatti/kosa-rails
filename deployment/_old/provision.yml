@@ -72,7 +72,3 @@
     - name: Install java
       apt:
         name: openjdk-11-jdk-headless
-
-    - name: Install nginx
-      apt:
-        name: nginx

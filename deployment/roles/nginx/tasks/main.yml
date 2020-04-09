@@ -1,0 +1,15 @@
+---
+- name: apt-get update
+  apt: 
+    update_cache: yes
+  become: true
+
+# smallest-to-largest: nginx-light => nginx-core => nginx-full => nginx-extras
+# to uninstall: `apt-get --purge autoremove libnginx-mod-http-passenger`
+#               `apt-get --purge autoremove nginx-extras`
+- name: install nginx
+  apt: 
+    pkg: 'nginx-extras'
+    state: latest
+  become: true
+  notify: restart nginx

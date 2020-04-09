@@ -33,7 +33,7 @@
     dest: "{{ ansistrano_release_path.stdout }}/config/master.key"
   tags: update-app-config
 
-
+# TODO: this isn't necessary, is it? -sd
 # - name: Deploy Hook | Update yarn
 #   environment:
 #     RBENV_ROOT: '{{ rbenv_root }}'
@@ -44,9 +44,10 @@
 #   become: true
 #   become_user: "{{ deploy_user }}"
 
-# TODO: add the /role/nodejs from simple to get yarn
 - name: Deploy Hook | Precompile assets
   environment:
+    RAILS_ENV: 'production'
+    NODE_ENV: 'production'
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   command: "{{ bundle_path }} exec rake assets:precompile"
@@ -56,7 +57,7 @@
   become_user: "{{ deploy_user }}"
 
 
-# TODO: actually migrate the indexes/constraints (once neo4j db is created)
+# TODO: migrate the indexes/constraints (once neo4j db is created)
 # - name: migrate the db
 #   command: "{{ bundle_path }} exec rake db:migrate"
 #   run_once: true

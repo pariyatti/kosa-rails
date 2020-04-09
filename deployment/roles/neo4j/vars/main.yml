@@ -1,0 +1,3 @@
+---
+neo4j_allow_any_connection: true
+neo4j_password: "neo4j" # override this from the command line

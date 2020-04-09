@@ -8,7 +8,19 @@ rbenv_root: "/home/{{ deploy_user }}/.rbenv"
 bundle_path: "{{ rbenv_root }}/shims/bundle"
 app_name: "kosa"
 
-ansistrano_deploy_to: "/opt/pariyatti/{{ app_name }}"
+ # deploy_env and domain_name can be set dynamically later -sd 
+ # (see simpledotorg/deployment)
+deploy_env: "production"
+domain_name: "kosa-sandbox.pariyatti.org"
+domain_ip: "139.59.41.132"
+
+ansible_os_family: "Debian"
+ansible_distribution: "Ubuntu"
+ansible_distribution_release: "bionic"
+ansible_distribution_version: "18.04"
+ansible_processor_count: 1
+
+ansistrano_deploy_to: "/home/deploy/apps/{{ app_name }}"
 ansistrano_shared_paths:
   - .bundle
   - log

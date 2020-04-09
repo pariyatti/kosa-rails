@@ -29,37 +29,25 @@ Test your connection:
 ansible all -i hosts -u root -m ping
 ```
 
-### Provision the box
-
-TODO: Large packages like neo4j, rbenv, passenger, and the kosa deployment should be carved out into their own roles and called from a central playbook.
-
-Base packages:
-
-```
-ansible-playbook -i hosts -u root provision.yml
-```
-
-Neo4j:
-
-Reading the neo4j ansible source code is helpful if something goes wrong: https://github.com/kevincoakley/ansible-role-neo4j
+Install ansible roles from Galaxy:
 
 ```
 ansible-galaxy install kevincoakley.neo4j
-ansible-playbook -i hosts -u root neo4j.yml --extra-vars "neo4j_password=$SECRET"
-```
-
-Ruby:
-
-```
-ansible-playbook -i hosts -u root ruby.yml
-ansible-galaxy install geerlingguy.passenger
-ansible-playbook -i hosts -u root passenger.yml
-```
-
-Kosa:
-
-```
 ansible-galaxy install ansistrano.deploy ansistrano.rollback
-# you will need to get the master password from someone on staff:
+```
+
+### Provision the box
+
+#### One-Time Setup:
+
+```
+ansible-playbook -i hosts -u root setup.yml --extra-vars "neo4j_password=neo4j"
+```
+
+#### Deploy Kosa:
+
+You will need to get the master password from someone on staff.
+
+```
 ansible-playbook -i hosts -u root kosa.yml --ask-vault-pass
 ```
