@@ -59,6 +59,8 @@
   become: true
   notify: restart nginx
 
+  # TODO: test this? `sudo /usr/bin/passenger-config validate-install`
+
 - name: disable the default nginx config
   file: path={{ item }} state=absent
   become: true
@@ -76,7 +78,7 @@
 
 - name: add site configs
   template:
-    src: etc/nginx/sites-available/kosa.conf
+    src: etc/nginx/sites-available/kosa.j2
     dest: /etc/nginx/sites-available/{{ domain_name }}
   become: true
   notify: restart nginx

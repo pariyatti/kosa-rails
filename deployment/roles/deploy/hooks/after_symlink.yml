@@ -1,15 +1,16 @@
-# Ansistrano after symlink tasks
-# `ansistrano_release_path` is defined internally within ansistrano
 ---
-# - name: test rbenv/ruby installation
-#   shell: "rbenv version"
-#   become: true
-#   become_user: "{{ deploy_user }}"
-#   environment:
-#     RBENV_ROOT: '{{ rbenv_root }}'
-#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+- name: "test rbenv/ruby installation and version"
+  shell: "rbenv version-name"
+  ignore_errors: true
+  register: rbenv_version_name
+  become: true
+  become_user: "{{ deploy_user }}"
 
-- name: Deploy Hook | Install required gems
+- assert:
+    that:
+      - rbenv_version_name.stdout == "2.7.1"
+
+- name: AFTER_SYMLINK (ANSISTRANO) | install bundled gems
   environment:
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
@@ -23,28 +24,7 @@
   become: true
   become_user: "{{ deploy_user }}"
 
-# TODO: this is very temporary to see if the app still bombs
-#       - see deployment/roles/deploy/tasks/main.yml for the correct solution
-#       - `dotenv-rails` doesn't seem to be picking up the 
-#         `.env.production` symlink, for some reason. -sd
-- name: Deploy | HACK - Copy .env template file to master.key
-  template:
-    src: "../templates/.env.j2"
-    dest: "{{ ansistrano_release_path.stdout }}/config/master.key"
-  tags: update-app-config
-
-# TODO: this isn't necessary, is it? -sd
-# - name: Deploy Hook | Update yarn
-#   environment:
-#     RBENV_ROOT: '{{ rbenv_root }}'
-#     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
-#   command: "yarn install --check-files"
-#   args:
-#     chdir: "{{ ansistrano_release_path.stdout }}"
-#   become: true
-#   become_user: "{{ deploy_user }}"
-
-- name: Deploy Hook | Precompile assets
+- name: AFTER_SYMLINK (ANSISTRANO) | precompile assets
   environment:
     RAILS_ENV: 'production'
     NODE_ENV: 'production'
@@ -55,7 +35,6 @@
     chdir: "{{ ansistrano_release_path.stdout }}"
   become: true
   become_user: "{{ deploy_user }}"
-
 
 # TODO: migrate the indexes/constraints (once neo4j db is created)
 # - name: migrate the db

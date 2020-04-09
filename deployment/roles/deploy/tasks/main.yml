@@ -1,11 +1,11 @@
 ---
-- name: Deploy | Create apps directory
+- name: create apps shared directory
   file:
     path: "{{ ansistrano_deploy_to }}/shared"
     state: directory
     owner: "{{ deploy_user }}"
 
-- name: Deploy | Copy .env template file
+- name: copy .env template
   template:
     src: .env.j2
     dest: "{{ ansistrano_deploy_to }}/shared/.env.production"

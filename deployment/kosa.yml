@@ -1,9 +1,4 @@
 ---
-# this no-op task works around this really lame bug:
-# https://github.com/ansible/ansible/issues/14655
-- hosts: all
-  remote_user: "{{ deploy_user }}" # for some reason, root hangs
-
 - hosts: all
   remote_user: "{{ deploy_user }}"
   gather_facts: true

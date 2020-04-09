@@ -46,7 +46,7 @@ ansible-playbook -i hosts -u root setup.yml --extra-vars "neo4j_password=neo4j"
 
 #### Deploy Kosa:
 
-You will need to get the master password from someone on staff.
+You will need to get the master password from someone on staff. If you are on an unreliable connection, this command will often hang during `Gathering Facts`. Use `./fix-ssh-hangs.sh` to clean up your Ansible ssh sessions.
 
 ```
 ansible-playbook -i hosts -u root kosa.yml --ask-vault-pass
