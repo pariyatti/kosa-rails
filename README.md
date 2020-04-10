@@ -64,7 +64,7 @@ sudo apt-get install neo4j
 https://neo4j.com/download/
 
 - Make the AppImage executable, run it, and then trim the whitespace from the software key the website gave you.
-- Create a `Pariyatti` project with a db named `kosa`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
+- Create a `Pariyatti` project with a db named `kosa3`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
 
 ```
 dbms.security.auth_enabled=false
@@ -77,16 +77,18 @@ dbms.connector.http.listen_address=:7001
 ```
 cd kosa
 bundle install
+
 # use neo4j:install if you don't want neo4j desktop.
-# this didn't work for me but i'm on side-of-a-mountain internet:
+# this didn't work for me but i'm on side-of-a-mountain internet -sd
 rake neo4j:install[community-latest,development] # 3.4.1
 
 # install yarn:
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn
-
 rails webpacker:install
+
+bundle exec rake neo4j:migrate
 ```
 
 ## Old RSS Feeds

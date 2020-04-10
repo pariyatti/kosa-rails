@@ -6,6 +6,8 @@
   become: true
   become_user: "{{ deploy_user }}"
 
+# TODO: if this assert is passing, we should be able to remove 
+#       `environment:` from the following tasks
 - assert:
     that:
       - rbenv_version_name.stdout == "2.7.1"
@@ -36,9 +38,14 @@
   become: true
   become_user: "{{ deploy_user }}"
 
-# TODO: migrate the indexes/constraints (once neo4j db is created)
-# - name: migrate the db
-#   command: "{{ bundle_path }} exec rake db:migrate"
-#   run_once: true
-#   args:
-#     chdir: "{{ ansistrano_release_path.stdout }}"
+- name: AFTER_SYMLINK (ANSISTRANO) | migrate the db
+  environment:
+    RAILS_ENV: 'production'
+    NODE_ENV: 'production'
+    RBENV_ROOT: '{{ rbenv_root }}'
+    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
+  command: "{{ bundle_path }} exec rake neo4j:migrate"
+  run_once: true
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+  notify: restart nginx
