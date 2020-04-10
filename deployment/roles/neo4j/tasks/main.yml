@@ -1,16 +1,27 @@
 ---
-- name: Neo4j | Install openjdk-11
+- name: install openjdk-11
   apt:
     name: openjdk-11-jdk-headless
 
-- name: Neo4j | Install Neo4j server
+- name: install neo4j server
   import_role:
     name: kevincoakley.neo4j
 
-# TODO: create the kosa3 database (though maybe not here)
-# 
-# - name: Create kosa3 database
-#   become: true
-#   become_user: %neo4juser% or root?
-#   postgresql_db:
-#     name: village_book_db
+# https://github.com/kevincoakley/ansible-role-neo4j/blob/master/tasks/main.yml
+# https://stackoverflow.com/questions/45784232/how-to-create-new-database-in-neo4j
+
+- name: set the neo4j TLS level
+  lineinfile:
+    dest: /etc/neo4j/neo4j.conf
+    regexp: '^dbms.connector.bolt.tls_level=.*'
+    line: "dbms.connector.bolt.tls_level={{ neo4j_connector_bolt_tls_level }}"
+    state: present
+  notify: Restart Neo4j
+
+- name: set the neo4j database name
+  lineinfile:
+    dest: /etc/neo4j/neo4j.conf
+    regexp: '^dbms.active_database=.*'
+    line: "dbms.active_database={{ neo4j_active_database }}"
+    state: present
+  notify: Restart Neo4j
