@@ -89,6 +89,8 @@ sudo apt update && sudo apt install yarn
 rails webpacker:install
 
 bundle exec rake neo4j:migrate
+bundle exec rake neo4j:seed
+bundle exec rake neo4j:import
 ```
 
 ## Old RSS Feeds

@@ -1,0 +1,27 @@
+---
+- name: "test rbenv/ruby installation and version"
+  shell: "rbenv version-name"
+  ignore_errors: true
+  register: rbenv_version_name
+  become: true
+  become_user: "{{ deploy_user }}"
+
+# this is just for my own sanity -sd
+- assert:
+    that:
+      - rbenv_version_name.stdout == "2.7.1"
+
+# TODO: consider adding a "blow away the db" task and make this `db-reset`
+
+- name: "[one-time] seed the db"
+  command: "{{ bundle_path }} exec rake neo4j:seed"
+  run_once: true
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/current"
+
+- name: "[one-time] import quotes from CSV"
+  command: "{{ bundle_path }} exec rake neo4j:import"
+  run_once: true
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/current"
+  tags: import-csv

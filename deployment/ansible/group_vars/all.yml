@@ -34,7 +34,5 @@ ansistrano_shared_files:
 ansistrano_deploy_via: "git"
 ansistrano_git_repo: "https://github.com/pariyatti/kosa.git"
 ansistrano_after_symlink_shared_tasks_file: "roles/deploy/hooks/after_symlink.yml"
-# TODO: add db creation task
-# neo4j:
-#   database_name: "{{ deploy_env }}-{{ app_name }}-db"
+database_name: "kosa3" # "{{ deploy_env }}-{{ app_name }}-db"
 rails_env: "production"

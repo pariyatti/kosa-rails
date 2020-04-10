@@ -30,25 +30,18 @@ Test your connection:
 ansible all -i hosts -u root -m ping
 ```
 
-Install ansible roles from Galaxy:
-
-```
-ansible-galaxy install kevincoakley.neo4j
-ansible-galaxy install ansistrano.deploy ansistrano.rollback
-```
-
 ### Provision the box
 
-#### One-Time Setup:
+This will do an initial deploy for you.
 
 ```
-ansible-playbook -i hosts -u root setup.yml --extra-vars "neo4j_password=neo4j"
+make all
 ```
 
-#### Deploy Kosa:
+### Deploy Kosa
 
-You will need to get the master password from someone on staff. If you are on an unreliable connection, this command will often hang during `Gathering Facts`. Use `./fix-ssh-hangs.sh` to clean up your Ansible ssh sessions.
+You will need to get the master password from someone on staff and save it to your local computer as `~/.kosa_password_file`. If you are on an unreliable connection, this command will often hang during `Gathering Facts`. Use `make fix-ssh` to clean up your Ansible ssh sessions.
 
 ```
-ansible-playbook -i hosts -u root kosa.yml --ask-vault-pass
+make deploy
 ```
