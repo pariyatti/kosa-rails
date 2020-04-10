@@ -2,7 +2,7 @@ hosts = sandbox
 password_file = ~/.kosa_password_file
 export ANSIBLE_CONFIG = ansible/ansible.cfg
 
-.PHONY: help init all update-ssh-keys update-master-key restart-passenger fix-ssh
+.PHONY: help install-ansible-ubuntu install-ansible-plugins init all update-ssh-keys update-master-key restart-passenger fix-ssh
 # HELP sourced from https://gist.github.com/prwhite/8168133
 
 # Add help text after each target name starting with '\#\#'
@@ -24,11 +24,15 @@ HELP_FUNC = \
 help: ##@Miscellaneous Show this help.
 	@perl -e '$(HELP_FUNC)' $(MAKEFILE_LIST)
 
-install-ansible: ##@Setup Install ansible locally (ubuntu)
+# Hidden@Setup Install ansible locally (ubuntu)
+install-ansible-ubuntu:
 	./bin/install-ansible-ubuntu.sh
 
-init: ##@Setup Install ansible plugins
+# Hidden@Setup Install ansible plugins
+install-ansible-plugins:
 	ansible-galaxy install -r ansible/requirements.yml
+
+init: | install-ansible-ubuntu install-ansible-plugins ##@Setup Install ansible and required plugins
 
 all: ##@Setup Install (setup + deploy) kosa on hosts. Runs the all.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/$@.yml -u root -i hosts/$(hosts)
@@ -36,7 +40,7 @@ all: ##@Setup Install (setup + deploy) kosa on hosts. Runs the all.yml playbook
 setup: ##@Setup Setup a kosa box. Runs the setup.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i hosts/$(hosts)
 
-deploy: ##@Utilities Deploy kosa. Runs the deploy.yml playbook
+deploy: ##@Setup Deploy kosa. Runs the deploy.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i hosts/$(hosts)
 
 update-ssh-keys: ##@Utilities Update ssh keys on boxes. Add keys to `ansible/roles/ssh/files/ssh_keys` under the appropriate environment

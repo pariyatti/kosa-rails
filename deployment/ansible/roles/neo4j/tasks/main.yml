@@ -7,9 +7,6 @@
   import_role:
     name: kevincoakley.neo4j
 
-# https://github.com/kevincoakley/ansible-role-neo4j/blob/master/tasks/main.yml
-# https://stackoverflow.com/questions/45784232/how-to-create-new-database-in-neo4j
-
 - name: set the neo4j TLS level
   lineinfile:
     dest: /etc/neo4j/neo4j.conf
@@ -25,3 +22,20 @@
     line: "dbms.active_database={{ neo4j_active_database }}"
     state: present
   notify: Restart Neo4j
+
+# TODO: seriously consider ditching `kevincoakly.neo4j` and writing a custom role
+- debug:
+    msg: "neo4j_password is defined? '{{ neo4j_password is defined and neo4j_password|string }}'"
+  tags: neo4j-force-password
+
+- name: reset the neo4j password since that stupid 'initial password' thing always fails
+  uri:
+    url: http://localhost:7474/user/neo4j/password
+    user: neo4j
+    password: neo4j
+    method: POST
+    body: "{'password':'{{ neo4j_password }}'}"
+    force_basic_auth: yes
+    status_code: 200 # not 201
+    body_format: json
+  tags: neo4j-force-password
