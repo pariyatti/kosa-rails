@@ -1,3 +1,7 @@
+[all:vars]
+deploy_env=production
+domain_name=kosa-sandbox.pariyatti.org
+
 [deployment]
 sandbox ansible_host=139.59.41.132
 

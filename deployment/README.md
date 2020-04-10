@@ -2,6 +2,12 @@
 
 Deployment will use Ubuntu on a cloud server of your choice. The sandbox server is currently running on Digital Ocean and these instructions will use that as an example.
 
+Everything you need should be accessible from the `Makefile` in this directory. If you add new functionality to the deployment scripts, please add an interface through `make`. To see what is available, run:
+
+```
+make help
+```
+
 ## Create Server
 
 ### Create a Droplet on Digital Ocean.
@@ -10,17 +16,12 @@ Disable the root password and only allow SSH key access. You will need a minimum
 
 `Standard | Shared CPU | 1 vCPU | 2 GB | 25 GB | 2 TB | $10/mo`
 
-
 ### Install Ansible
 
 Use your own computer as the Control Node. Locally, run the following commands which will install ansible and python (if necessary):
 
 ```
-sudo apt update
-sudo apt install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
-sudo apt install python-argcomplete
+make install-ansible
 ```
 
 Test your connection:
