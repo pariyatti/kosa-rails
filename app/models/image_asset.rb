@@ -9,6 +9,7 @@ class ImageAsset < Asset
 
   def url
     # HACK: necessary because the carrierwave-neo4j gem is broken
+    #       - gem is vendored so we can fix it, eventually -sd
     filename = self.query_as(:i) # This gives us our first Query object
       .match("(i:ImageAsset {uuid: '#{uuid}'})")
       .pluck("i.image")

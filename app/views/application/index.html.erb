@@ -4,17 +4,18 @@ Links that don't work simply haven't been implemented yet. :)
 
 Use the links below to create and publish content to the Pariyatti mobile app.
 
-<div><a href="<%= url_for(action: 'index', controller: 'cards') %>">Cards</a></div>
+<div><%= link_to "Create Card: Inspriation", new_card_path(card_type: :inspiration) %></div>
+<div><%= link_to "Cards", cards_path %></div>
 <div>Pages</div>
 
 <h2>Library Assets</h2>
 
 <h3>Documents:</h3>
 <div>(book, essay, article, transcripts, excerpt, quote)</div>
-<div><a href="<%= url_for(action: 'index', controller: 'excerpts') %>">Excerpts</a></div>
+<div><%= link_to "Excerpts", excerpts_path %></div>
 
 <h3>Media:</h3>
-<div><a href="<%= url_for(action: 'index', controller: 'image_assets') %>">Images</a></div>
+<div><%= link_to "Images", image_assets_path %></div>
 <div>Audio</div>
 <div>Videos</div>
 
@@ -25,8 +26,8 @@ Use the links below to create and publish content to the Pariyatti mobile app.
 
 <h2>Metadata: Abstract</h2>
 
-<div><a href="<%= url_for(action: 'index', controller: 'audiences') %>">Audiences</a></div>
-<div><a href="<%= url_for(action: 'index', controller: 'topics') %>">Topics</a></div>
+<div><%= link_to "Audiences", audiences_path %></div>
+<div><%= link_to "Topics", topics_path %></div>
 <div>Collections</div>
 
 <h2>Test the APIs (for developers)</h2>

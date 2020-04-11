@@ -1,5 +1,5 @@
 <h1>New Card</h1>
 
-<%= render 'form', card: @card %>
+<%= render "form_#{@card_type}", card: @card %>
 
 <%= link_to 'Back', cards_path %>

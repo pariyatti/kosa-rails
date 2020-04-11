@@ -14,6 +14,7 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
+    @card_type = params[:card_type]
     @card = Card.new
   end
 
@@ -24,7 +25,7 @@ class CardsController < ApplicationController
   # POST /cards
   # POST /cards.json
   def create
-    @card = Card.new(card_params)
+    @card = Card.from_params(card_params)
 
     respond_to do |format|
       if @card.save
@@ -69,6 +70,6 @@ class CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.require(:card).permit(:type, :flag, :bookmarkable, :shareable, :title, :header, :image, :text)
+      params.require(:card).permit(:card_type, :flag, :bookmarkable, :shareable, :title, :header, :image, :text)
     end
 end
