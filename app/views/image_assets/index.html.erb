@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Image Collection</h1>
+
+<% @image_assets.each do |image_asset| %>
+  <%= image_tag(image_asset.url) %>
+<% end %>
+
+<br>
+
+<%= link_to 'Add Image', new_image_asset_path %>

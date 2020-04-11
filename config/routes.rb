@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   resources :excerpts
+  resources :image_assets
+
   resources :audiences
   resources :cards
   resources :topics

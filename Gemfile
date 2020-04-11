@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails'
 gem 'neo4j', '~> 9.6.0'
 gem 'neo4j-rake_tasks'
+gem 'carrierwave', '~> 2.0'
+gem 'carrierwave-neo4j', require: 'carrierwave/neo4j'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

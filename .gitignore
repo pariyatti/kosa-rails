@@ -28,4 +28,4 @@ yarn-debug.log*
 .yarn-integrity
 
 /bin/neo4j*.AppImage
-
+/public/uploads

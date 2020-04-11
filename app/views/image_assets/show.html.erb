@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Added Image:</strong>
+  uploader: <%= @image_asset.image.nil? %>
+  <%= image_tag(@image_asset.url) %>
+</p>
+
+<%= link_to 'Edit', edit_image_asset_path(@image_asset) %> |
+<%= link_to 'Back', image_assets_path %>
