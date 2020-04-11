@@ -8,7 +8,7 @@ class ImageAsset < Asset
   mount_uploader :image, ImageUploader
 
   def url
-    # this crazy hack is necessary because the carrierwave-neo4j gem is broken
+    # HACK: necessary because the carrierwave-neo4j gem is broken
     filename = self.query_as(:i) # This gives us our first Query object
       .match("(i:ImageAsset {uuid: '#{uuid}'})")
       .pluck("i.image")
