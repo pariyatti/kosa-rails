@@ -4,6 +4,7 @@
   gather_facts: true
   environment:
     RAILS_ENV: production
+    NODE_ENV: production
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   roles:

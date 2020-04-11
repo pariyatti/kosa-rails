@@ -13,9 +13,6 @@
       - rbenv_version_name.stdout == "2.7.1"
 
 - name: AFTER_SYMLINK (ANSISTRANO) | install bundled gems
-  environment:
-    RBENV_ROOT: '{{ rbenv_root }}'
-    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   bundler:
     chdir: "{{ ansistrano_release_path.stdout }}"
     executable: "{{ bundle_path }}"
@@ -27,11 +24,6 @@
   become_user: "{{ deploy_user }}"
 
 - name: AFTER_SYMLINK (ANSISTRANO) | precompile assets
-  environment:
-    RAILS_ENV: 'production'
-    NODE_ENV: 'production'
-    RBENV_ROOT: '{{ rbenv_root }}'
-    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   command: "{{ bundle_path }} exec rake assets:precompile"
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
@@ -39,11 +31,6 @@
   become_user: "{{ deploy_user }}"
 
 - name: AFTER_SYMLINK (ANSISTRANO) | migrate the db
-  environment:
-    RAILS_ENV: 'production'
-    NODE_ENV: 'production'
-    RBENV_ROOT: '{{ rbenv_root }}'
-    PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   command: "{{ bundle_path }} exec rake neo4j:migrate"
   run_once: true
   args:
