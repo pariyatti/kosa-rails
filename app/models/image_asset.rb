@@ -1,5 +1,4 @@
 
-# top-level type in the hierarchy; don't create these directly
 class ImageAsset < Asset
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
