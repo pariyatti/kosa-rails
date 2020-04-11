@@ -20,10 +20,7 @@
 - CONSTRAINT ON ( card:Card ) ASSERT card.uuid IS UNIQUE
 - CONSTRAINT ON ( document:Document ) ASSERT document.uuid IS UNIQUE
 - CONSTRAINT ON ( excerpt:Excerpt ) ASSERT excerpt.uuid IS UNIQUE
-- CONSTRAINT ON ( post:Post ) ASSERT post.id IS UNIQUE
-- CONSTRAINT ON ( tag:Tag ) ASSERT tag.name IS UNIQUE
 - CONSTRAINT ON ( topic:Topic ) ASSERT topic.uuid IS UNIQUE
-- CONSTRAINT ON ( user:User ) ASSERT user.username IS UNIQUE
 :indexes:
 - INDEX ON :Card(type)
 :versions:

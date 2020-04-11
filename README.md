@@ -12,12 +12,13 @@ Kosa is a library, editorial, and publishing service.
 
 The Pariyatti mobile app will consume the API as specified [here](https://github.com/pariyatti/kosa/blob/master/docs/api.md).
 
-Once you have the service up and running (see `Development`) you will probably want to seed the database with some sample data to test against:
+### Option 1: Set up a local development server
 
-```
-rake neo4j:seed   # sets static data like Topics and Audiences
-rake neo4j:import # imports Nishant's samples Excerpts
-```
+Follow the instructions under [Development](https://github.com/pariyatti/kosa#development). Use this option if you need to modify or debug the server itself.
+
+### Option 2: Use the Sandbox server
+
+`http://139.59.41.132` - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
 
 ## Development
 
@@ -30,32 +31,51 @@ There is a lot of old documentation out there. Use these:
 
 ### Linux (Ubuntu 19.10)
 
-#### Install Rails
+#### Prepare
 
 ```
+git clone git@github.com:pariyatti/kosa.git
 cd kosa
-apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev
+sudo apt-get update
+```
+
+#### Install Ruby
+
+```
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 rbenv init # follow the instructions
 rbenv install 2.7.1
 rbenv local 2.7.1
 ```
 
-#### Install Neo4j
+#### Install yarn
 
-General instructions: https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation
+...because Javascript doesn't have enough package managers yet. 🙄
+
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn
+```
+
+#### Install Java
 
 ```
 sudo apt install openjdk-11-jdk
-java --version # => openjdk 11.0.6 2020-01-14
-update-java-alternatives --list
-sudo update-java-alternatives --jre --set <java-11-name>
+java --version                  # => openjdk 11.0.6 2020-01-14
+update-java-alternatives --list # => java-1.11.0-openjdk-amd64
+sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
+```
 
+#### Install Neo4j
+
+```
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
 # hit enter to confirm you're being asked for your sudo pw
 echo 'deb https://debian.neo4j.com stable latest' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
 sudo apt-get update
-apt list -a neo4j
 sudo apt-get install neo4j
 ```
 
@@ -77,20 +97,13 @@ dbms.connector.http.listen_address=:7001
 ```
 cd kosa
 bundle install
+rails webpacker:install
 
-# use neo4j:install if you don't want neo4j desktop.
+# use `neo4j:install` if you don't want neo4j desktop.
 # this didn't work for me but i'm on side-of-a-mountain internet -sd
 rake neo4j:install[community-latest,development] # 3.4.1
 
-# install yarn:
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
-rails webpacker:install
-
-bundle exec rake neo4j:migrate
-bundle exec rake neo4j:seed
-bundle exec rake neo4j:import
+bundle exec rake neo4j:setup
 ```
 
 ## Old RSS Feeds
