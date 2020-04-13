@@ -8,6 +8,8 @@ class Card
   property :image, type: String
   property :text, type: String
 
+  # TODO: how to link images? duplicate the ImageAsset? upload from here?
+
   enum type: [:generic,
               :words_of_the_buddha,
               :pali_word_of_the_day, 
