@@ -103,7 +103,8 @@ rails webpacker:install
 # this didn't work for me but i'm on side-of-a-mountain internet -sd
 rake neo4j:install[community-latest,development] # 3.4.1
 
-bundle exec rake neo4j:setup
+rake neo4j:setup
+rake test
 ```
 
 ## Old RSS Feeds
