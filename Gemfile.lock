@@ -1,10 +1,11 @@
-PATH
-  remote: vendor/gems/carrierwave-neo4j-2.0.4
+GIT
+  remote: https://github.com/pariyatti/carrierwave-neo4j
+  revision: b0ac543ba10c78d97b2e0a3f1f77ae99b65f020b
   specs:
-    carrierwave-neo4j (2.0.4)
-      activesupport (>= 3.0)
-      carrierwave (>= 0.5)
-      neo4j (>= 3.0.0)
+    carrierwave-neo4j (3.0.0)
+      activesupport (>= 6.0)
+      carrierwave (>= 2.1)
+      neo4j (>= 9.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -305,7 +306,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.0)
-  carrierwave-neo4j!
+  carrierwave-neo4j (~> 3.0)!
   dotenv-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -320,7 +321,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
