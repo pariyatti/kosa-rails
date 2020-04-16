@@ -24,7 +24,7 @@
       <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
     <% else %>
       <h2>Choose an image:</h2>
-      <div style="border-style:solid;border-size:2px;padding:8px;">
+      <div class="image-selector">
         <%= render "image_selector", image_assets: @image_assets %>
       </div>
     <% end %>
