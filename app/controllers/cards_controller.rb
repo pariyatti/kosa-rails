@@ -16,6 +16,13 @@ class CardsController < ApplicationController
   def new
     @card_type = params[:card_type]
     @card = Card.new
+
+    if params[:image_id]
+      @image_chosen = ImageAsset.find(params[:image_id])
+    else
+      @image_assets = ImageAsset.all
+      @image_assets.each(&:reload_from_database!)
+    end
   end
 
   # GET /cards/1/edit
@@ -70,6 +77,6 @@ class CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.require(:card).permit(:card_type, :flag, :bookmarkable, :shareable, :title, :header, :image, :text)
+      params.require(:card).permit(:card_type, :flag, :bookmarkable, :shareable, :title, :header, :image, :text, :image_filename)
     end
 end

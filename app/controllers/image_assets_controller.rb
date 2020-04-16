@@ -3,9 +3,7 @@ class ImageAssetsController < ApplicationController
 
   def index
     @image_assets = ImageAsset.all
-    @image_assets.each do |ia|
-      ia.force_retrieve_image
-    end
+    @image_assets.each(&:reload_from_database!)
   end
 
   def show

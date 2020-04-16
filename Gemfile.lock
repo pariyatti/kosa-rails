@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/pariyatti/carrierwave-neo4j
-  revision: b0ac543ba10c78d97b2e0a3f1f77ae99b65f020b
+  revision: 0c07a230dc7dbf4c3febc3c8ec8c4082d6757e17
   specs:
-    carrierwave-neo4j (3.0.0)
+    carrierwave-neo4j (3.0.1)
       activesupport (>= 6.0)
       carrierwave (>= 2.1)
       neo4j (>= 9.6.0)
@@ -306,7 +306,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.0)
-  carrierwave-neo4j (~> 3.0)!
+  carrierwave-neo4j (~> 3.0.1)!
   dotenv-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)

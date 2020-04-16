@@ -18,8 +18,16 @@
   </div>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
+    <% if @image_chosen %>
+      <h2>You chose:</h2>
+      <%= image_tag(@image_chosen.url, size: '128') %>
+      <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
+    <% else %>
+      <h2>Choose an image:</h2>
+      <div style="border-style:solid;border-size:2px;padding:8px;">
+        <%= render "image_selector", image_assets: @image_assets %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
@@ -28,6 +36,10 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <% if @image_chosen %>
+      <%= form.submit %>
+    <% else %>
+      <%= form.submit disabled: true %>
+    <% end %>
   </div>
 <% end %>
