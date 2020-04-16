@@ -1,8 +1,9 @@
 class Card 
   include Neo4j::ActiveNode
+  property :published, type: Boolean
+  property :bookmarkable, type: Boolean
+  property :shareable, type: Boolean
   property :flag, type: String
-  property :bookmarkable, type: String
-  property :shareable, type: String
   property :title, type: String
   property :header, type: String
   property :text, type: String

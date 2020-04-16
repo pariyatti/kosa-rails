@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Type</th>
+      <th>Published?</th>
       <th>Flag</th>
       <th>Bookmarkable</th>
       <th>Shareable</th>
@@ -21,6 +22,7 @@
     <% @cards.each do |card| %>
       <tr>
         <td><%= card.type %></td>
+        <td><%= card.published %></td>
         <td><%= card.flag %></td>
         <td><%= card.bookmarkable %></td>
         <td><%= card.shareable %></td>

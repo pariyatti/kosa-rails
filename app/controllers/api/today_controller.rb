@@ -3,7 +3,7 @@
 # API to the "Today" tab in the app
 class Api::TodayController < ActionController::Base
   def index
-    cards = Card.all
+    cards = Card.where(published: true)
     today = {today_cards: cards}
     
     respond_to do |format|
