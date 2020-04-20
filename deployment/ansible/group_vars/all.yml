@@ -24,10 +24,11 @@ ansistrano_deploy_to: "/home/deploy/apps/{{ app_name }}"
 ansistrano_shared_paths:
   - .bundle
   - log
+  - public/system
+  - public/uploads
   - tmp/pids
   - tmp/cache
   - tmp/sockets
-  - public/system
   - vendor/bundle
 ansistrano_shared_files:
   - .env.production
