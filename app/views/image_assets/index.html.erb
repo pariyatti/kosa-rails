@@ -3,7 +3,7 @@
 <h1>Image Collection</h1>
 
 <% @image_assets.each do |image_asset| %>
-  <%= image_tag(image_asset.url, size: '128') %>
+  <%= link_to image_tag(image_asset.url, size: '128'), image_asset_path(image_asset) %>
 <% end %>
 
 <br>

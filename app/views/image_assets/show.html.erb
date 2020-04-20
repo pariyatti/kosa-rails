@@ -5,5 +5,8 @@
   <%= image_tag(@image_asset.url) %>
 </p>
 
+<%= link_to 'Destroy', @image_asset, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<br>
 <%= link_to 'Edit', edit_image_asset_path(@image_asset) %> |
 <%= link_to 'Back', image_assets_path %>
