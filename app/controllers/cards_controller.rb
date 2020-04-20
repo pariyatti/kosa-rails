@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   # GET /cards.json
   def index
     @cards = Card.all
+    @cards.each(&:reload_from_database!)
   end
 
   # GET /cards/1

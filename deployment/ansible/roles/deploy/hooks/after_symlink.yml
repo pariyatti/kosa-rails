@@ -1,5 +1,5 @@
 ---
-- name: "test rbenv/ruby installation and version"
+- name: "AFTER_SYMLINK (ANSISTRANO) | test rbenv/ruby installation and version"
   shell: "rbenv version-name"
   ignore_errors: true
   register: rbenv_version_name
@@ -8,7 +8,8 @@
 
 # TODO: if this assert is passing, we should be able to remove 
 #       `environment:` from the following tasks
-- assert:
+- name: "AFTER_SYMLINK (ANSISTRANO) | assert ruby-version = 2.7.1"
+  assert:
     that:
       - rbenv_version_name.stdout == "2.7.1"
 

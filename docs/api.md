@@ -6,19 +6,28 @@ simple and reflective of the Pariyatti mobile app wireframes.
 
 ## Open Questions ##
 
-- "Resources" is overloaded with web terminology. "Assets" instead?
-- DB+API: UUID or Integer ids?
-- URLs: Diacritics:
-  - note the "Pali Word of the Day" example
-  - I don't think we should use diacritics in URLs; we can substitute their standard ASCII representations
-  - diacritics in json is fine
+- `to_json` in Ruby defaults to labeling types (such as `{"card": CardObj}`)... is this annoying in Dart deserialization?
 - URLs: do we want semantic URLs over documents? - I would argue yes:
   - the documents might have very hetergenous structures
-  - there shouldn't be so many resource types that routes become overwhelming
-  - ex. `/api/resources/audiobooks` vs `/api/resources` + "type":"audiobook"
+  - there shouldn't be so many artefact types that routes become overwhelming
+  - ex. `/api/artefacts/audiobooks` vs `/api/artefacts` + "type":"audiobook"
+  - we can wait to decide on this until we build the `Resources` tab, though
 - Cards: should we structure dohas as cards or not?
 - Cards: "CTA" (Call to Action) or just "button"?
-- Cards: is a "generic" card a supertype of all other Cards? (I vote no; many fields ignored)
+
+## Answered Questions ##
+
+- Q: "Resources" is overloaded with web terminology. "Assets" instead?
+  - A: Let's go with `Artefacts`... yes, with the weird spelling. This way we're pretty much guaranteed to avoid naming collisions.
+- Q: DB+API: UUID or Integer ids?
+  - A: UUIDs. Neo4j prefers them and they're just saner anyway.
+- Q: Diacritics in URLs?
+  - A: no.
+  - note the "Pali Word of the Day" example
+  - substitute standard ASCII representations in URLs, please
+  - diacritics in json is fine
+- Q: Cards - is a "generic" card a supertype of all other Cards?
+  - no, many fields are ignored so this isn't a real supertype
 
 ## Stubbed ##
 
@@ -33,15 +42,49 @@ http://localhost:3000/api/today.json
 http://localhost:3000/api/topics.json
 ```
 
-## Planned (Examples) ##
+## Working (Examples) ##
 
 ### High Level APIs ###
 
 ```
-/api/today
+/api/today.json
 
-=> {"today_cards": [Card, Card, Card, ... ]}
+=> {"today_cards":
+    [{"card": Card}, {"card": Card}, {"card": Card}, ... ]}
+
+/api/topics.json
+=> [{"topic": Topic}, {"topic": Topic}, {"topic": Topic}, ... ]
 ```
+
+### User Objects ###
+
+```
+Topic
+=> {"created_at":"2020-04-10T14:00:30.000+00:00",
+    "updated_at":"2020-04-10T14:00:30.000+00:00",
+    "name":"Anxiety",
+    "id":"0d03c74d-1b48-4242-9922-03dc8d6aea86"}
+
+
+Card (type = 'inspiration')
+=> {"id": "3386076e-566c-4acc-9816-3514e192852f",
+    "type": "inspiration", 
+    "alignment": "stacked", 
+    "image": {"url": "https://pariyatti.org/webu.jpg"},
+    "text": "Ven. Webu Sayadaw was one of the most highly respected monks of the last century in Burma."}
+
+=> {"id": "3386076e-566c-4acc-9816-3514e192852f", 
+    "type": "inspiration", 
+    "alignment": "overlay", 
+    "image": {"url": "https://pariyatti.org/buddha.jpg"}, 
+    "text": "Ataapi Sampajaanno Satima"}
+```
+
+## Planned (Examples) ##
+
+### High Level APIs ###
+
+TODO
 
 ### Resources ###
 
@@ -93,12 +136,6 @@ http://localhost:3000/api/topics.json
 
 => {"id": 123, "type": "doha",
     "TODO": "TODO"}
-
-=> {"id": 123, "type": "inspiration", "alignment": "stacked", 
-    "image": "https://pariyatti.org/webu.jpg", "quote": "Ven. Webu Sayadaw was one of the most highly respected monks of the last century in Burma."}
-
-=> {"id": 123, "type": "inspiration", "alignment": "overlay", 
-    "image": "https://pariyatti.org/buddha.jpg", "quote": "Ataapi Sampajaanno Satima"}
 
 => {"id": 123, "type": "topic_of_the_week", "alignment": "list", 
     "header": "When anger puts you down", "rows": [Audiobook, Book, ... ]}

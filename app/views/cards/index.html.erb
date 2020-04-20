@@ -7,9 +7,6 @@
     <tr>
       <th>Type</th>
       <th>Published?</th>
-      <th>Flag</th>
-      <th>Bookmarkable</th>
-      <th>Shareable</th>
       <th>Title</th>
       <th>Header</th>
       <th>Image</th>
@@ -23,13 +20,10 @@
       <tr>
         <td><%= card.type %></td>
         <td><%= card.published %></td>
-        <td><%= card.flag %></td>
-        <td><%= card.bookmarkable %></td>
-        <td><%= card.shareable %></td>
         <td><%= card.title %></td>
         <td><%= card.header %></td>
-        <td><%= card.image %></td>
-        <td><%= card.text %></td>
+        <td><%= card.image_url ? image_tag(card.image_url, size: '25') : "not found :(" %></td>
+        <td><%= card.text.truncate(25) %></td>
         <td><%= link_to 'Show', card %></td>
         <td><%= link_to 'Edit', edit_card_path(card) %></td>
         <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,4 +35,5 @@
 <br>
 
 <div><%= link_to 'New Card', new_card_path %></div>
+<br>
 <div><%= link_to "Create Card: Inspriation", new_card_path(card_type: :inspiration) %></div>

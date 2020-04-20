@@ -3,6 +3,7 @@ class Card
   property :published, type: Boolean
   property :bookmarkable, type: Boolean
   property :shareable, type: Boolean
+  property :alignment, type: String
   property :flag, type: String
   property :title, type: String
   property :header, type: String
