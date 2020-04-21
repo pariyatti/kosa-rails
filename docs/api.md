@@ -86,15 +86,15 @@ Card (type = 'inspiration')
 
 TODO
 
-### Resources ###
+### Artefacts ###
 
 ```
-/api/resources/audiobook/1
+/api/artefacts/audiobook/1
 
 => {"id": 123, "title": "content-type": "audio/mpeg", "language": "en", 
     "Curbing Anger, Spreading Love", "author": "Bhikkhu Visuddhacara", "url": "https://pariyatti.org/anger.mp3"}
 
-/api/resources/book/1
+/api/artefacts/book/1
 
 => {"id": 123, "language": "en", 
     "title": "The Elimination of Anger", "author": "Ven. K. Piyatissa Thera", "url": "https://store.pariyatti.org/Anger"}
@@ -140,7 +140,7 @@ TODO
 => {"id": 123, "type": "topic_of_the_week", "alignment": "list", 
     "header": "When anger puts you down", "rows": [Audiobook, Book, ... ]}
 
-    # See Resources for `Audiobook` and `Book` examples
+    # See Artefacts for `Audiobook` and `Book` examples
 
 => {"id": 123, "type": "donation", 
     "icon": "https://pariyatti.org/heart-money-icon.png", 
