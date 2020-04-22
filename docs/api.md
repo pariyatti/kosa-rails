@@ -6,13 +6,7 @@ simple and reflective of the Pariyatti mobile app wireframes.
 
 ## Open Questions ##
 
-- URLs: do we want semantic URLs over documents? - I would argue yes:
-  - the documents might have very hetergenous structures
-  - there shouldn't be so many artefact types that routes become overwhelming
-  - ex. `/api/artefacts/audiobooks` vs `/api/artefacts` + "type":"audiobook"
-  - we can wait to decide on this until we build the `Resources` tab, though
 - Cards: should we structure dohas as cards or not?
-- Cards: "CTA" (Call to Action) or just "button"?
 
 ## Answered Questions ##
 
@@ -29,6 +23,14 @@ simple and reflective of the Pariyatti mobile app wireframes.
   - no, many fields are ignored so this isn't a real supertype
 - Q: `to_json` in Ruby defaults to labeling types (such as `{"card": CardObj}`)... is this annoying in Dart deserialization?
   - A: yes. don't nest unnecessarily.
+- Q: Cards - "CTA" (Call to Action) or just "button"?
+  - A: just 'button'
+- Q: URLs - do we want semantic URLs over documents?
+  - A: yes.
+  - the documents might have very hetergenous structures
+  - there shouldn't be so many artefact types that routes become overwhelming
+  - ex. `/api/artefacts/audiobooks`
+  - https://jsonapi.org/ - we might want to implement some or all of this
 
 ## Stubbed ##
 
@@ -53,7 +55,10 @@ http://localhost:3000/api/topics.json
 => {"today_cards":
     [{"card": Card}, {"card": Card}, {"card": Card}, ... ]}
 
+# it's possible we should consider implementing something like https://jsonfeed.org
+
 /api/topics.json
+
 => [{"topic": Topic}, {"topic": Topic}, {"topic": Topic}, ... ]
 ```
 
@@ -110,8 +115,8 @@ TODO
 => {"id": 123, "type": "", 
     "flag": "news",
     "title": "Used to override default card titles",
-    "cta_caption": "Click me!",
-    "cta_url": "https://pariyatti.org/target_page",
+    "button_caption": "Click me!",
+    "button_url": "https://pariyatti.org/target_page",
     "bookmarkable": true,
     "shareable": false,
     }
