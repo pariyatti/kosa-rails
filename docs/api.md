@@ -6,7 +6,6 @@ simple and reflective of the Pariyatti mobile app wireframes.
 
 ## Open Questions ##
 
-- `to_json` in Ruby defaults to labeling types (such as `{"card": CardObj}`)... is this annoying in Dart deserialization?
 - URLs: do we want semantic URLs over documents? - I would argue yes:
   - the documents might have very hetergenous structures
   - there shouldn't be so many artefact types that routes become overwhelming
@@ -28,6 +27,8 @@ simple and reflective of the Pariyatti mobile app wireframes.
   - diacritics in json is fine
 - Q: Cards - is a "generic" card a supertype of all other Cards?
   - no, many fields are ignored so this isn't a real supertype
+- Q: `to_json` in Ruby defaults to labeling types (such as `{"card": CardObj}`)... is this annoying in Dart deserialization?
+  - A: yes. don't nest unnecessarily.
 
 ## Stubbed ##
 

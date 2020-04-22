@@ -1,5 +1,8 @@
+require 'neo4j/sane_timestamps'
+
 class Card 
   include Neo4j::ActiveNode
+  include Neo4j::SaneTimestamps
   property :published, type: Boolean
   property :bookmarkable, type: Boolean
   property :shareable, type: Boolean

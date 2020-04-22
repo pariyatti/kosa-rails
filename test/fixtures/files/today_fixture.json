@@ -1,0 +1,47 @@
+[
+  {
+      "published": true,
+      "bookmarkable": true,
+      "shareable": true,
+      "alignment": null,
+      "flag": "",
+      "title": "",
+      "header": "",
+      "text": "today_controller_test0",
+      "image": {
+          "url": "/uploads/card/image/393b47a8-b002-4ff5-95f6-dd6df497cf69/bluesky.jpeg"
+      },
+      "type": "inspiration",
+      "id": "393b47a8-b002-4ff5-95f6-dd6df497cf69"
+  },
+  {
+      "published": true,
+      "bookmarkable": true,
+      "shareable": true,
+      "alignment": null,
+      "flag": "",
+      "title": "",
+      "header": "",
+      "text": "today_controller_test1",
+      "image": {
+          "url": "/uploads/card/image/67f4000a-d6f8-4138-9365-d20758ff7a72/flowers.jpeg"
+      },
+      "type": "inspiration",
+      "id": "67f4000a-d6f8-4138-9365-d20758ff7a72"
+  },
+  {
+      "published": true,
+      "bookmarkable": true,
+      "shareable": true,
+      "alignment": null,
+      "flag": "",
+      "title": "",
+      "header": "",
+      "text": "today_controller_test2",
+      "image": {
+          "url": "/uploads/card/image/8a1ceabb-1229-4e1f-bf19-7f3ae516e173/leaf.jpg"
+      },
+      "type": "inspiration",
+      "id": "8a1ceabb-1229-4e1f-bf19-7f3ae516e173"
+  }
+]

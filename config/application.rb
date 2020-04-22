@@ -39,5 +39,7 @@ module Kosa
 
     # in dev, just to get things running:
     config.neo4j.session.options = {ssl: false}
+
+    config.neo4j.include_root_in_json = false
   end
 end
