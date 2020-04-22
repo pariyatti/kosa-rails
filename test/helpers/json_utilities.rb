@@ -70,13 +70,23 @@ module JsonUtilities
     return result ? true : false
   end
 
+  def assert_json(json1, json2, **options)
+    assert compare_json(json1, json2, **options)
+  end
+
   def debug_json_mismatch(result)
     puts "JSON: Found Mismatch." unless result
   end
 
   def debug_json(l, r, result=false)
     unless result
-      puts "JSON: '#{l}' \n    NOT EQUAL TO \n'#{r}'"
+      puts "JSON: \n'#{l}' \n    NOT EQUAL TO \n'#{r}'"
     end
+  end
+
+  def pretty_json(l, r)
+    l = JSON.pretty_generate(JSON.parse(l))
+    r = JSON.pretty_generate(JSON.parse(r))
+    debug_json(l, r, false)
   end
 end

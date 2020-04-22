@@ -17,18 +17,14 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
 
   test "get the today feed" do
     get today_url, as: :json
-
     expected_response = file_fixture("today_fixture.json").read
-    # TODO: move the pretty json into the debug method
-    debug_json(JSON.pretty_generate(JSON.parse(expected_response)), 
-               JSON.pretty_generate(JSON.parse(response.body)))
-
-    assert compare_json(expected_response, response.body, 
-                        **{ignore: ['image', 'flag', 'title', 'header', 'id']})
+    # pretty_json(expected_response, response.body)
+    assert_json(expected_response, response.body, 
+                **{ignore: ['image', 'flag', 'title', 'header', 'id']})
   end
 
   def cleanup
-    cards = Card.where(text: /today_controller_test.*/i)
-    cards.each { |c| c.destroy }
+    # cards = Card.where(text: /today_controller_test.*/i)
+    Card.all.each { |c| c.destroy }
   end
 end
