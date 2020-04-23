@@ -27,6 +27,7 @@ In general, pin versions in development the way you would in any other environme
 There is a lot of old documentation out there. Use these:
 
 - https://neo4jrb.readthedocs.io/en/v9.4.0/
+- https://gitter.im/neo4jrb/neo4j (look for @klobuczek and @amitTheSongadya_twitter)
 - https://neo4j.com/developer/ruby/
 
 ### Linux (Ubuntu 19.10)
