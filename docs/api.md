@@ -55,7 +55,8 @@ http://localhost:3000/api/topics.json
 => {"today_cards":
     [{"card": Card}, {"card": Card}, {"card": Card}, ... ]}
 
-# it's possible we should consider implementing something like https://jsonfeed.org
+# `Card` is heterogeneous based on its sub-type.
+# It's possible we should consider implementing something like https://jsonfeed.org
 
 /api/topics.json
 
@@ -72,16 +73,31 @@ Topic
     "id":"0d03c74d-1b48-4242-9922-03dc8d6aea86"}
 
 
-Card (type = 'inspiration')
+Card (superclass):
+=> {"id": "3386076e-566c-4acc-9816-3514e192852f", 
+    "type": "", 
+    "published": true,
+    "bookmarkable": true,
+    "shareable": false,
+    "header": "Inspiration of the Day" }
+
+Card (type = 'stacked_inspiration')
 => {"id": "3386076e-566c-4acc-9816-3514e192852f",
-    "type": "inspiration", 
-    "alignment": "stacked", 
+    "type": "stacked_inspiration", 
+    "published": true,
+    "bookmarkable": true,
+    "shareable": false,
+    "header": "Inspiration of the Day",
     "image": {"url": "https://pariyatti.org/webu.jpg"},
     "text": "Ven. Webu Sayadaw was one of the most highly respected monks of the last century in Burma."}
 
+Card (type = 'overlay_inspiration')
 => {"id": "3386076e-566c-4acc-9816-3514e192852f", 
-    "type": "inspiration", 
-    "alignment": "overlay", 
+    "type": "overlay_inspiration", 
+    "published": true,
+    "bookmarkable": true,
+    "shareable": false,
+    "header": "Inspiration of the Day",
     "image": {"url": "https://pariyatti.org/buddha.jpg"}, 
     "text": "Ataapi Sampajaanno Satima"}
 ```
@@ -110,16 +126,6 @@ TODO
 
 ```
 /api/cards/1
-
-# Card interface:
-=> {"id": 123, "type": "", 
-    "flag": "news",
-    "title": "Used to override default card titles",
-    "button_caption": "Click me!",
-    "button_url": "https://pariyatti.org/target_page",
-    "bookmarkable": true,
-    "shareable": false,
-    }
 
 => {"id": 123, "type": "generic",  
     "title": "Stay Updated", 
