@@ -1,0 +1,4 @@
+<% image_assets.each do |image_asset| %>
+  <%= link_to image_tag(image_asset.url, size: '128'),
+              new_cards_stacked_inspiration_card_path(card_type: "stacked_inspiration", image_id: image_asset.id) %>
+<% end %>

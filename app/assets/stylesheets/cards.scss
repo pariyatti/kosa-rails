@@ -7,3 +7,37 @@
   border-width: 4px;
   padding: 8px;
 }
+
+.card-index-content {
+  padding: 20px;
+}
+
+.card {
+  width: 350px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  background-color: #f5f5dc;
+
+  .header {
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .image {
+    width: 350px;
+    align-content: center;
+  }
+  .text {
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: x-large;
+  }
+  .footer {
+    padding: 10px;
+    .button {
+      text-align: center;
+      display: inline-block;
+    }
+  } 
+}

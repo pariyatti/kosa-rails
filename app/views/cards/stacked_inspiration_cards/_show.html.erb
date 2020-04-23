@@ -1,0 +1,18 @@
+
+<div class="card">
+  <div class="header"><%= card.header || "DEFAULT HEADER" %></div>
+  <div class="image"><%= card.image_url ? image_tag(card.image_url, size: '350') : "Image Missing" %></div>
+  <div class="text"><%= card.text.truncate(280) %></div>
+  <div class="footer">
+    <% if card.bookmarkable %>
+      <div class="button">Bookmarkable</div>
+    <% end %>
+    <% if card.shareable %>
+      <div class="button">Shareable</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="meta">
+  <strong>Published:</strong> <%= card.published %>
+</div>

@@ -1,53 +1,27 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
-  # GET /cards
-  # GET /cards.json
   def index
     @cards = Card.all
     @cards.each(&:reload_from_database!)
   end
 
-  # GET /cards/1
-  # GET /cards/1.json
   def show
+    raise "Do not show cards using the `Card` superclass."
   end
 
-  # GET /cards/new
   def new
-    @card_type = params[:card_type]
-    @card = Card.new
-
-    if params[:image_id]
-      @image_chosen = ImageAsset.find(params[:image_id])
-    else
-      @image_assets = ImageAsset.all
-      @image_assets.each(&:reload_from_database!)
-    end
+    raise "Do not create new `Card` objects directly. Use the subtypes."
   end
 
-  # GET /cards/1/edit
   def edit
+    raise "Do not edit `Card` objects directly. Use the subtypes."
   end
 
-  # POST /cards
-  # POST /cards.json
   def create
-    @card = Card.from_params(card_params)
-
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
-      else
-        format.html { render :new }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    raise "Do not create `Card` objects directly. Use the subtypes."
   end
 
-  # PATCH/PUT /cards/1
-  # PATCH/PUT /cards/1.json
   def update
     respond_to do |format|
       if @card.update(card_params)
@@ -60,14 +34,16 @@ class CardsController < ApplicationController
     end
   end
 
-  # DELETE /cards/1
-  # DELETE /cards/1.json
   def destroy
     @card.destroy
     respond_to do |format|
       format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def default_card_params
+    [:card_type, :published, :bookmarkable, :shareable, :header]
   end
 
   private
@@ -78,6 +54,8 @@ class CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.require(:card).permit(:card_type, :published, :flag, :bookmarkable, :shareable, :title, :header, :image, :text, :image_filename)
+      allowed = default_card_params.push(:title, :image, :text, :image_filename)
+      params.require(:card).permit(*allowed)
     end
+
 end

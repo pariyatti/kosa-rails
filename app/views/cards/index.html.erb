@@ -2,38 +2,19 @@
 
 <h1>Cards</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Published?</th>
-      <th>Title</th>
-      <th>Header</th>
-      <th>Image</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div><%= link_to "Create Card: Inspriation", new_cards_stacked_inspiration_card_path %></div>
 
-  <tbody>
-    <% @cards.each do |card| %>
-      <tr>
-        <td><%= card.type %></td>
-        <td><%= card.published %></td>
-        <td><%= card.title %></td>
-        <td><%= card.header %></td>
-        <td><%= card.image_url ? image_tag(card.image_url, size: '25') : "not found :(" %></td>
-        <td><%= card.text.truncate(25) %></td>
-        <td><%= link_to 'Show', card %></td>
-        <td><%= link_to 'Edit', edit_card_path(card) %></td>
-        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<br/><br/>
 
-<br>
+<% @cards.each do |card| %>
+  <div class="card-index-content">
+    <%= render "cards/stacked_inspiration_cards/show", card: card %>
+    <%= link_to 'Show', card %>
+    <%= link_to 'Edit', edit_cards_stacked_inspiration_card_path(card) %>
+    <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
 
-<div><%= link_to 'New Card', new_card_path %></div>
-<br>
-<div><%= link_to "Create Card: Inspriation", new_card_path(card_type: :inspiration) %></div>
+<br/><br/>
+
+<a href="/">Back to Home</a>

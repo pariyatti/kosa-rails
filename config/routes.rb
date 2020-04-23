@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :topics
   resources :authors
 
+  namespace :cards do
+    resources :stacked_inspiration_cards
+  end
+
   root 'application#index'
 
   scope :api, module: 'api' do

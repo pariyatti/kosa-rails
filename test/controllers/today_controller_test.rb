@@ -4,10 +4,14 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
   setup do
     cleanup
     3.times do |i|
-      card = Card.create(text: "today_controller_test#{i}", published: true, shareable: true, bookmarkable: true, type: "inspiration")
+      params = {published: true, 
+                shareable: true, 
+                bookmarkable: true,
+                text: "today_controller_test#{i}",
+                card_type: "stacked_inspiration" }
+      card = Cards::StackedInspirationCard.new_from_params(params)
       card.image = File.open(file_fixture("card_fixture.png"))
       card.save!
-      #sleep(1) # yes, really... commits can come out of order
     end
   end
 
@@ -20,7 +24,7 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     expected_response = file_fixture("today_fixture.json").read
     # pretty_json(expected_response, response.body)
     assert_json(expected_response, response.body, 
-                **{ignore: ['image', 'flag', 'title', 'header', 'id']})
+                **{ignore: ['image', 'id']})
   end
 
   def cleanup
