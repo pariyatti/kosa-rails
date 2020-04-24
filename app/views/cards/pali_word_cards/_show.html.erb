@@ -1,0 +1,24 @@
+
+<div class="card">
+  <div class="header"><%= card.header %></div>
+  <div class="pali">
+    <%= card.pali %>
+  </div>
+  <div class="pali-word-translations">
+    <% card.pali_word_translations.each do |t| %>
+      <div>Language: <%= t.language %>, Translation: <%= t.translation %></div>
+    <% end %>
+  </div>
+  <div class="footer">
+    <% if card.bookmarkable %>
+      <div class="button">Bookmarkable</div>
+    <% end %>
+    <% if card.shareable %>
+      <div class="button">Shareable</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="meta">
+  <strong>Published:</strong> <%= card.published %>
+</div>

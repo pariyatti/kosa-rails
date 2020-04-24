@@ -12,6 +12,14 @@
 
 ---
 :constraints:
+- CONSTRAINT ON ( `cards::overlayinspirationcard`:`Cards::OverlayInspirationCard`
+  ) ASSERT `cards::overlayinspirationcard`.uuid IS UNIQUE
+- CONSTRAINT ON ( `cards::paliwordcard`:`Cards::PaliWordCard` ) ASSERT `cards::paliwordcard`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `cards::paliwordtranslation`:`Cards::PaliWordTranslation` ) ASSERT
+  `cards::paliwordtranslation`.uuid IS UNIQUE
+- CONSTRAINT ON ( `cards::stackedinspirationcard`:`Cards::StackedInspirationCard`
+  ) ASSERT `cards::stackedinspirationcard`.uuid IS UNIQUE
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
 - CONSTRAINT ON ( asset:Asset ) ASSERT asset.uuid IS UNIQUE
@@ -33,3 +41,7 @@
 - '20200406112909'
 - '20200406114217'
 - '20200406115223'
+- '20200424132118'
+- '20200424132309'
+- '20200424132330'
+- '20200424132343'

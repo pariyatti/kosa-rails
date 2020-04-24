@@ -46,16 +46,16 @@ class CardsController < ApplicationController
     [:card_type, :published, :bookmarkable, :shareable, :header]
   end
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_card
+    @card = Card.find(params[:id])
+  end
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_card
-      @card = Card.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def card_params
-      allowed = default_card_params.push(:title, :image, :text, :image_filename)
-      params.require(:card).permit(*allowed)
+      raise "`card_params` must be overloaded in each controller."
     end
 
 end

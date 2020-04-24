@@ -79,7 +79,7 @@ Card (superclass):
     "published": true,
     "bookmarkable": true,
     "shareable": false,
-    "header": "Inspiration of the Day" }
+    "header": "USUALLY ALL CAPS" }
 
 Card (type = 'stacked_inspiration')
 => {"id": "3386076e-566c-4acc-9816-3514e192852f",
@@ -99,7 +99,18 @@ Card (type = 'overlay_inspiration')
     "shareable": false,
     "header": "Inspiration of the Day",
     "image": {"url": "https://pariyatti.org/buddha.jpg"}, 
-    "text": "Ataapi Sampajaanno Satima"}
+    "text": "Ataapi Sampajaanno Satima",
+    "text_color": "white"}
+
+Card (type = 'pali_word')
+=> {"id": 123,
+    "type": "pali_word",
+    "audio_url": "http://download.pariyatti.org/pali/vipassisu.m.mp3",
+    "pali": "vipassisuṃ",
+    "translations":
+        [{"language": "en", "translation": "insight"},
+         {"language": "hi", "translation": " विशेष प्रकार से देखना"}]}
+
 ```
 
 ## Planned (Examples) ##
@@ -139,12 +150,6 @@ TODO
     "translation_language": "en",
     "translation": "Overcome the angry by non-anger;\novercome the wicked by goodness;\novercome the miser by generosity;\novercome the liar by truth."
     "audio_url": "http://download.pariyatti.org/dwob/dhammapada_17_223.mp3"}
-
-=> {"id": 123, "type": "pali_word_of_the_day",  
-    "pali": "vipassisuṃ", 
-    "translation_language": "en",
-    "translation": "insight"
-    "audio_url": "http://download.pariyatti.org/pali/vipassisu.m.mp3"}
 
 => {"id": 123, "type": "doha",
     "TODO": "TODO"}

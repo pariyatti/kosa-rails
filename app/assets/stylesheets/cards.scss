@@ -31,6 +31,15 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+  .footer {
+    padding: 10px;
+    .button {
+      text-align: center;
+      display: inline-block;
+    }
+  }
+
+  // Inspiration Cards
   .overlay-image {
     position: relative;
     width: 350px;
@@ -56,11 +65,13 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: x-large;
   }
-  .footer {
+
+  // Pali Word Cards
+  .pali {
     padding: 10px;
-    .button {
-      text-align: center;
-      display: inline-block;
-    }
-  } 
+  }
+  .pali-word-translations {
+    padding: 10px;
+  }
+
 }

@@ -15,7 +15,7 @@ class Card
 
   enum type: [:generic,
               :words_of_the_buddha,
-              :pali_word_of_the_day, 
+              :pali_word, 
               :doha, 
               :stacked_inspiration, 
               :overlay_inspiration,
@@ -23,6 +23,10 @@ class Card
               :donation, 
               :pilgrimage, 
               :recommended_read], _default: :generic, _suffix: true
+
+  def reload_from_database!
+    # ignored for Cards without file attachments like images
+  end
 
   def self.default_header
     raise "No `default_header` method defined."

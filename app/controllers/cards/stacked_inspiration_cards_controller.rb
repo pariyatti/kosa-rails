@@ -33,9 +33,6 @@ class Cards::StackedInspirationCardsController < CardsController
   end
 
   private
-    def set_card
-      @card = Card.find(params[:id])
-    end
 
     def card_params
       allowed = default_card_params.push(:image, :text, :image_filename)
