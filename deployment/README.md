@@ -36,6 +36,7 @@ This will do an initial deploy for you.
 
 ```
 make all
+make db-reset # optional. this creates sample data.
 ```
 
 ### Deploy Kosa

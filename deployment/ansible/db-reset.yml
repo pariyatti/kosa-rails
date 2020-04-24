@@ -7,4 +7,4 @@
     RBENV_ROOT: '{{ rbenv_root }}'
     PATH: '{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}'
   roles:
-    - { role: seed, tags: ['seed'] }
+    - { role: db_reset, tags: ['db_reset'] }

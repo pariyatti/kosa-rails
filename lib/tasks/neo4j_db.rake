@@ -36,7 +36,10 @@ namespace :neo4j do
     end
 
     desc "Initialize a new database"
-    task :setup => [:migrate, :seed, :import]
+    task :setup => [:migrate, :seed]
+
+    desc "Initialize sample data"
+    task :sample => [:sandbox, :import]
 
     desc "Drop and recreate the database"
     task :reset => [:drop, :setup]

@@ -11,17 +11,23 @@
     that:
       - rbenv_version_name.stdout == "2.7.1"
 
-# TODO: consider adding a "blow away the db" task and make this `db-reset`
-
-- name: "[one-time] seed the db"
-  command: "{{ bundle_path }} exec rake neo4j:seed"
+- name: "[one-time] reset the db: drop, create/migrate, seed"
+  command: "{{ bundle_path }} exec rake neo4j:db:reset"
   run_once: true
   args:
     chdir: "{{ ansistrano_deploy_to }}/current"
 
 - name: "[one-time] import quotes from CSV"
-  command: "{{ bundle_path }} exec rake neo4j:import"
+  command: "{{ bundle_path }} exec rake neo4j:db:import"
   run_once: true
   args:
     chdir: "{{ ansistrano_deploy_to }}/current"
   tags: import-csv
+
+# TODO: this should only run on sandbox
+- name: "[one-time] create sample data for sandbox env"
+  command: "{{ bundle_path }} exec rake neo4j:db:sandbox"
+  run_once: true
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/current"
+  tags: sandbox-sample-data

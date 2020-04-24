@@ -43,8 +43,9 @@ setup: ##@Setup Setup a kosa box. Runs the setup.yml playbook
 deploy: ##@Setup Deploy kosa. Runs the deploy.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i hosts/$(hosts)
 
-once: ##@Setup Seed kosa data. Runs the once.yml playbook -- consider morphing this into `db-reset`
-	ansible-playbook --vault-password-file $(password_file) ansible/once.yml -u root -i hosts/$(hosts)
+db-reset: ##@Setup Reset kosa database. Runs the db-reset.yml playbook
+	ansible-playbook --vault-password-file $(password_file) ansible/db-reset.yml -u root -i hosts/$(hosts)
+
 
 update-ssh-keys: ##@Utilities Update ssh keys on boxes. Add keys to `ansible/roles/ssh/files/ssh_keys` under the appropriate environment
 	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i hosts/$(hosts) --tags ssh
