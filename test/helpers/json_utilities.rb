@@ -1,10 +1,15 @@
 module JsonUtilities
-# compares two json objects (Array, Hash, or String to be parsed) for equality
+  
+  # compares two json objects (Array, Hash, or String to be parsed) for equality
   def compare_json(json1, json2, **options)
+    # TODO: consider moving created_at / updated_at into the caller
     ignored_keys = ["created_at", "updated_at"]
     ignored_keys.concat(options[:ignore]) if options && options[:ignore]
-    ignored_keys = ignored_keys.uniq
-    puts "JSON: ignoring keys: #{ignored_keys.to_s}"
+    ignored_keys = ignored_keys.uniq.freeze
+    debug("JSON: ignoring keys: #{ignored_keys.to_s}")
+
+    # TODO: check for these at the end
+    at_least_once_keys = ignored_keys.dup
 
     # return false if classes mismatch or don't match our allowed types
     unless((json1.class == json2.class) && (json1.is_a?(String) || json1.is_a?(Hash) || json1.is_a?(Array))) 
@@ -32,10 +37,17 @@ module JsonUtilities
 
       # If a hash, check object1's keys and their values object2's keys and values
 
-      # created_at and updated_at can create false mismatches due to occasional millisecond differences in tests
+      # created_at and updated_at (etc.) can create false mismatches in tests
       [json1,json2].each do |json|
         json.delete_if do |key,value|
           ignored_keys.include?(key)
+        end
+      end
+
+      # sanity-check that all ignored keys do actually exist
+      [json1,json2].each do |json|
+        json.each do |key,value|
+          at_least_once_keys.delete(key) if json[key]
         end
       end
 
@@ -72,6 +84,10 @@ module JsonUtilities
 
   def assert_json(json1, json2, **options)
     assert compare_json(json1, json2, **options)
+  end
+
+  def debug(msg)
+    puts msg if ENV['VERBOSE']
   end
 
   def debug_json_mismatch(result)

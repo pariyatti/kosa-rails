@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :cards do
     resources :stacked_inspiration_cards
+    resources :overlay_inspiration_cards
   end
 
   root 'application#index'

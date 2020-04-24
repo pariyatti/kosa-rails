@@ -1,8 +1,11 @@
 
 <div class="card">
   <div class="header"><%= card.header || "DEFAULT HEADER" %></div>
-  <div class="stacked-image"><%= card.image_url ? image_tag(card.image_url, size: '350') : "Image Missing" %></div>
-  <div class="stacked-text"><%= card.text.truncate(280) %></div>
+  <div class="overlay-image" style="background-image:url(<%= card.image_url %>)">
+    <div class="overlay-text" style="color: <%= card.text_color %>">
+      <%= card.text.truncate(280) %>
+    </div>
+  </div>
   <div class="footer">
     <% if card.bookmarkable %>
       <div class="button">Bookmarkable</div>
@@ -11,6 +14,10 @@
       <div class="button">Shareable</div>
     <% end %>
   </div>
+</div>
+
+<div>
+Text Color: <%= card.text_color %>
 </div>
 
 <div class="meta">

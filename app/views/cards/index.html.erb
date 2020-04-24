@@ -2,15 +2,16 @@
 
 <h1>Cards</h1>
 
-<div><%= link_to "Create Card: Inspriation", new_cards_stacked_inspiration_card_path %></div>
+<div><%= link_to "Create Stacked Inspriation", new_cards_stacked_inspiration_card_path %></div>
+<div><%= link_to "Create Overlay Inspriation", new_cards_overlay_inspiration_card_path %></div>
 
 <br/><br/>
 
 <% @cards.each do |card| %>
   <div class="card-index-content">
-    <%= render "cards/stacked_inspiration_cards/show", card: card %>
+    <%= render "cards/#{card.type}_cards/show", card: card %>
     <%= link_to 'Show', card %>
-    <%= link_to 'Edit', edit_cards_stacked_inspiration_card_path(card) %>
+    <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit" %>
     <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>

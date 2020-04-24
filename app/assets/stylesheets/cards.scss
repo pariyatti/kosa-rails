@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.field {
+  textarea {
+    width: 350px;
+    height: 350px;
+  }
+}
+
 .image-selector {
   border-style: solid;
   border-width: 4px;
@@ -24,11 +31,27 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-  .image {
+  .overlay-image {
+    position: relative;
     width: 350px;
+    height: 350px;
+    background-size: 350px;
     align-content: center;
   }
-  .text {
+  .stacked-image {
+    width: 350px;
+    height: 350px;
+    align-content: center;
+  }
+  .overlay-text {
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: x-large;
+  }
+  .stacked-text {
+    bottom: 0px;
     padding: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: x-large;

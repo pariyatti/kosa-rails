@@ -27,7 +27,6 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def cleanup 
-    cards = Card.where(text: "cards_controller_test")
-    cards.each { |c| c.destroy }
+    Card.all.each { |c| c.destroy }
   end
 end

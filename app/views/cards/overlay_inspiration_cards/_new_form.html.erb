@@ -1,0 +1,50 @@
+<%= form_with(model: card, local: true) do |form| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% card.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :card_type, value: "overlay_inspiration" %>
+    <%= form.hidden_field :bookmarkable, value: true %>
+    <%= form.hidden_field :shareable, value: true %>
+  </div>
+
+  <div class="field">
+    <% if @image_chosen %>
+      <h2>You chose:</h2>
+       <%= image_tag(@image_chosen.url, size: '128') %>
+       <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
+    <% else %>
+      <h2>Choose an image:</h2>
+      <div class="image-selector">
+        <%= render "cards/overlay_inspiration_cards/image_selector", image_assets: @image_assets %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text_color %>
+    <%= form.text_field :text_color, value: "black" %>
+  </div>
+
+  <div class="actions">
+    <% if @image_chosen %>
+      <%= form.submit %>
+    <% else %>
+      <%= form.submit disabled: true %>
+    <% end %>
+  </div>
+<% end %>
