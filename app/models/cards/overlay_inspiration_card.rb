@@ -1,5 +1,4 @@
 class Cards::OverlayInspirationCard < Card
-  property :alignment, type: String, default: "overlay"
   property :text, type: String, default: ""
   property :text_color, type: String, default: "black"
   

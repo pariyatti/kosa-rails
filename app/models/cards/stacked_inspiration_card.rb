@@ -1,5 +1,4 @@
 class Cards::StackedInspirationCard < Card  
-  property :alignment, type: String, default: "stacked"
   property :text, type: String, default: ""
   
   property :image, type: String

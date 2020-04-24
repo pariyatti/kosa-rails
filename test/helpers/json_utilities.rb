@@ -6,7 +6,7 @@ module JsonUtilities
     ignored_keys = ["created_at", "updated_at"]
     ignored_keys.concat(options[:ignore]) if options && options[:ignore]
     ignored_keys = ignored_keys.uniq.freeze
-    debug("JSON: ignoring keys: #{ignored_keys.to_s}")
+    dbg("JSON: ignoring keys: #{ignored_keys.to_s}")
 
     # TODO: check for these at the end
     at_least_once_keys = ignored_keys.dup
@@ -30,7 +30,7 @@ module JsonUtilities
         json1_obj, json2_obj = obj, json2[index]
         result = compare_json(json1_obj, json2_obj, **{ignore: ignored_keys})
         # End loop once a false match has been found
-        debug_json(json1_obj, json2_obj, result)
+        dbg_json(json1_obj, json2_obj, result)
         break unless result
       end
     elsif(json1.is_a?(Hash))
@@ -52,10 +52,9 @@ module JsonUtilities
       end
 
       json1.each do |key,value|
-
         # both objects must have a matching key to pass
         unless json2.has_key?(key)
-          debug_json("json1.has_key?(#{key}) = true", "json2.has_key?(#{key}) = false", result)
+          dbg("json1.has_key?(#{key}) = true but json2.has_key?(#{key}) = false")
           return false
         end
 
@@ -64,21 +63,29 @@ module JsonUtilities
         if(json1_val.is_a?(Array) || json1_val.is_a?(Hash))
           # If value of key is an array or hash, recursively call self with these objects to traverse deeper
           result = compare_json(json1_val, json2_val, **{ignore: ignored_keys})
-          debug_json(json1_val, json2_val, result)
+          dbg_json(json1_val, json2_val, result)
         else
           result = (json1_val == json2_val)
-          debug_json(json1_val, json2_val, result)
+          dbg_json(json1_val, json2_val, result)
         end
 
         # End loop once a false match has been found
         unless result
-          debug_json(json1, json2, result)
+          dbg_json(json1, json2, result)
           break 
+        end
+      end
+
+      json2.each do |key,value|
+        # both objects must have a matching key to pass
+        unless json1.has_key?(key)
+          dbg("json1.has_key?(#{key}) = false but json2.has_key?(#{key}) = true")
+          return false
         end
       end
     end
 
-    debug_json_mismatch(result)
+    dbg_json_mismatch(result)
     return result ? true : false
   end
 
@@ -86,23 +93,23 @@ module JsonUtilities
     assert compare_json(json1, json2, **options)
   end
 
-  def debug(msg)
+  def dbg(msg)
     puts msg if ENV['VERBOSE']
   end
 
-  def debug_json_mismatch(result)
-    puts "JSON: Found Mismatch." unless result
+  def dbg_json_mismatch(result)
+    dbg "JSON: Found Mismatch." unless result
   end
 
-  def debug_json(l, r, result=false)
+  def dbg_json(l, r, result=false)
     unless result
-      puts "JSON: \n'#{l}' \n    NOT EQUAL TO \n'#{r}'"
+      dbg "JSON: \n'#{l}' \n    NOT EQUAL TO \n'#{r}'"
     end
   end
 
   def pretty_json(l, r)
     l = JSON.pretty_generate(JSON.parse(l))
     r = JSON.pretty_generate(JSON.parse(r))
-    debug_json(l, r, false)
+    dbg_json(l, r, false)
   end
 end
