@@ -52,6 +52,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # in neo4j.yml:
-  config.neo4j.session_type = :bolt
-  config.neo4j.session_path = "bolt://localhost:7003"
+  config.neo4j.session.type = :bolt
+  config.neo4j.session.path = "bolt://localhost:7003"
 end

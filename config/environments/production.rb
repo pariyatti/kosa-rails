@@ -105,6 +105,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   neo4j_password = Rails.application.credentials.neo4j_password
-  config.neo4j.session_type = :bolt
-  config.neo4j.session_path = "bolt://neo4j:#{neo4j_password}@localhost:7687"
+  config.neo4j.session.type = :bolt
+  config.neo4j.session.path = "bolt://neo4j:#{neo4j_password}@localhost:7687"
 end
