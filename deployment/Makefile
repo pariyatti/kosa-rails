@@ -43,7 +43,7 @@ setup: ##@Setup Setup a kosa box. Runs the setup.yml playbook
 deploy: ##@Setup Deploy kosa. Runs the deploy.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i hosts/$(hosts)
 
-db-reset: ##@Setup Reset kosa database. Runs the db-reset.yml playbook
+db-reset: ##@Setup Reset kosa database. DESTROYS ALL DATA! Runs the db-reset.yml playbook
 	ansible-playbook --vault-password-file $(password_file) ansible/db-reset.yml -u root -i hosts/$(hosts)
 
 
