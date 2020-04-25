@@ -5,7 +5,7 @@
     <%= card.pali %>
   </div>
   <div class="pali-word-translations">
-    <% card.pali_word_translations.each do |t| %>
+    <% card.translations.each do |t| %>
       <div>Language: <%= t.language %>, Translation: <%= t.translation %></div>
     <% end %>
   </div>

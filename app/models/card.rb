@@ -28,6 +28,18 @@ class Card
     # ignored for Cards without file attachments like images
   end
 
+  def self.today_feed
+    cards = Card.where(published: true).order(:updated_at)
+    cards.each(&:reload_from_database!)
+    cards.to_a.reverse
+  end
+
+  def self.all_for_editors
+    cards = Card.order(:updated_at)
+    cards.each(&:reload_from_database!)
+    cards.to_a.reverse
+  end
+
   def self.default_header
     raise "No `default_header` method defined."
   end
@@ -41,15 +53,22 @@ class Card
     raise "No `new_from_params` method defined."
   end
 
-  # Please forgive the inheritance trickery. This seems better than the 
-  # alternative of duplicating this method across all Cards that need images.
   def self.new_with_image(params)
     card = new(params.except(:image_filename))
     card.image = File.new(params[:image_filename]) if params[:image_filename]
     card
   end
 
+  def self.new_with_audio(params)
+    card = new(params.except(:audio_filename))
+    card.audio = File.new(params[:audio_filename]) if params[:audio_filename]
+    card
+  end
+
+  # Please forgive the inheritance trickery. This seems better than the 
+  # alternative of duplicating this method across all Cards that need images.
   class << self
     protected :new_with_image
+    protected :new_with_audio
   end
 end

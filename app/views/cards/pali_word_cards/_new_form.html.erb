@@ -23,6 +23,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :audio_file, "Audio clip to upload:" %>
+    <%= form.file_field :audio_file %>
+  </div>
+
+  <div class="field">
     <%= form.label :language %>
     <%= form.text_field :language %>
   </div>

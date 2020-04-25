@@ -2,8 +2,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.all
-    @cards.each(&:reload_from_database!)
+    @cards = Card.all_for_editors
   end
 
   def show

@@ -12,15 +12,8 @@ class Cards::PaliWordCardsController < CardsController
   end
 
   def create
-    # TODO: HACK: this is just to get the screen and API working
-    #             ...figure out lists tomorrow. -sd
-    translation_params = card_params.slice(:language, :translation)
-    @translation = Cards::PaliWordTranslation.create(translation_params)
-
-    new_card_params = card_params.slice(*default_card_params.push(:pali))
-    @card = Cards::PaliWordCard.new_from_params(new_card_params)
-    @card.pali_word_translations = [@translation]
-
+    @card = Cards::PaliWordCard.new_from_params(card_params)
+    
     respond_to do |format|
       if @card.save
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
