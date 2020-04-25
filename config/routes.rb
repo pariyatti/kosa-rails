@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   resources :image_assets
 
   resources :audiences
-  resources :cards
   resources :topics
   resources :authors
+
+  resources :cards, only: [:index] do
+    post :publish, on: :member
+    post :draft, on: :member
+  end
 
   namespace :cards do
     resources :stacked_inspiration_cards

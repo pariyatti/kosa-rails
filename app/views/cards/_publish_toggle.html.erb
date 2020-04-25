@@ -1,0 +1,11 @@
+  <% if card.published_at %>
+    <%= form_with(scope: :card, url: draft_card_path(card), local: true) do |form| %>
+      <%= form.submit 'Switch to Draft' %>
+    <% end %>
+    <strong>Published at:</strong> <%= card.published_at %>
+  <% else %>
+    <%= form_with(scope: :card, url: publish_card_path(card), local: true) do |form| %>
+      <%= form.submit 'Publish Now' %>
+    <% end %>
+    <strong>This card is in draft</strong>
+  <% end %>

@@ -1,65 +1,65 @@
 [
   {
-      "published": true,
-      "bookmarkable": true,
-      "shareable": true,
-      "header": "Pāli Word of the Day",
-      "pali": "vipassisuṃ controller test",
-      "audio": {
-          "url": "/uploads/cards/pali_word_card/audio/7182c639-67e7-4ebf-bcb2-08e144543489/vipassisu.m_audio_fixture.mp3"
-        },
-      "translations": 
-        [{"language": "en", "translation": "insight controller test"}],
-      "type": "pali_word",
-      "id": "393b47a8-b002-4ff5-95f6-dd6df497cf69"
+    "published_at": "2020-04-25T18:26:30.000Z",
+    "bookmarkable": true,
+    "shareable": true,
+    "header": "Pāli Word of the Day",
+    "pali": "vipassisuṃ controller test",
+    "audio": {
+        "url": "/uploads/cards/pali_word_card/audio/7182c639-67e7-4ebf-bcb2-08e144543489/vipassisu.m_audio_fixture.mp3"
+    },
+    "translations": 
+    [{"language": "en", "translation": "insight controller test"}],
+    "type": "pali_word",
+    "id": "393b47a8-b002-4ff5-95f6-dd6df497cf69"
   },
   {
-      "published": true,
-      "bookmarkable": true,
-      "shareable": true,
-      "header": "Inspiration of the Day",
-      "text": "today_controller_test_overlay",
-      "text_color": "green",
-      "image": {
-          "url": "/uploads/card/image/aa1ceabb-1229-4e1f-bf19-7f3ae516e173/leaf.jpg"
-      },
-      "type": "overlay_inspiration",
-      "id": "aa1ceabb-1229-4e1f-bf19-7f3ae516e173"
+    "published_at": "2020-04-25T18:26:30.000Z",
+    "bookmarkable": true,
+    "shareable": true,
+    "header": "Inspiration of the Day",
+    "text": "today_controller_test_overlay",
+    "text_color": "green",
+    "image": {
+        "url": "/uploads/card/image/aa1ceabb-1229-4e1f-bf19-7f3ae516e173/leaf.jpg"
+    },
+    "type": "overlay_inspiration",
+    "id": "aa1ceabb-1229-4e1f-bf19-7f3ae516e173"
   },
   {
-      "published": true,
-      "bookmarkable": true,
-      "shareable": true,
-      "header": "Inspiration of the Day",
-      "text": "today_controller_test_stacked2",
-      "image": {
-          "url": "/uploads/card/image/8a1ceabb-1229-4e1f-bf19-7f3ae516e173/leaf.jpg"
-      },
-      "type": "stacked_inspiration",
-      "id": "8a1ceabb-1229-4e1f-bf19-7f3ae516e173"
+    "published_at": "2020-04-25T18:26:30.000Z",
+    "bookmarkable": true,
+    "shareable": true,
+    "header": "Inspiration of the Day",
+    "text": "today_controller_test_stacked2",
+    "image": {
+        "url": "/uploads/card/image/8a1ceabb-1229-4e1f-bf19-7f3ae516e173/leaf.jpg"
+    },
+    "type": "stacked_inspiration",
+    "id": "8a1ceabb-1229-4e1f-bf19-7f3ae516e173"
   },
   {
-      "published": true,
-      "bookmarkable": true,
-      "shareable": true,
-      "header": "Inspiration of the Day",
-      "text": "today_controller_test_stacked1",
-      "image": {
-          "url": "/uploads/card/image/67f4000a-d6f8-4138-9365-d20758ff7a72/flowers.jpeg"
-      },
-      "type": "stacked_inspiration",
-      "id": "67f4000a-d6f8-4138-9365-d20758ff7a72"
+    "published_at": "2020-04-25T18:26:30.000Z",
+    "bookmarkable": true,
+    "shareable": true,
+    "header": "Inspiration of the Day",
+    "text": "today_controller_test_stacked1",
+    "image": {
+        "url": "/uploads/card/image/67f4000a-d6f8-4138-9365-d20758ff7a72/flowers.jpeg"
+    },
+    "type": "stacked_inspiration",
+    "id": "67f4000a-d6f8-4138-9365-d20758ff7a72"
   },
   {
-      "published": true,
-      "bookmarkable": true,
-      "shareable": true,
-      "header": "Inspiration of the Day",
-      "text": "today_controller_test_stacked0",
-      "image": {
-          "url": "/uploads/card/image/393b47a8-b002-4ff5-95f6-dd6df497cf69/bluesky.jpeg"
-      },
-      "type": "stacked_inspiration",
-      "id": "393b47a8-b002-4ff5-95f6-dd6df497cf69"
+    "published_at": "2020-04-25T18:26:30.000Z",
+    "bookmarkable": true,
+    "shareable": true,
+    "header": "Inspiration of the Day",
+    "text": "today_controller_test_stacked0",
+    "image": {
+        "url": "/uploads/card/image/393b47a8-b002-4ff5-95f6-dd6df497cf69/bluesky.jpeg"
+    },
+    "type": "stacked_inspiration",
+    "id": "393b47a8-b002-4ff5-95f6-dd6df497cf69"
   }
 ]

@@ -23,4 +23,13 @@ class CardTest < ActiveSupport::TestCase
       Cards::StackedInspirationCard.create(text: "invalid", type: "invalid_enum")
     end
   end
+
+  test "publishes and unpublishes (drafts) a card" do
+    c = Cards::PaliWordCard.new_from_params(card_type: "pali_word")
+    assert_nil c.published_at
+    c.publish!
+    assert_not_nil c.published_at
+    c.draft!
+    assert_nil c.published_at
+  end
 end

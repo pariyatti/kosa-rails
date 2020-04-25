@@ -4,17 +4,17 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
   setup do
     cleanup
     3.times do |i|
-      params = {published: true, 
+      params = {published_at: Time.parse("2020-04-25 18:26:30.774998000 UTC"),
                 shareable: true, 
                 bookmarkable: true,
                 text: "today_controller_test_stacked#{i}",
                 card_type: "stacked_inspiration" }
       card = Cards::StackedInspirationCard.new_from_params(params)
       card.image = File.open(file_fixture("card_fixture.png"))
-      card.save!
+      card.save
     end
     
-    params = {published: true, 
+    params = {published_at: Time.parse("2020-04-25 18:26:30.774998000 UTC"), 
               shareable: true, 
               bookmarkable: true,
               text: "today_controller_test_overlay",
@@ -24,7 +24,7 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     card.image = File.open(file_fixture("card_fixture.png"))
     card.save!
 
-    params = {published: true, 
+    params = {published_at: Time.parse("2020-04-25 18:26:30.774998000 UTC"), 
               shareable: true, 
               bookmarkable: true,
               pali: "vipassisuṃ controller test",
@@ -42,6 +42,7 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
 
   test "[SMOKE TEST] get the today feed: use `VERBOSE=true rake test` to see json" do
     get today_url, as: :json
+    # TODO: `published_at` dates should have millisecond precision in the fixture
     expected_response = file_fixture("today_fixture.json").read
     pretty_json(expected_response, response.body) if ENV['VERBOSE']
     assert_json(expected_response, response.body, 

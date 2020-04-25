@@ -76,7 +76,7 @@ Topic
 Card (superclass):
 => {"id": "3386076e-566c-4acc-9816-3514e192852f", 
     "type": "", 
-    "published": true,
+    "published_at": "2020-04-25 18:26:30.774998000 UTC",
     "bookmarkable": true,
     "shareable": false,
     "header": "USUALLY ALL CAPS" }
@@ -84,7 +84,7 @@ Card (superclass):
 Card (type = 'stacked_inspiration')
 => {"id": "3386076e-566c-4acc-9816-3514e192852f",
     "type": "stacked_inspiration", 
-    "published": true,
+    "published_at": "2020-04-25 18:26:30.774998000 UTC",
     "bookmarkable": true,
     "shareable": false,
     "header": "Inspiration of the Day",
@@ -94,7 +94,7 @@ Card (type = 'stacked_inspiration')
 Card (type = 'overlay_inspiration')
 => {"id": "3386076e-566c-4acc-9816-3514e192852f", 
     "type": "overlay_inspiration", 
-    "published": true,
+    "published_at": "2020-04-25 18:26:30.774998000 UTC",
     "bookmarkable": true,
     "shareable": false,
     "header": "Inspiration of the Day",

@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :publish, :draft]
 
   def index
     @cards = Card.all_for_editors
@@ -41,8 +41,18 @@ class CardsController < ApplicationController
     end
   end
 
+  def publish
+    @card.publish!
+    redirect_to cards_url, notice: 'Card was successfully published.'
+  end
+
+  def draft
+    @card.draft!
+    redirect_to cards_url, notice: 'Card was successfully returned to draft.'
+  end
+
   def default_card_params
-    [:card_type, :published, :bookmarkable, :shareable, :header]
+    [:card_type, :published_at, :bookmarkable, :shareable, :header]
   end
 
   # Use callbacks to share common setup or constraints between actions.

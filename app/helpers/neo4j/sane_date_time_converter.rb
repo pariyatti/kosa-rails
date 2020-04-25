@@ -3,11 +3,12 @@ module Neo4j
   class SaneDateTimeConverter # < BaseConverter
     class << self
       def convert_type
+        # oddly enough, you always want `Time.now` in models
         DateTime
       end
 
       def db_type
-        Integer
+        String
       end
 
       # Converts the given DateTime (UTC) value to a...String.
@@ -30,7 +31,7 @@ module Neo4j
             when Integer
               Time.at(value).utc
             when String
-              return value.to_datetime
+              return value.to_datetime.utc
             else
               fail ArgumentError, "Invalid value type for DateType property: #{value.inspect}"
             end

@@ -1,9 +1,10 @@
 require 'neo4j/sane_timestamps'
+require 'neo4j/sane_date_time_converter'
 
 class Card 
   include Neo4j::ActiveNode
   include Neo4j::SaneTimestamps
-  property :published, type: Boolean, default: false
+  property :published_at, typecaster: Neo4j::SaneDateTimeConverter, default: nil
   property :header, type: String, default: ""
   property :bookmarkable, type: Boolean, default: true
   property :shareable, type: Boolean, default: true
@@ -28,8 +29,18 @@ class Card
     # ignored for Cards without file attachments like images
   end
 
+  def publish!
+    self.published_at = Time.now
+    self.save!
+  end
+
+  def draft!
+    self.published_at = nil
+    self.save!
+  end
+
   def self.today_feed
-    cards = Card.where(published: true).order(:updated_at)
+    cards = Card.where_not(published_at: nil).order(:updated_at)
     cards.each(&:reload_from_database!)
     cards.to_a.reverse
   end

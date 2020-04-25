@@ -15,7 +15,7 @@ namespace :neo4j do
       end
       
       puts "Creating some Stacked Inspiration Cards..."
-      params = {published: true, 
+      params = {published_at: Time.now, 
         shareable: true, 
         bookmarkable: true,
         text: "Blue skiiiieeeeesssssss smiling at meeeeeeeeee. ",
@@ -24,7 +24,7 @@ namespace :neo4j do
       card.image = File.open(img_files[0])
       card.save!
 
-      params = {published: true, 
+      params = {published_at: Time.now, 
         shareable: true, 
         bookmarkable: true,
         text: " Enjoy some beautiful red flowers on the ground did you know you can also turn them into jam but you have to dry them on your rootop first which maybe you don't have the time for and you'd rather buy jam from a store.",
@@ -34,7 +34,7 @@ namespace :neo4j do
       card.save!
 
       puts "Creating some Overlay Inspiration Cards..."
-      params = {published: true, 
+      params = {published_at: Time.now, 
         shareable: true, 
         bookmarkable: true,
         text: "This card has a Peepal leaf on it because if there's one thing we know about meditation it's that it involves a lot of Peepal leaves, right?",
