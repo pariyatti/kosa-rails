@@ -29,3 +29,8 @@ yarn-debug.log*
 
 /bin/neo4j*.AppImage
 /public/uploads
+
+/db/neo4j/development
+/db/neo4j/test
+/db/neo4j/production
+

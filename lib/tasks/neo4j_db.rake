@@ -35,13 +35,13 @@ namespace :neo4j do
       sh "bundle exec rake neo4j:migrate"
     end
 
-    desc "Initialize a new database"
+    desc "Initialize a new database (migrate + seed)"
     task :setup => [:migrate, :seed]
 
-    desc "Initialize sample data"
+    desc "Initialize sample data (sandbox + CSV import)"
     task :sample => [:sandbox, :import]
 
-    desc "Drop and recreate the database"
+    desc "Drop and recreate the database (drop + setup)"
     task :reset => [:drop, :setup]
   end
 end

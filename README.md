@@ -22,9 +22,9 @@ Follow the instructions under [Development](https://github.com/pariyatti/kosa#de
 
 ## Development
 
-In general, pin versions in development the way you would in any other environment. For the time-being, we'll make exceptions for neo4j and the neo4j/activegraph gem and run them both on `latest`.
+In general, pin versions in development the way you would in any other environment.
 
-There is a lot of old documentation out there. Use these:
+There is a lot of old `Neo4j.rb` documentation out there. Use these:
 
 - https://neo4jrb.readthedocs.io/en/v9.4.0/
 - https://gitter.im/neo4jrb/neo4j (look for @klobuczek and @amitTheSongadya_twitter)
@@ -70,7 +70,9 @@ update-java-alternatives --list # => java-1.11.0-openjdk-amd64
 sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
 ```
 
-#### Install Neo4j
+#### (VERY OPTIONAL) Install Neo4j
+
+You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with. It's strongly recommended that you use `rake neo4j:install` for development and test environments.
 
 ```
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
@@ -80,16 +82,17 @@ sudo apt-get update
 sudo apt-get install neo4j
 ```
 
-#### Install Neo4j Desktop (optional)
+#### (VERY OPTIONAL) Install Neo4j Desktop
 
-https://neo4j.com/download/
+You don't absolutely need to install Neo4j Desktop but it's a neat way of looking at your Neo4j database with the visualization tools.
 
+- Install from: https://neo4j.com/download/
 - Make the AppImage executable, run it, and then trim the whitespace from the software key the website gave you.
 - Create a `Pariyatti` project with a db named `kosa3`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
 
 ```
 dbms.security.auth_enabled=false
-dbms.connector.bolt.listen_address=:7000
+dbms.connector.bolt.listen_address=:7003
 dbms.connector.http.listen_address=:7001
 ```
 
@@ -100,11 +103,19 @@ cd kosa
 bundle install
 rails webpacker:install
 
-# use `neo4j:install` if you don't want neo4j desktop.
-# this didn't work for me but i'm on side-of-a-mountain internet -sd
-rake neo4j:install[community-latest,development] # 3.4.1
+# Neo4j uses a separate instance for each database:
+rake neo4j:install[community-3.5.17,development]
+rake neo4j:config[development,7005]
+rake neo4j:start[development]
+rake neo4j:migrate
+rake neo4j:db:setup
+rake neo4j:db:sample # if you want example data for development
 
-rake neo4j:setup
+rake neo4j:install[community-3.5.17,test]
+rake neo4j:config[test,7008]
+rake neo4j:start[test]
+RAILS_ENV=test rake neo4j:migrate
+
 rake test
 ```
 
