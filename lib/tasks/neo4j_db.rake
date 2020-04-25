@@ -6,7 +6,7 @@ namespace :neo4j do
 
     desc "Open a Cypher console"
     task :console do
-      sh "cypher-shell -a #{Rails.application.config.neo4j.session_path}"
+      sh "cypher-shell -a #{Rails.application.config.neo4j.session.path}"
     end
 
     desc "Run Neo4j Desktop"
