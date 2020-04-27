@@ -46,7 +46,7 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     expected_response = file_fixture("today_fixture.json").read
     pretty_json(expected_response, response.body) if ENV['VERBOSE']
     assert_json(expected_response, response.body, 
-                **{ignore: ['nope', 'image', 'audio', 'id']})
+                **{ignore: ['image', 'audio', 'id']})
   end
 
   def cleanup
