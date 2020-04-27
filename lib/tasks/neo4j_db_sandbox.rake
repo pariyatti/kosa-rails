@@ -5,7 +5,10 @@ namespace :neo4j do
   namespace :db do
     desc "Create some sample data for the sandbox environment"
     task :sandbox do
-      img_files = Dir.glob(Rails.root.join('lib/tasks/sandbox/*'))
+      file_root = Rails.root.join('lib/tasks/sandbox/')
+      img_files = [ file_root.join('bluesky.png'),
+                    file_root.join('flowers.jpeg'),
+                    file_root.join('leaf.jpg') ]
 
       puts "Creating some Images..."
       img_files.each do |img|
@@ -13,6 +16,8 @@ namespace :neo4j do
         i.image = File.open(img)
         i.save!
       end
+
+      # TODO: create raw audio asset to correspond to 'pali word' card
       
       puts "Creating some Stacked Inspiration Cards..."
       params = {published_at: Time.now, 
@@ -44,6 +49,17 @@ namespace :neo4j do
       card.image = File.open(img_files[2])
       card.save!
 
+      puts "Creating some Pali Word Cards..."
+      params = {published_at: Time.now, 
+                shareable: true, 
+                bookmarkable: true,
+                pali: "vipassisuṃ",
+                language: "en",
+                translation: "insight",
+                card_type: "pali_word" }
+      card = Cards::PaliWordCard.new_from_params(params)
+      card.audio = File.open(file_root.join("vipassisu.m_audio_fixture.mp3"))
+      card.save!
     end
   end
 end
