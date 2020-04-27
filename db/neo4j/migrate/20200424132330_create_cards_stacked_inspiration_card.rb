@@ -1,4 +1,4 @@
-class ForceCreateCardsStackedInspirationCardUuidConstraint < Neo4j::Migrations::Base
+class CreateCardsStackedInspirationCard < Neo4j::Migrations::Base
   def up
     add_constraint :"Cards::StackedInspirationCard", :uuid, force: true
   end

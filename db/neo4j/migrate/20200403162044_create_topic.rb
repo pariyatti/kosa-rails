@@ -1,6 +1,6 @@
 class CreateTopic < Neo4j::Migrations::Base
   def up
-    add_constraint :Topic, :uuid
+    add_constraint :Topic, :uuid, force: true
   end
 
   def down

@@ -1,4 +1,4 @@
-class ForceCreateCardsPaliWordTranslationUuidConstraint < Neo4j::Migrations::Base
+class CreateCardsPaliWordTranslation < Neo4j::Migrations::Base
   def up
     add_constraint :"Cards::PaliWordTranslation", :uuid, force: true
   end

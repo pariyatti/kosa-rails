@@ -1,6 +1,6 @@
 class CreateExcerpt < Neo4j::Migrations::Base
   def up
-    add_constraint :Excerpt, :uuid
+    add_constraint :Excerpt, :uuid, force: true
   end
 
   def down

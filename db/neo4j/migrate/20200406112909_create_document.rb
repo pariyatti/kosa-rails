@@ -1,4 +1,4 @@
-class ForceCreateDocumentUuidConstraint < Neo4j::Migrations::Base
+class CreateDocument < Neo4j::Migrations::Base
   def up
     add_constraint :Document, :uuid, force: true
   end

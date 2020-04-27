@@ -1,4 +1,4 @@
-class ForceCreateAssetUuidConstraint < Neo4j::Migrations::Base
+class CreateAsset < Neo4j::Migrations::Base
   def up
     add_constraint :Asset, :uuid, force: true
   end
