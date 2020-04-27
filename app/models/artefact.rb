@@ -1,8 +1,8 @@
 
 # top-level type in the hierarchy; don't create these directly
-class Asset 
+class Artefact
   include Neo4j::ActiveNode
-  # include Neo4j::Timestamps
+  include Neo4j::SaneTimestamps
 
   # property :name, type: String
 end

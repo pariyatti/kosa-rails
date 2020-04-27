@@ -12,12 +12,12 @@ namespace :neo4j do
 
       puts "Creating some Images..."
       img_files.each do |img|
-        i = ImageAsset.new()
+        i = ImageArtefact.new()
         i.image = File.open(img)
         i.save!
       end
 
-      # TODO: create raw audio asset to correspond to 'pali word' card
+      # TODO: create raw audio artefact to correspond to 'pali word' card
       
       puts "Creating some Stacked Inspiration Cards..."
       params = {published_at: Time.now, 

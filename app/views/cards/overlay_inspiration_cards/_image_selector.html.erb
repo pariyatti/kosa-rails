@@ -1,4 +1,4 @@
-<% image_assets.each do |image_asset| %>
-  <%= link_to image_tag(image_asset.url, size: '128'),
-              new_cards_overlay_inspiration_card_path(card_type: "overlay_inspiration", image_id: image_asset.id) %>
+<% image_artefacts.each do |image_artefact| %>
+  <%= link_to image_tag(image_artefact.url, size: '128'),
+              new_cards_overlay_inspiration_card_path(card_type: "overlay_inspiration", image_id: image_artefact.id) %>
 <% end %>

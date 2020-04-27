@@ -22,7 +22,7 @@
   ) ASSERT `cards::stackedinspirationcard`.uuid IS UNIQUE
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
-- CONSTRAINT ON ( asset:Asset ) ASSERT asset.uuid IS UNIQUE
+- CONSTRAINT ON ( artefact:Artefact ) ASSERT artefact.uuid IS UNIQUE
 - CONSTRAINT ON ( audience:Audience ) ASSERT audience.uuid IS UNIQUE
 - CONSTRAINT ON ( author:Author ) ASSERT author.uuid IS UNIQUE
 - CONSTRAINT ON ( card:Card ) ASSERT card.uuid IS UNIQUE

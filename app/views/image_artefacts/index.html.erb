@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Image Collection</h1>
+
+<% @image_artefacts.each do |image_artefact| %>
+  <%= link_to image_tag(image_artefact.url, size: '128'), image_artefact_path(image_artefact) %>
+<% end %>
+
+<br>
+
+<%= link_to 'Add Image', new_image_artefact_path %>

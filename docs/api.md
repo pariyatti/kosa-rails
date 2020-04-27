@@ -10,7 +10,7 @@ simple and reflective of the Pariyatti mobile app wireframes.
 
 ## Answered Questions ##
 
-- Q: "Resources" is overloaded with web terminology. "Assets" instead?
+- Q: "Resources" is overloaded with web terminology. So is "Asset".
   - A: Let's go with `Artefacts`... yes, with the weird spelling. This way we're pretty much guaranteed to avoid naming collisions.
 - Q: DB+API: UUID or Integer ids?
   - A: UUIDs. Neo4j prefers them and they're just saner anyway.

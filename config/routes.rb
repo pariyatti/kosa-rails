@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :excerpts
-  resources :image_assets
+  resources :image_artefacts
 
   resources :audiences
   resources :topics

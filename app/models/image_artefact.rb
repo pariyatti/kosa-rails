@@ -1,5 +1,5 @@
 
-class ImageAsset < Asset
+class ImageArtefact < Artefact
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
 
