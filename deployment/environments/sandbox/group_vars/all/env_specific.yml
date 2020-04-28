@@ -1,0 +1,4 @@
+---
+deploy_env: "sandbox"
+domain_name: "kosa-sandbox.pariyatti.org"
+domain_ip: "139.59.41.132"

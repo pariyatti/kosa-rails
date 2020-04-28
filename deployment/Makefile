@@ -32,29 +32,29 @@ install-ansible-ubuntu:
 install-ansible-plugins:
 	ansible-galaxy install -r ansible/requirements.yml
 
-init: | install-ansible-ubuntu install-ansible-plugins ##@Setup Install ansible and required plugins
+init: | install-ansible-ubuntu install-ansible-plugins ##@Setup Locally install ansible and required plugins
 
-all: ##@Setup Install (setup + deploy) kosa on hosts. Runs the all.yml playbook
-	ansible-playbook --vault-password-file $(password_file) ansible/$@.yml -u root -i hosts/$(hosts)
+all: ##@Setup Install (setup + deploy) kosa on environments. Runs the all.yml playbook
+	ansible-playbook --vault-password-file $(password_file) ansible/$@.yml -u root -i environments/$(hosts)
 
 setup: ##@Setup Setup a kosa box. Runs the setup.yml playbook
-	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i hosts/$(hosts)
+	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i environments/$(hosts)
 
 deploy: ##@Setup Deploy kosa. Runs the deploy.yml playbook
-	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i hosts/$(hosts)
+	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i environments/$(hosts)
 
 db-reset: ##@Setup Reset kosa database. DESTROYS ALL DATA! Runs the db-reset.yml playbook
-	ansible-playbook --vault-password-file $(password_file) ansible/db-reset.yml -u root -i hosts/$(hosts)
+	ansible-playbook --vault-password-file $(password_file) ansible/db-reset.yml -u root -i environments/$(hosts)
 
 
 update-ssh-keys: ##@Utilities Update ssh keys on boxes. Add keys to `ansible/roles/ssh/files/ssh_keys` under the appropriate environment
-	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i hosts/$(hosts) --tags ssh
+	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i environments/$(hosts) --tags ssh
 
 update-master-key: ##@Utilities Update RAILS_MASTER_KEY with app config .env file
-	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i hosts/$(hosts) --tags update-master-key
+	ansible-playbook --vault-password-file $(password_file) ansible/deploy.yml -u root -i environments/$(hosts) --tags update-master-key
 
 restart-passenger: ##@Utilities Restart passenger
-	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i hosts/$(hosts) --tags restart-passenger
+	ansible-playbook --vault-password-file $(password_file) ansible/setup.yml -u root -i environments/$(hosts) --tags restart-passenger
 
 fix-ssh: ##@Utilities Fix local SSH hangs
 	./bin/fix-ssh-hangs.sh

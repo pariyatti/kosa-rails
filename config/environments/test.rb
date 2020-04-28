@@ -44,8 +44,6 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
-  # TODO: this is the development database... obviously create a test db
-  #       ...but neo4j only permits one db at a time? wat. -sd
   config.neo4j.session.type = :bolt
   config.neo4j.session.path = "bolt://localhost:7006"
 end

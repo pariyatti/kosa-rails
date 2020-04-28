@@ -6,13 +6,10 @@ ruby_version: "2.7.1"
 bundler_version: "2.1.4"
 rbenv_root: "/home/{{ deploy_user }}/.rbenv"
 bundle_path: "{{ rbenv_root }}/shims/bundle"
-app_name: "kosa"
 
- # deploy_env and domain_name can be set dynamically later -sd 
- # (see simpledotorg/deployment)
-deploy_env: "production"
-domain_name: "kosa-sandbox.pariyatti.org"
-domain_ip: "139.59.41.132"
+app_name: "kosa"
+database_name: "kosa3"
+rails_env: "production"
 
 ansible_os_family: "Debian"
 ansible_distribution: "Ubuntu"
@@ -35,5 +32,3 @@ ansistrano_shared_files:
 ansistrano_deploy_via: "git"
 ansistrano_git_repo: "https://github.com/pariyatti/kosa.git"
 ansistrano_after_symlink_shared_tasks_file: "roles/deploy/hooks/after_symlink.yml"
-database_name: "kosa3" # "{{ deploy_env }}-{{ app_name }}-db"
-rails_env: "production"

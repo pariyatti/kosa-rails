@@ -6,8 +6,6 @@
   become: true
   become_user: "{{ deploy_user }}"
 
-# TODO: if this assert is passing, we should be able to remove 
-#       `environment:` from the following tasks
 - name: "AFTER_SYMLINK (ANSISTRANO) | assert ruby-version = 2.7.1"
   assert:
     that:

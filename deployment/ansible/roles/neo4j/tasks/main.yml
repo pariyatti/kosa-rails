@@ -3,6 +3,11 @@
   apt:
     name: openjdk-11-jdk-headless
 
+- name: remove neo4j users before kevincoakley.neo4j install
+  file:
+    path: /var/lib/neo4j/data/dbms/auth
+    state: absent
+
 - name: install neo4j server
   import_role:
     name: kevincoakley.neo4j
@@ -23,9 +28,38 @@
     state: present
   notify: Restart Neo4j
 
-# TODO: seriously consider ditching `kevincoakly.neo4j` and writing a custom role
+# consider ditching `kevincoakly.neo4j` and writing a custom role
 - debug:
     msg: "neo4j_password is defined? '{{ neo4j_password is defined and neo4j_password|string }}'"
+  tags: neo4j-force-password
+
+# command: "rm -rf /var/lib/neo4j/data/dbms/auth*"
+- name: force destroy the neo4j password
+  file:
+    path: /var/lib/neo4j/data/dbms/auth
+    state: absent
+  tags: neo4j-force-password
+
+- name: force destroy the neo4j password
+  file:
+    path: /var/lib/neo4j/data/dbms/auth.ini
+    state: absent
+  tags: neo4j-force-password
+
+- name: restart neo4j
+  service:
+    name: neo4j
+    state: restarted
+  tags: neo4j-force-password
+
+- name: wait for neo4j to start
+  command: 
+    cmd: "service neo4j status | grep -i 'Remote interface available at http://localhost:7474/'"
+    warn: false # the service module cannot do 'status'
+  register: result
+  until: result.stdout.find("Remote interface available at http://localhost:7474/") != -1
+  retries: 5
+  delay: 10
   tags: neo4j-force-password
 
 - name: reset the neo4j password since that stupid 'initial password' thing always fails
@@ -38,4 +72,5 @@
     force_basic_auth: yes
     status_code: 200 # not 201
     body_format: json
+  when: 
   tags: neo4j-force-password

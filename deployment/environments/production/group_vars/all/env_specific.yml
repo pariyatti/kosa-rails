@@ -1,0 +1,4 @@
+---
+deploy_env: "production"
+domain_name: "kosa.pariyatti.org"
+domain_ip: "167.71.226.247"

@@ -59,7 +59,7 @@
   become: true
   notify: restart nginx
 
-  # TODO: test this? `sudo /usr/bin/passenger-config validate-install`
+  # consider adding: `sudo /usr/bin/passenger-config validate-install`
 
 - name: disable the default nginx config
   file: path={{ item }} state=absent

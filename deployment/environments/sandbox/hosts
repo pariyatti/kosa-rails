@@ -1,5 +1,5 @@
 [all:vars]
-deploy_env=production
+deploy_env=sandbox
 domain_name=kosa-sandbox.pariyatti.org
 
 [deployment]
