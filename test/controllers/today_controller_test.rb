@@ -42,7 +42,6 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
 
   test "[SMOKE TEST] get the today feed: use `VERBOSE=true rake test` to see json" do
     get today_url, as: :json
-    # TODO: `published_at` dates should have millisecond precision in the fixture
     expected_response = file_fixture("today_fixture.json").read
     pretty_json(expected_response, response.body) if ENV['VERBOSE']
     assert_json(expected_response, response.body, 
