@@ -12,6 +12,65 @@
   import_role:
     name: kevincoakley.neo4j
 
+- name: ulimit=40000 (limits)
+  copy: 
+    src: "etc/security/limits.conf"
+    dest: "/etc/security/limits.conf"
+  become: true
+  register: security_limits
+
+- name: ulimit=40000 (pam_limits)
+  lineinfile:
+    path: /etc/pam.d/common-session-noninteractive
+    regexp: '^session required pam_limits.so'
+    insertafter: '^# and here are more per-package modules'
+    line: 'session required pam_limits.so'
+  register: pam_limits
+
+# this isn't necessary on newer ubuntu releases but neo4j still creates
+# the file, regardless. we might as well set the value correctly in it.
+- name: ulimit=40000 (legacy)
+  lineinfile:
+    dest: /etc/default/neo4j
+    regexp: '^#NEO4J_ULIMIT_NOFILE=.*'
+    line: 'NEO4J_ULIMIT_NOFILE=40000'
+    state: present
+  become: true
+  register: neo4j_ulimit_legacy
+
+# the following two commands replace:
+# `systemctl edit neo4j.service`
+# this is technically possible... but probably not better than a file copy:
+# `echo -e "* soft nofile 60000\n* hard nofile 60000" | sudo SYSTEMD_EDITOR=tee systemctl edit neo4j.service`
+# ...leaving it here because it's fun and who knows, maybe we'll need it.
+- name: ulimit=40000 (dir)
+  file:
+    path: /etc/systemd/system/neo4j.service.d
+    state: directory
+
+- name: ulimit=40000 (conf)
+  copy: 
+    src: "etc/systemd/system/neo4j.service.d/override.conf"
+    dest: "/etc/systemd/system/neo4j.service.d/override.conf"
+  become: true
+  register: neo4j_override
+
+- name: configure the neo4j environment
+  copy: 
+    src: "etc/profile.d/neo4j_env.sh"
+    dest: "/etc/profile.d/neo4j_env.sh"
+  become: true
+  register: neo4j_env
+
+- name: configure open file limit - restart
+  reboot:
+  when: security_limits.changed or pam_limits.changed or neo4j_ulimit_legacy.changed or neo4j_override.changed or neo4j_env.changed
+  register: restart_system
+
+- name: wait for server restart
+  local_action: wait_for host={{ domain_ip }} port={{ ansible_port }} delay=2 timeout=3000
+  when: restart_system.changed
+
 - name: set the neo4j TLS level
   lineinfile:
     dest: /etc/neo4j/neo4j.conf
@@ -33,6 +92,7 @@
     msg: "neo4j_password is defined? '{{ neo4j_password is defined and neo4j_password|string }}'"
   tags: neo4j-force-password
 
+# the following two commands replace:
 # command: "rm -rf /var/lib/neo4j/data/dbms/auth*"
 - name: force destroy the neo4j password
   file:
