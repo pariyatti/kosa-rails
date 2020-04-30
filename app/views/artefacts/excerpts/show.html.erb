@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @excerpt.url %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @excerpt.reference %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @excerpt.content %>
+</p>
+
+<%= link_to 'Edit', edit_artefacts_excerpt_path(@excerpt) %> |
+<%= link_to 'Back', artefacts_excerpts_path %>

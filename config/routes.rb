@@ -1,16 +1,16 @@
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
-  resources :excerpts
-  resources :image_artefacts
 
-  resources :audiences
-  resources :topics
-  resources :authors
+  namespace :artefacts do
+    resources :excerpts
+    resources :images
+  end
 
-  resources :cards, only: [:index] do
-    post :publish, on: :member
-    post :draft, on: :member
+  namespace :metadata do
+    resources :authors
+    resources :audiences
+    resources :topics
   end
 
   namespace :cards do
@@ -19,11 +19,15 @@ Rails.application.routes.draw do
     resources :pali_word_cards
   end
 
-  root 'application#index'
+  resources :cards, only: [:index] do
+    post :publish, on: :member
+    post :draft, on: :member
+  end
 
   scope :api, module: 'api' do
     get '/today', to: 'today#index'
-
-    resources :topics, only: [:index, :show]
   end
+
+  root 'application#index'
+
 end

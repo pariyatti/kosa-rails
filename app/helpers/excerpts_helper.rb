@@ -1,2 +1,0 @@
-module ExcerptsHelper
-end

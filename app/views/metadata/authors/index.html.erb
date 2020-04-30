@@ -1,0 +1,12 @@
+<% if @authors.empty? %>
+    The database doesn't have any authors yet.
+<% end %>
+
+<% @authors.each do |author| %>
+    <%= author.name %>
+<% end %>
+
+
+<br><br>
+
+<a href="/">Back to Home</a>

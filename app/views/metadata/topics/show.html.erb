@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @topic.name %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @topic.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @topic.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_metadata_topic_path(@topic) %> |
+<%= link_to 'Back', metadata_topics_path %>

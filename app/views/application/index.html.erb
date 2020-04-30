@@ -11,25 +11,24 @@ Use the links below to create and publish content to the Pariyatti mobile app.
 
 <h3>Documents:</h3>
 <div>(book, essay, article, transcripts, excerpt, quote)</div>
-<div><%= link_to "Excerpts", excerpts_path %></div>
+<div><%= link_to "Excerpts", artefacts_excerpts_path %></div>
 
 <h3>Media:</h3>
-<div><%= link_to "Images", image_artefacts_path %></div>
+<div><%= link_to "Images", artefacts_images_path %></div>
 <div>Audio</div>
 <div>Videos</div>
 
 <h2>Metadata: Concrete</h2>
 
-<div><a href="<%= url_for(action: 'index', controller: 'authors') %>">Authors</a></div>
+<div><%= link_to "Authors", metadata_authors_path %></div>
 <div>Locations</div>
 
 <h2>Metadata: Abstract</h2>
 
-<div><%= link_to "Audiences", audiences_path %></div>
-<div><%= link_to "Topics", topics_path %></div>
+<div><%= link_to "Audiences", metadata_audiences_path %></div>
+<div><%= link_to "Topics", metadata_topics_path %></div>
 <div>Collections</div>
 
 <h2>Test the APIs (for developers)</h2>
 
 <div><a href="/api/today.json">/api/today.json</a></div>
-<div><a href="/api/topics.json">/api/topics.json</a></div>

@@ -8,9 +8,9 @@ class Cards::OverlayInspirationCardsController < CardsController
     @card = Cards::OverlayInspirationCard.new
 
     if params[:image_id]
-      @image_chosen = ImageArtefact.find(params[:image_id])
+      @image_chosen = Artefacts::Image.find(params[:image_id])
     else
-      @image_artefacts = ImageArtefact.all
+      @image_artefacts = Artefacts::Image.all
       @image_artefacts.each(&:reload_from_database!)
     end
   end

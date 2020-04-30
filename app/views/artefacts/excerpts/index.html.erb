@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Excerpts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Reference</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @excerpts.each do |excerpt| %>
+      <tr>
+        <td><%= excerpt.url %></td>
+        <td><%= excerpt.reference %></td>
+        <td><%= excerpt.content %></td>
+        <td><%= link_to 'Show', excerpt %></td>
+        <td><%= link_to 'Edit', edit_artefacts_excerpt_path(excerpt) %></td>
+        <td><%= link_to 'Destroy', excerpt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Excerpt', new_artefacts_excerpt_path %>
+
+<br/><br/>
+
+<a href="/">Back to Home</a>

@@ -12,6 +12,16 @@
 
 ---
 :constraints:
+- CONSTRAINT ON ( `artefacts::audio`:`Artefacts::Audio` ) ASSERT `artefacts::audio`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `artefacts::document`:`Artefacts::Document` ) ASSERT `artefacts::document`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `artefacts::excerpt`:`Artefacts::Excerpt` ) ASSERT `artefacts::excerpt`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `artefacts::image`:`Artefacts::Image` ) ASSERT `artefacts::image`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `artefacts::video`:`Artefacts::Video` ) ASSERT `artefacts::video`.uuid
+  IS UNIQUE
 - CONSTRAINT ON ( `cards::overlayinspirationcard`:`Cards::OverlayInspirationCard`
   ) ASSERT `cards::overlayinspirationcard`.uuid IS UNIQUE
 - CONSTRAINT ON ( `cards::paliwordcard`:`Cards::PaliWordCard` ) ASSERT `cards::paliwordcard`.uuid
@@ -20,6 +30,20 @@
   `cards::paliwordtranslation`.uuid IS UNIQUE
 - CONSTRAINT ON ( `cards::stackedinspirationcard`:`Cards::StackedInspirationCard`
   ) ASSERT `cards::stackedinspirationcard`.uuid IS UNIQUE
+- CONSTRAINT ON ( `metadata::audience`:`Metadata::Audience` ) ASSERT `metadata::audience`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::author`:`Metadata::Author` ) ASSERT `metadata::author`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::collection`:`Metadata::Collection` ) ASSERT `metadata::collection`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::language`:`Metadata::Language` ) ASSERT `metadata::language`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::location`:`Metadata::Location` ) ASSERT `metadata::location`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::person`:`Metadata::Person` ) ASSERT `metadata::person`.uuid
+  IS UNIQUE
+- CONSTRAINT ON ( `metadata::topic`:`Metadata::Topic` ) ASSERT `metadata::topic`.uuid
+  IS UNIQUE
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
 - CONSTRAINT ON ( artefact:Artefact ) ASSERT artefact.uuid IS UNIQUE
@@ -28,6 +52,7 @@
 - CONSTRAINT ON ( card:Card ) ASSERT card.uuid IS UNIQUE
 - CONSTRAINT ON ( document:Document ) ASSERT document.uuid IS UNIQUE
 - CONSTRAINT ON ( excerpt:Excerpt ) ASSERT excerpt.uuid IS UNIQUE
+- CONSTRAINT ON ( metadatum:Metadatum ) ASSERT metadatum.uuid IS UNIQUE
 - CONSTRAINT ON ( topic:Topic ) ASSERT topic.uuid IS UNIQUE
 :indexes:
 - INDEX ON :Card(type)
@@ -44,3 +69,22 @@
 - '20200424132309'
 - '20200424132330'
 - '20200424132343'
+- '20200430000000'
+- '20200501000000'
+- '20200501000001'
+- '20200501000002'
+- '20200501000003'
+- '20200501000004'
+- '20200501000010'
+- '20200501000011'
+- '20200501000012'
+- '20200501000013'
+- '20200501000014'
+- '20200501000015'
+- '20200501000016'
+- '20200501000017'
+- '20200501000030'
+- '20200501000031'
+- '20200501000032'
+- '20200501000033'
+- '20200501000034'

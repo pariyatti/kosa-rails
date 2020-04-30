@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Added Image:</strong>
+  <%= image_tag(@image_artefact.url) %>
+</p>
+
+<%= link_to 'Destroy', artefacts_image_path(@image_artefact), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<br>
+<%= link_to 'Edit', edit_artefacts_image_path(@image_artefact) %> |
+<%= link_to 'Back', artefacts_images_path %>
