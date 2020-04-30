@@ -14,35 +14,54 @@ make help
 
 Disable the root password and only allow SSH key access. You will need a minimum of a $10 server (to avoid `failed to fork` errors when running `apt`):
 
-`Standard | Shared CPU | 1 vCPU | 2 GB | 25 GB | 2 TB | $10/mo`
+`Standard | Shared CPU | 1 vCPU | 2 GB | 50 GB | 2 TB | $10/mo`
 
 ### Install Ansible
 
 Use your own computer as the Control Node. Locally, run the following commands which will install ansible and python (if necessary):
 
 ```
-make install-ansible
+make init
 ```
 
 Test your connection:
 
 ```
-ansible all -i hosts -u root -m ping
+make fix-ssh
+```
+
+### The deployment password
+
+You will need to get the master password from someone on staff and save it to your local computer as `~/.kosa_password_file`.
+
+When changing the deployment password, you will need to re-encrypt the Ansible Vaults:
+
+```
+# locate the vaults:
+grep -ir "ANSIBLE_VAULT"
+
+# for each vault you find, decrypt it. for example:
+ansible localhost -e '@ansible/roles/neo4j/vars/main.yml' --ask-vault-pass -m debug -a 'var=neo4j_password'
+ansible localhost -e '@ansible/roles/deploy/vars/main.yml' --ask-vault-pass -m debug -a 'var=rails_master_key'
+
+# re-encrypt the strings and copy the contents from `!vault` into the original file:
+ansible-vault encrypt_string -n neo4j_password
+ansible-vault encrypt_string -n rails_master_key
 ```
 
 ### Provision the box
 
-This will do an initial deploy for you.
-
 ```
-make all
-make db-reset # optional. this creates sample data.
+make all hosts=sandbox
+make db-reset           # optional. this creates sample data.
 ```
 
 ### Deploy Kosa
 
-You will need to get the master password from someone on staff and save it to your local computer as `~/.kosa_password_file`. If you are on an unreliable connection, this command will often hang during `Gathering Facts`. Use `make fix-ssh` to clean up your Ansible ssh sessions.
+```
+make deploy hosts=sandbox
+```
 
-```
-make deploy
-```
+### Troubleshooting
+
+**Hanging Connections**: If you are on an unreliable connection, `make all` will often hang during tasks involving Debian packages, Rubygems, or other long network transactions. Similarly, `make deploy` will often hang during `Gathering Facts`. Use `make fix-ssh` to clean up your Ansible ssh sessions.
