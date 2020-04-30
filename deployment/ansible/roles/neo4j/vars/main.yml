@@ -3,7 +3,6 @@ neo4j_allow_any_connection: true
 neo4j_active_database: "kosa3.db"
 neo4j_connector_bolt_listen_address: ":7687"
 neo4j_connector_http_listen_address: ":7474"
-# TODO: there is a card in Asana for enabling TLS -sd
 neo4j_connector_bolt_tls_level: "OPTIONAL"
 
 neo4j_password: !vault |
