@@ -2,9 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'helpers/json_utilities'
+require 'helpers/stubs'
 
 class ActiveSupport::TestCase
   include JsonUtilities
+  include Stubs
 
   # Neo4j transactions don't behave like relational db transactions, so
   # we can't parallelize without breaking some controller tests.

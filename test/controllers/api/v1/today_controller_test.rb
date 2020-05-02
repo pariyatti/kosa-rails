@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TodayControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::TodayControllerTest < ActionDispatch::IntegrationTest
   setup do
     cleanup
     3.times do |i|
@@ -40,8 +40,8 @@ class TodayControllerTest < ActionDispatch::IntegrationTest
     cleanup
   end
 
-  test "[SMOKE TEST] get the today feed: use `VERBOSE=true rake test` to see json" do
-    get today_url, as: :json
+  test "[API SMOKE TEST] get the today feed: use `VERBOSE=true rake test` to see json" do
+    get api_v1_today_url, as: :json
     expected_response = file_fixture("today_fixture.json").read
     pretty_json(expected_response, response.body) if ENV['VERBOSE']
     assert_json(expected_response, response.body, 

@@ -11,8 +11,9 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create a card with a card_type param" do
+    user = create_stub_user
     assert_difference('Card.count') do
-      post cards_stacked_inspiration_cards_url, 
+      post cards_stacked_inspiration_cards_url(as: user),
         params: { cards_stacked_inspiration_card: { 
           card_type: @card.type,
           bookmarkable: @card.bookmarkable, 
@@ -21,12 +22,14 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
           image_filename: file_fixture("card_fixture.png").to_s,
           text: @card.text 
         } }
+      # puts response.body.inspect
     end
 
     assert_redirected_to cards_stacked_inspiration_card_url(Card.find_by(text: "cards_controller_test"))
   end
 
-  def cleanup 
+  def cleanup
     Card.all.each { |c| c.destroy }
+    User.all.each { |u| u.destroy }
   end
 end

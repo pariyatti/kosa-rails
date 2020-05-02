@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   ## Mobile App API ##
   ####################
 
-  scope :api, module: 'api' do
+  namespace :api, module: 'api' do
     # Please only bump versions for a new release to the public.
     # If we do this right we'll only have two versions: v1 and v2.
     namespace :v1 do
