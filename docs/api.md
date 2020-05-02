@@ -42,7 +42,6 @@ None - we'll try to implement real APIs over neo4j now but we might stub APIs if
 
 ```
 http://localhost:3000/api/today.json
-http://localhost:3000/api/topics.json
 ```
 
 ## Working (Examples) ##
@@ -57,22 +56,11 @@ http://localhost:3000/api/topics.json
 
 # `Card` is heterogeneous based on its sub-type.
 # It's possible we should consider implementing something like https://jsonfeed.org
-
-/api/topics.json
-
-=> [{"topic": Topic}, {"topic": Topic}, {"topic": Topic}, ... ]
 ```
 
 ### User Objects ###
 
 ```
-Topic
-=> {"created_at":"2020-04-10T14:00:30.000+00:00",
-    "updated_at":"2020-04-10T14:00:30.000+00:00",
-    "name":"Anxiety",
-    "id":"0d03c74d-1b48-4242-9922-03dc8d6aea86"}
-
-
 Card (superclass):
 => {"id": "3386076e-566c-4acc-9816-3514e192852f", 
     "type": "", 
