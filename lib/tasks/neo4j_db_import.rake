@@ -7,15 +7,15 @@ namespace :neo4j do
     desc "Import data from CSV"
       task :import do
       CSV.foreach(Rails.root.join('db/excerpts.csv'), headers: true) do |row|
-        topic = Topic.find_by(name: row[0])
-        audience = Audience.find_by(name: row[1])
-        author = Author.find_by(name: row[2])
+        topic = Metadata::Topic.find_by(name: row[0])
+        audience = Metadata::Audience.find_by(name: row[1])
+        author = Metadata::Author.find_by(name: row[2])
         # TODO: this is almost certainly a mistake... some of these authors'
         #       names are wonky in the CSV but it's fine for now -sd
-        Author.create(name: row[2]) unless author
+        Metadata::Author.create(name: row[2]) unless author
 
         if row[5] and not row[5].strip.empty?
-          Excerpt.create! do |e|
+          Artefacts::Excerpt.create! do |e|
             e.topic = topic
             e.audience = audience
             e.author = author

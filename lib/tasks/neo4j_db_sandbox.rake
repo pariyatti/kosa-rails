@@ -12,7 +12,7 @@ namespace :neo4j do
 
       puts "Creating some Images..."
       img_files.each do |img|
-        i = ImageArtefact.new()
+        i = Artefacts::Image.new()
         i.image = File.open(img)
         i.save!
       end
