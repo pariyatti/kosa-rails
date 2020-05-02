@@ -88,6 +88,8 @@ rake neo4j:db:sample # if you want example data for development
 rails s
 ```
 
+Visit [http://localhost:3000](http://localhost:3000)
+
 #### Run the tests
 
 ```

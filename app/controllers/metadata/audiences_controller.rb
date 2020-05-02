@@ -1,6 +1,7 @@
 class Metadata::AudiencesController < ApplicationController
   before_action :set_audience, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
+  
   # GET /audiences
   # GET /audiences.json
   def index

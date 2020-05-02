@@ -14,7 +14,7 @@ namespace :neo4j do
         "Parents",
         "Unwell" ]
       AUDIENCES.each do |name|
-        Audience.create(name: name) if Audience.find_by(name: name).nil?
+        Metadata::Audience.create(name: name) if Metadata::Audience.find_by(name: name).nil?
       end
 
       puts "Seeding default Topics..."
@@ -28,7 +28,7 @@ namespace :neo4j do
         "Mental Health",
         "Kamma (Karma)" ]
       TOPICS.each do |name|
-        Topic.create(name: name) if Topic.find_by(name: name).nil?
+        Metadata::Topic.create(name: name) if Metadata::Topic.find_by(name: name).nil?
       end
     end
   end

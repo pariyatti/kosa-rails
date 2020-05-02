@@ -1,6 +1,7 @@
 class Artefacts::ExcerptsController < ApplicationController
   before_action :set_excerpt, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
+  
   # GET /excerpts
   # GET /excerpts.json
   def index

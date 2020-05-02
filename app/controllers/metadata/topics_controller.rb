@@ -1,6 +1,7 @@
 class Metadata::TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
+  
   # GET /topics
   # GET /topics.json
   def index

@@ -1,5 +1,6 @@
 class Artefacts::ImagesController < ApplicationController
   before_action :set_image_artefact, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   def index
     @image_artefacts = Artefacts::Image.all

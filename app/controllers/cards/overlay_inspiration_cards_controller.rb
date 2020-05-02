@@ -1,6 +1,7 @@
 class Cards::OverlayInspirationCardsController < CardsController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
+  
   def show
   end
 
