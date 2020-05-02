@@ -18,7 +18,7 @@ Follow the instructions under [Development](https://github.com/pariyatti/kosa#de
 
 ### Option 2: Use the Sandbox server
 
-`http://139.59.41.132` - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
+[http://kosa-sandbox.pariyatti.org](http://kosa-sandbox.pariyatti.org) - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
 
 ## Development
 
@@ -70,6 +70,35 @@ update-java-alternatives --list # => java-1.11.0-openjdk-amd64
 sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
 ```
 
+#### Setup Rails
+
+```
+cd kosa
+bundle install
+rails webpacker:install
+
+# Neo4j uses a separate instance for each database:
+rake neo4j:install[community-3.5.17,development]
+rake neo4j:config[development,7005]
+rake neo4j:start[development]
+rake neo4j:migrate
+rake neo4j:db:setup
+rake neo4j:db:sample # if you want example data for development
+
+rails s
+```
+
+#### Run the tests
+
+```
+rake neo4j:install[community-3.5.17,test]
+rake neo4j:config[test,7008]
+rake neo4j:start[test]
+RAILS_ENV=test rake neo4j:migrate
+
+rake test
+```
+
 #### (VERY OPTIONAL) Install Neo4j
 
 You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with. It's strongly recommended that you use `rake neo4j:install` for development and test environments.
@@ -94,29 +123,6 @@ You don't absolutely need to install Neo4j Desktop but it's a neat way of lookin
 dbms.security.auth_enabled=false
 dbms.connector.bolt.listen_address=:7003
 dbms.connector.http.listen_address=:7001
-```
-
-#### Setup Rails
-
-```
-cd kosa
-bundle install
-rails webpacker:install
-
-# Neo4j uses a separate instance for each database:
-rake neo4j:install[community-3.5.17,development]
-rake neo4j:config[development,7005]
-rake neo4j:start[development]
-rake neo4j:migrate
-rake neo4j:db:setup
-rake neo4j:db:sample # if you want example data for development
-
-rake neo4j:install[community-3.5.17,test]
-rake neo4j:config[test,7008]
-rake neo4j:start[test]
-RAILS_ENV=test rake neo4j:migrate
-
-rake test
 ```
 
 ## Old RSS Feeds

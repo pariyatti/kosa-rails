@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   end
 
   scope :api, module: 'api' do
-    get '/today', to: 'today#index'
+    # Please only bump versions for a new release to the public.
+    # If we do this right we'll only have two versions: v1 and v2.
+    namespace :v1 do
+      get '/today', to: 'today#index'
+    end
   end
 
   root 'application#index'
