@@ -11,7 +11,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create a card with a card_type param" do
-    user = create_stub_user
+    user = stub_user
     assert_difference('Card.count') do
       post cards_stacked_inspiration_cards_url(as: user),
         params: { cards_stacked_inspiration_card: { 

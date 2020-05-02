@@ -12,12 +12,20 @@
   <body>
     <div class="user-header">
       <% if signed_in? %>
-        <%= current_user.email %>
-        <%= button_to "Sign out", sign_out_path, method: :delete %>
+        <div class="user-email"><%= current_user.email %></div>
+        <div><%= link_to "Change Password", edit_user_password_path(current_user), data: { confirm: 'Are you sure?' } %></div>
+        <div><%= button_to "Sign out", sign_out_path, method: :delete %></div>
       <% else %>
         <%= link_to "Sign in", sign_in_path %>
       <% end %>
     </div>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

@@ -1,6 +1,6 @@
 
 module Stubs
-  def create_stub_user
+  def stub_user
     u = User.new
     u.email = "stub@test.org"
     u.password = "stub"

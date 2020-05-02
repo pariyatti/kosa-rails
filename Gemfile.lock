@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pariyatti/clearance
-  revision: 5f8de70566c0c7bd86dde80929ab62b548c4d655
+  revision: 810836fd0e0e3e672ba80d123c3b37de90534b1e
   specs:
     clearance (2.1.0)
       actionmailer (>= 5.0)
