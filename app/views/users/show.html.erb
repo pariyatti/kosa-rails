@@ -1,0 +1,10 @@
+<div class="user-account">
+  <h1><%= @user.email %></h1>
+
+  <div>Admin: <%= @user.admin? %></div>
+  <div><%= link_to 'Change Password', edit_user_password_path(@user) %></div>
+
+  <br>
+
+  <div><%= link_to 'Back to Users List', users_path %>
+</div>

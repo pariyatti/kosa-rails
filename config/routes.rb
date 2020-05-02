@@ -27,27 +27,35 @@ Rails.application.routes.draw do
   end
 
 
-  ###############
-  ## Clearance ##
-  ###############
+  #################
+  ##  Clearance  ##
+  #################
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "clearance/users", only: [:create] do
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+
+
+  ########################
+  ##  Custom Clearance  ##
+  ########################
+
+  resources :users, controller: "users", only: [:index, :new, :create, :show] do
     resource :password,
       controller: "clearance/passwords",
       only: [:edit, :update]
   end
 
-  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
-  get "/sign_up" => "clearance/users#new", as: "sign_up"
+  # We intentionally do not have a "sign up" flow. A new user must be created by
+  # an existing Admin User.
+  # get "/sign_up" => "users#new", as: "sign_up"
 
 
-  ####################
-  ## Mobile App API ##
-  ####################
+  ######################
+  ##  Mobile App API  ##
+  ######################
 
   namespace :api, module: 'api' do
     # Please only bump versions for a new release to the public.

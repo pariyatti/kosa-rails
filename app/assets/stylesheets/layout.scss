@@ -1,15 +1,28 @@
 
-.user-header {
-  text-align: right;
+.layout-header {
   background-color: burlywood;
   padding: 10px;
 
-  div {
-    padding: 5px
+  .layout-logo {
+    display:inline-block;
+    vertical-align: top;
+    width: 30%;
   }
 
-  .user-email {
-    font-size: large;
-    font-weight: bold;
+  .user-header {
+    vertical-align: top;
+    width: 50%;
+    float: right;
+    text-align: right;
+
+    div {
+      padding: 5px
+    }
+
+    .user-email {
+      font-size: large;
+      font-weight: bold;
+    }
   }
+
 }
