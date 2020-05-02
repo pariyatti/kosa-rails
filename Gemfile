@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'dotenv-rails'
 gem 'neo4j', '~> 9.6.0'
+gem 'neo4j-rake_tasks' # not a dev gem; needed for deployment
 gem 'carrierwave', '~> 2.1.0'
 gem 'carrierwave-neo4j', '~> 3.0.1', git: 'https://github.com/pariyatti/carrierwave-neo4j'
 gem 'clearance', '~> 2.1.0', git: 'https://github.com/pariyatti/clearance'
@@ -31,7 +32,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'neo4j-rake_tasks'
 end
 
 group :development do
