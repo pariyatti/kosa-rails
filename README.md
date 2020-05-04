@@ -2,6 +2,11 @@
 
 Kosa is a library, editorial, and publishing service.
 
+## Design Wireframes
+
+- [Publisher](https://whimsical.com/4tTbGHDiYkYXj7cUnTBSTb)
+- [Library](https://whimsical.com/6LN2LDkv1bRyyuojyiJ8oV)
+
 ## Architectural Thinking
 
 - [The Pariyatti Data Model](https://github.com/pariyatti/agga/blob/master/docs/data-models.pdf)
