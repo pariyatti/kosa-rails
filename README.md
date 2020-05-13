@@ -132,6 +132,30 @@ dbms.connector.bolt.listen_address=:7003
 dbms.connector.http.listen_address=:7001
 ```
 
+### Windows
+```
+git clone git@github.com:pariyatti/kosa.git
+cd kosa
+```
+
+### Install Ruby
+```
+- Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.7.1-1 (x64))
+- Pick the default options for MYSYS install
+```
+
+### Install Yarn
+
+You will need node for this. You can [install node]() here
+```
+npm install -g yarn
+```
+
+### Install Java
+
+- You will need to install JDK11 from [RedHat](https://developers.redhat.com/products/openjdk/download)
+
+
 ## Old RSS Feeds
 
 - [Dhamma Podcast Feed](http://feeds.pariyatti.org/dhammapodcasts)
