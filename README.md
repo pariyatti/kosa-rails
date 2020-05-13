@@ -142,6 +142,8 @@ cd kosa
 ```
 - Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.6.6-1 (x64))
 - Pick the default options for MYSYS install
+
+gem install bundler
 ```
 
 ### Install Yarn
