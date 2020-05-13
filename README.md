@@ -17,13 +17,17 @@ Kosa is a library, editorial, and publishing service.
 
 The Pariyatti mobile app will consume the API as specified [here](https://github.com/pariyatti/kosa/blob/master/docs/api.md).
 
-### Option 1: Set up a local development server
+### Option 1: Use the Sandbox server
+
+[http://kosa-sandbox.pariyatti.org](http://kosa-sandbox.pariyatti.org) - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
+
+### Option 2: Set up a local development server
 
 Follow the instructions under [Development](https://github.com/pariyatti/kosa#development). Use this option if you need to modify or debug the server itself.
 
-### Option 2: Use the Sandbox server
+## Deployment
 
-[http://kosa-sandbox.pariyatti.org](http://kosa-sandbox.pariyatti.org) - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
+Deployment instructions: [`/deployment/README.md`](https://github.com/pariyatti/kosa/blob/master/deployment/README.md)
 
 ## Development
 
