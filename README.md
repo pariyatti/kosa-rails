@@ -140,7 +140,7 @@ cd kosa
 
 ### Install Ruby
 ```
-- Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.7.1-1 (x64))
+- Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.6.6-1 (x64))
 - Pick the default options for MYSYS install
 ```
 
