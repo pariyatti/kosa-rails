@@ -64,6 +64,7 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
 sudo apt-get install yarn
+yarn install --check-files
 ```
 
 #### Install Java
@@ -151,6 +152,7 @@ gem install bundler
 You will need node for this. You can [install node]() here
 ```
 npm install -g yarn
+yarn install --check-files
 ```
 
 ### Install Java
