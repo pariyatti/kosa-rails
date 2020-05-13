@@ -103,8 +103,8 @@ yarn install --check-files
 ```
 git clone git@github.com:pariyatti/kosa.git
 cd kosa
-bundle install
-rails webpacker:install    # on Windows, you will see a warning about circular dependencies - ignore
+bundle install          # on Windows, you will see a warning about circular dependencies - ignore
+rails webpacker:install # on Windows, choose "no" for all the files it wants to replace
 
 # Neo4j uses a separate instance for each database:
 rake neo4j:install[community-3.5.17,development]    # use Neo4j Desktop on Windows, for now
