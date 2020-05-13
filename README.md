@@ -35,19 +35,12 @@ There is a lot of old `Neo4j.rb` documentation out there. Use these:
 - https://gitter.im/neo4jrb/neo4j (look for @klobuczek and @amitTheSongadya_twitter)
 - https://neo4j.com/developer/ruby/
 
-### Linux (Ubuntu 19.10)
-
-#### Prepare
-
-```
-git clone git@github.com:pariyatti/kosa.git
-cd kosa
-sudo apt-get update
-```
+### Linux Dev Setup (Ubuntu 19.10)
 
 #### Install Ruby
 
 ```
+sudo apt-get update
 sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 rbenv init # follow the instructions
@@ -64,27 +57,57 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
 sudo apt-get install yarn
+yarn install --check-files    # prevents the "integrity check" error
+```
+
+#### Install Java
+
+OpenJDK 8 is recommended by Neo4j. OpenJDK 11 is the highest "supported" version but OpenJDK 14 seems to work fine.
+
+```
+sudo apt install openjdk-11-jdk
+java --version                     # => openjdk 11.0.6 2020-01-14
+update-java-alternatives --list    # => java-1.11.0-openjdk-amd64
+sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
+```
+
+### Windows Dev Setup
+
+#### Install Ruby
+
+- Use the `Ruby+Devkit 2.6.6-1 (x64)` [RubyInstaller](https://rubyinstaller.org/downloads/). Ruby 2.7 **does not work** on Windows due to a nokogiri conflict. Pick the default options for the MYSYS install.
+
+```
+gem install bundler
+```
+
+#### Install Yarn
+
+- [Install Node.js](https://nodejs.org/en/download/) using the Windows .msi installer.
+
+```
+npm install -g yarn
 yarn install --check-files
 ```
 
 #### Install Java
 
-```
-sudo apt install openjdk-11-jdk
-java --version                  # => openjdk 11.0.6 2020-01-14
-update-java-alternatives --list # => java-1.11.0-openjdk-amd64
-sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
-```
+- Install OpenJDK 11 from [the RedHat .msi installer](https://developers.redhat.com/products/openjdk/download). If you have an existing Java install (> Java 8) that should also work.
 
-#### Setup Rails
+#### Install Neo4j Desktop
+
+- See instructions: [(VERY OPTIONAL) Install Neo4j Desktop](https://github.com/pariyatti/kosa/blob/master/README.md#very-optional-install-neo4j-desktop)
+
+### Kosa Dev Setup (common to all OSes)
 
 ```
+git clone git@github.com:pariyatti/kosa.git
 cd kosa
 bundle install
-rails webpacker:install
+rails webpacker:install    # on Windows, you will see a warning about circular dependencies - ignore
 
 # Neo4j uses a separate instance for each database:
-rake neo4j:install[community-3.5.17,development]
+rake neo4j:install[community-3.5.17,development]    # use Neo4j Desktop on Windows, for now
 rake neo4j:config[development,7005]
 rake neo4j:start[development]
 rake neo4j:migrate
@@ -96,7 +119,7 @@ rails s
 
 Visit [http://localhost:3000](http://localhost:3000)
 
-#### Run the tests
+### Kosa Test Setup (common to all OSes)
 
 ```
 rake neo4j:install[community-3.5.17,test]
@@ -107,9 +130,11 @@ RAILS_ENV=test rake neo4j:migrate
 rake test
 ```
 
-#### (VERY OPTIONAL) Install Neo4j
+### (VERY OPTIONAL) Install Neo4j
 
-You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with. It's strongly recommended that you use `rake neo4j:install` for development and test environments.
+- **Strongly prefer `rake neo4j:install` on Linux and OSX**
+
+You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with.
 
 ```
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
@@ -119,7 +144,9 @@ sudo apt-get update
 sudo apt-get install neo4j
 ```
 
-#### (VERY OPTIONAL) Install Neo4j Desktop
+### (VERY OPTIONAL) Install Neo4j Desktop
+
+- **Strongly prefer `rake neo4j:install` on Linux and OSX**
 
 You don't absolutely need to install Neo4j Desktop but it's a neat way of looking at your Neo4j database with the visualization tools.
 
@@ -132,33 +159,6 @@ dbms.security.auth_enabled=false
 dbms.connector.bolt.listen_address=:7003
 dbms.connector.http.listen_address=:7001
 ```
-
-### Windows
-```
-git clone git@github.com:pariyatti/kosa.git
-cd kosa
-```
-
-### Install Ruby
-```
-- Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.6.6-1 (x64))
-- Pick the default options for MYSYS install
-
-gem install bundler
-```
-
-### Install Yarn
-
-You will need node for this. You can [install node]() here
-```
-npm install -g yarn
-yarn install --check-files
-```
-
-### Install Java
-
-- You will need to install JDK11 from [RedHat](https://developers.redhat.com/products/openjdk/download)
-
 
 ## Old RSS Feeds
 
