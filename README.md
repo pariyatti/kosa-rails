@@ -96,7 +96,7 @@ yarn install --check-files
 
 #### Install Neo4j Desktop
 
-- See instructions: [(VERY OPTIONAL) Install Neo4j Desktop](https://github.com/pariyatti/kosa/blob/master/README.md#very-optional-install-neo4j-desktop)
+- See instructions: [(VERY OPTIONAL) Install Neo4j Desktop](https://github.com/pariyatti/kosa/#very-optional-install-neo4j-desktop)
 
 ### Kosa Dev Setup (common to all OSes)
 
