@@ -1,28 +1,32 @@
 
-.layout-header {
-  background-color: burlywood;
-  padding: 10px;
+@import 'colors';
+@import 'base';
 
-  .layout-logo {
-    display:inline-block;
-    vertical-align: top;
-    width: 30%;
+#clearance {
+  display: flex;
+  flex-direction: column;
+  
+  width: 40%;
+  margin: 1rem auto;
+
+  h2 {
+    font-size: 1.776rem;
+    line-height: 1.44em;
+    color: $logo-dark;
+    text-align: center;
   }
 
-  .user-header {
-    vertical-align: top;
-    width: 50%;
-    float: right;
-    text-align: right;
+  form {
+    width: 100%;
+    margin-top: 1rem;
 
-    div {
-      padding: 5px
-    }
+    input {
+      width: 100%;
+      height: 2.5rem;
+      margin-bottom: 1rem;
 
-    .user-email {
-      font-size: large;
-      font-weight: bold;
+      border: 1px solid rgba($color: $black, $alpha: .4);
+      outline: none;
     }
   }
-
 }
