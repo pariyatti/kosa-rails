@@ -1,5 +1,16 @@
 @import 'base';
 
+/*
+This file has high level classes that are repeated and used everywhere
+*/
+
+/*
+-----------------
+#################
+Main Container - This element is the highest parent
+#################
+-----------------
+*/
 .main-container {
     max-width: 100%;
     background: $white;
@@ -8,8 +19,19 @@
     padding: 1rem;
     margin-top: 2.5rem;
     border-radius: 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/*
+-----------------
+#################
+Header - This includes, logo, links, and user actions. Is the same on every page
+#################
+-----------------
+*/
 .header {
     display: flex;
     justify-content: space-between;

@@ -1,6 +1,10 @@
 @import 'colors';
 @import 'typography';
 
+/*
+This file should have only element level css. Ideally shouldn't have classes and should not have children elements
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +17,13 @@ body {
     background: lighten($color: $cream, $amount: 8%);
 }
 
+/*
+-----------------
+#################
+Links and its states
+#################
+-----------------
+*/
 a.link {
     font-size: 1rem;
     text-decoration: underline;
@@ -20,5 +31,34 @@ a.link {
 
     &:hover {
         background: #1AAE9F;
+    }
+}
+
+/*
+-----------------
+#################
+Input and button elements
+#################
+-----------------
+*/
+input {
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+
+    border: 1px solid rgba($color: $black, $alpha: .4);
+    border-radius: 2px;
+    outline: none;
+
+    &[type="submit"] {
+        // button
+        background: $green;        
+        color: $white;
+        border: 1px solid darken($color: $green, $amount: 10%);
+    }
+
+    &:focus {
+        border: 2px solid $green;
+        box-shadow: 0 0 3px rgba($color: $green, $alpha: 0.24);
     }
 }
