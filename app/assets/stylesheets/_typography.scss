@@ -1,33 +1,50 @@
 /*
 This file has font related elements
+Naming convention:
+fs: font size
+xl: extra large
+l : large
+m : medium
+r : regular
+s : small
+xs: extra small
 */
 
-h1,h2,h3,h4,h5,h6 {
+@mixin fs-xl {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
-}
-
-h1 {
     font-size: 2.368rem; // ~38px
     line-height: 1em;
 }
 
-h2 {
+@mixin fs-l {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-size: 1.776rem; // ~28px
     line-height: 1.4em;
 }
 
-h3 {
+@mixin fs-m {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-size: 1.333rem; // ~22px
     line-height: 1.5em;
 }
 
-h4 {
+@mixin fs-r {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-size: 1rem; // 16px
     line-height: 1.65em;
 }
 
-h5, h6 {
+@mixin fs-s {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-size: 0.75rem; // 12px
+    text-transform: uppercase;
+    line-height: 1.65em;
+}
+
+@mixin fs-xs {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 0.60rem; // 10px
+    font-weight: 400;
     text-transform: uppercase;
     line-height: 1.65em;
 }
