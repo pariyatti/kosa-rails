@@ -14,6 +14,18 @@ SIGN IN
 -----------------
 */
 
+.meditate-illustration {
+  position: fixed;
+  bottom: -150px;
+  left: 50%;
+
+  .meditate {
+    position: relative;
+    bottom: 0;
+    left: -50%;
+  }
+}
+
 #flash .flash {
   padding: 0.5rem;
   align-self: center;
