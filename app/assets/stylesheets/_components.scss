@@ -7,6 +7,29 @@ This file has high level classes that are repeated and used everywhere
 /*
 -----------------
 #################
+Flash Message - This element is the flash message that appears on success or error
+This is temporarily moved here, depending on further layout implementations, and whether the following css holds true, we'll decide where to move this
+#################
+-----------------
+*/
+#flash {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+
+    .flash {
+        position: relative;
+        left: -50%;
+        padding: 0.5rem;
+        background: $red;
+        color: $white;
+        box-shadow: 0 0 12px rgba($color: $black, $alpha: 0.24);
+    }
+}
+
+/*
+-----------------
+#################
 Main Container - This element is the highest parent
 #################
 -----------------
@@ -37,7 +60,7 @@ Header - This includes, logo, links, and user actions. Is the same on every page
     justify-content: space-between;
     align-items: center;
 
-    padding-bottom: 1rem;
+    padding-bottom: 1rem; // 16px
     border-bottom: 1px solid lighten($black, 88%);
     background: $white;
 
@@ -45,12 +68,12 @@ Header - This includes, logo, links, and user actions. Is the same on every page
         a {
             display: inline-block;
             vertical-align: middle;
-            margin-right: 0.75rem;
+            margin-right: 0.75rem; // 12px
         }
 
         span {
-            font-size: 1.776rem;
             color: $logo-dark;
+            @include fs-r; // 16px
         }
     }
 }
