@@ -32,7 +32,7 @@ SIGN IN
 
   width: 40%;
   align-self: center;
-  padding: 2rem 0;
+  padding: 2rem 0; //32px 0
 
   h2 {
     @include fs-l;
@@ -44,7 +44,7 @@ SIGN IN
 
   .form-sign-in {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1rem; //16px
 
     label {
       @include fs-xs; //10px
