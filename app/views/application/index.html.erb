@@ -2,39 +2,82 @@
     <p>Links that don't work simply haven't been implemented yet. :)</p>
 </div>
 
-<h2>Mobile App</h2>
+<div class="section-pariyatti mobile-app">
+    <div class="section-heading">
+        <h2>Mobile App</h2>
+        <span class="sub-title">Use the links below to create and publish content to the Pariyatti mobile app.</span>
+    </div>
+    <ul>
+        <li><%= link_to "Manage Cards", cards_path %></li>
+        <li>Pages</li>
+    </ul>
+</div>
 
-Use the links below to create and publish content to the Pariyatti mobile app.
+<div class="section-pariyatti library">
+    <div class="section-heading">
+        <h2>Library Artefacts</h2>
+    </div>
+    <div class="library-sections">
+        <div class="library-documents">
+            <div class="list-heading">
+                <h3>Documents:</h3>
+            </div>
+            <ul>
+                <li>
+                    <%= link_to "Excerpts", artefacts_excerpts_path %>
+                    <span class="sub-title">(book, essay, article, transcripts, excerpt, quote)</span>
+                </li>
+            </ul>
+        </div>
+        <div class="library-media">
+            <div class="list-heading">
+                <h3>Media:</h3>
+                <p></p>
+            </div>
+            <ul>
+                <li><%= link_to "Images", artefacts_images_path %></li>
+                <li>Audio</li>
+                <li>Videos</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<div><%= link_to "Manage Cards", cards_path %></div>
-<div>Pages</div>
+<div class="section-pariyatti metadata-concrete">
+    <div class="section-heading">
+        <h2>Metadata: Concrete</h2>
+    </div>
+    <ul>
+        <li><%= link_to "Authors", metadata_authors_path %></li>
+        <li>Locations</li>
+    </ul>
+</div>
 
-<h2>Library Artefacts</h2>
+<div class="section-pariyatti metadata-abstract">
+    <div class="section-heading">
+        <h2>Metadata: Abstract</h2>
+    </div>
+    <ul>
+        <li><%= link_to "Audiences", metadata_audiences_path %></li>
+        <li><%= link_to "Topics", metadata_topics_path %></li>
+        <li>Collections</li>
+    </ul>
+</div>
 
-<h3>Documents:</h3>
-<div>(book, essay, article, transcripts, excerpt, quote)</div>
-<div><%= link_to "Excerpts", artefacts_excerpts_path %></div>
+<div class="section-pariyatti kosa-admin">
+    <div class="section-heading">
+        <h2>Kosa Admin</h2>
+    </div>
+    <ul>
+        <li><%= link_to "Users List", users_path %></li>
+    </ul>
+</div>
 
-<h3>Media:</h3>
-<div><%= link_to "Images", artefacts_images_path %></div>
-<div>Audio</div>
-<div>Videos</div>
-
-<h2>Metadata: Concrete</h2>
-
-<div><%= link_to "Authors", metadata_authors_path %></div>
-<div>Locations</div>
-
-<h2>Metadata: Abstract</h2>
-
-<div><%= link_to "Audiences", metadata_audiences_path %></div>
-<div><%= link_to "Topics", metadata_topics_path %></div>
-<div>Collections</div>
-
-<h2>Kosa Admin</h2>
-
-<div><%= link_to "Users List", users_path %></div>
-
-<h2>Test the APIs (for developers)</h2>
-
-<div><a href="/api/v1/today.json">/api/today.json</a></div>
+<div class="section-pariyatti test-apis">
+    <div class="section-heading">
+        <h2>Test the APIs (for developers)</h2>
+    </div>
+    <ul>
+        <li><a href="/api/v1/today.json">/api/today.json</a></li>
+    </ul>
+</div>
