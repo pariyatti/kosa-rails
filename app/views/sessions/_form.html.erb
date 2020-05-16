@@ -1,12 +1,12 @@
 <%= form_for :session, html: {class: 'form-sign-in'}, url: session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
-    <%= form.text_field :email, type: 'email', autofocus: 'true', placeholder: 'Enter your email' %>
+    <%= form.text_field :email, type: 'email', autofocus: 'true' %>
   </div>
 
   <div class="password-field">
     <%= form.label :password %>
-    <%= form.password_field :password, placeholder: 'Enter your password for Pariyatti' %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="submit-field">
