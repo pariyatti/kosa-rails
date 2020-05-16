@@ -18,8 +18,8 @@
       </div>
       <div class="header-user">
         <% if signed_in? %>
-          <div class="user-email"><%= current_user.email %></div>
-          <div><%= link_to "Change Password", edit_user_password_path(current_user), data: { confirm: 'Are you sure?' } %></div>
+          <p class="user-email"><%= current_user.email %></p>
+          <%= link_to "Change Password", edit_user_password_path(current_user), data: { confirm: 'Are you sure?' }, class:'link change-password' %>
           <div><%= button_to "Sign out", sign_out_path, method: :delete %></div>
         <% else %>
           <div>

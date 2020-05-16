@@ -77,6 +77,25 @@ Header - This includes, logo, links, and user actions. Is the same on every page
             @include fs-r; //16px
         }
     }
+
+    .header-user {
+        display: flex;
+        align-items: center;
+
+        p.user-email {
+            @include fs-r;
+            margin: 0;
+            padding: 0;
+        }
+
+        .link.change-password {
+            margin: 0 1rem;
+        }
+
+        input[type="submit"] {
+            margin-bottom: 0;
+        }
+    }
 }
 
 
