@@ -17,6 +17,10 @@ body {
     background: lighten($color: $cream, $amount: 8%);
 }
 
+a, p, li {
+    @include fs-r;
+}
+
 /*
 -----------------
 #################
@@ -24,13 +28,14 @@ Links and its states
 #################
 -----------------
 */
-a.link {
-    @include fs-r;
-    text-decoration: underline;
-    color: rgba($color: $black, $alpha: .87);
+a {
+    color: $green;
+    padding: 1px 0;
+    text-decoration: none;
+    border-bottom: 1px dashed;
 
     &:hover {
-        background: #1AAE9F;
+        background: rgba($color: $green, $alpha: 0.12);
     }
 }
 
@@ -71,5 +76,18 @@ input {
     &:focus {
         border: 1px solid $green;
         box-shadow: 0 0 3px rgba($color: $green, $alpha: 0.24);
+    }
+}
+
+/*
+-----------------
+#################
+List items
+#################
+-----------------
+*/
+ul {
+    li {
+        list-style-type: none;
     }
 }
