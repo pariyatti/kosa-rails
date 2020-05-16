@@ -98,4 +98,39 @@ Header - This includes, logo, links, and user actions. Is the same on every page
     }
 }
 
+/*
+-----------------
+#################
+Info - These are non-dismissible info bars.
+There are four types:
+- success
+- warning
+- error
+- neutral
+#################
+-----------------
+*/
+.info {
+    padding: 0.5rem 1rem; //8px 16px
+    border-radius: 2px;
 
+    &.warning {
+        background: lighten($color: $yellow, $amount: 45%);
+        border: 1px solid $yellow;
+    }
+
+    &.success {
+        background: lighten($color: $green, $amount: 45%);
+        border: 1px solid $green;
+    }
+
+    &.error {
+        background: lighten($color: $red, $amount: 45%);
+        border: 1px solid $red;
+    }
+
+    &.neutral {
+        background: lighten($color: $brown, $amount: 45%);
+        border: 1px solid $brown;
+    }
+}
