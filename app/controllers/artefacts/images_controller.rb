@@ -1,4 +1,4 @@
-class Artefacts::ImagesController < ApplicationController
+class Artefacts::ImagesController < LibraryController
   before_action :set_image_artefact, only: [:show, :edit, :update, :destroy]
   before_action :require_login
 

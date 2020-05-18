@@ -2,7 +2,24 @@
 
 Rails.application.routes.draw do
 
-  root 'application#index'
+  root :to => redirect('/publisher')
+
+  get "/publisher" => "publisher#index", as: "publisher"
+  get "/library" => "library#index", as: "library"
+  get "/settings" => "settings#index", as: "settings"
+
+  #################
+  ##  Publisher  ##
+  #################
+
+  resources :cards, only: [:index] do
+    post :publish, on: :member
+    post :draft, on: :member
+  end
+
+  #################
+  ##   Library   ##
+  #################
 
   namespace :artefacts do
     resources :excerpts
@@ -21,10 +38,10 @@ Rails.application.routes.draw do
     resources :pali_word_cards
   end
 
-  resources :cards, only: [:index] do
-    post :publish, on: :member
-    post :draft, on: :member
-  end
+
+  #################
+  ##  Settings   ##
+  #################
 
 
   #################
@@ -34,23 +51,16 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
-
-
-  ########################
-  ##  Custom Clearance  ##
-  ########################
-
   resources :users, controller: "users", only: [:index, :new, :create, :show] do
     resource :password,
       controller: "clearance/passwords",
       only: [:edit, :update]
   end
 
-  # We intentionally do not have a "sign up" flow. A new user must be created by
-  # an existing Admin User.
-  # get "/sign_up" => "users#new", as: "sign_up"
+  # We intentionally do not have a "sign up" flow. 
+  # A new user must be created by an existing Admin User.
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
 
 
   ######################

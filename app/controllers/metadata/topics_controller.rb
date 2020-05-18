@@ -1,4 +1,4 @@
-class Metadata::TopicsController < ApplicationController
+class Metadata::TopicsController < LibraryController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   

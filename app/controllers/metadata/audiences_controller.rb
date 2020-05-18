@@ -1,4 +1,4 @@
-class Metadata::AudiencesController < ApplicationController
+class Metadata::AudiencesController < LibraryController
   before_action :set_audience, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   
