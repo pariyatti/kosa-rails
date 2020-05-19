@@ -162,7 +162,7 @@ sudo apt-get install neo4j
 You don't absolutely need to install Neo4j Desktop but it's a neat way of looking at your Neo4j database with the visualization tools.
 
 - Install from: https://neo4j.com/download/
-- Create a `Pariyatti` project with a db named `kosa3`.
+- Create a `Pariyatti` project with a db named `kosa3`. You must create a Neo4j 3.5.17 db. If you try to use Neo4j 4.0.x you will see the infamous `Couldn't agree on a version (Sent versions [1, 0, 0, 0])` error when you run `neo4j:migrate`.
 - Change the following lines in the `Settings` tab:
 
 ```
