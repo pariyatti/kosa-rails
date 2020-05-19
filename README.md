@@ -111,7 +111,7 @@ bundle install          # Windows: you will see a warning about circular depende
 rails webpacker:install # Windows: choose "no" for all the files it wants to replace
 
 # Install a Neo4j development db. You need a separate instance for each database.
-# Windows: Ignore this. Use Neo4j Desktop on Windows for now.
+# Windows: Ignore `:install` / `:configure` / `:start`. Use Neo4j Desktop on Windows.
 rake neo4j:install[community-3.5.17,development]
 rake neo4j:config[development,7005]
 rake neo4j:start[development]
@@ -130,7 +130,7 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 ```
 # Install a Neo4j test db. You need a separate instance for each database.
-# Windows: Ignore this. Use Neo4j Desktop on Windows for now.
+# Windows: Ignore `:install` / `:configure` / `:start`. Use Neo4j Desktop on Windows.
 rake neo4j:install[community-3.5.17,test]
 rake neo4j:config[test,7008]
 rake neo4j:start[test]
