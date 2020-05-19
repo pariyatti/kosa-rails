@@ -107,13 +107,16 @@ yarn install --check-files
 ```
 git clone git@github.com:pariyatti/kosa.git
 cd kosa
-bundle install          # on Windows, you will see a warning about circular dependencies - ignore
-rails webpacker:install # on Windows, choose "no" for all the files it wants to replace
+bundle install          # Windows: you will see a warning about circular dependencies - ignore
+rails webpacker:install # Windows: choose "no" for all the files it wants to replace
 
-# Neo4j uses a separate instance for each database:
-rake neo4j:install[community-3.5.17,development]    # use Neo4j Desktop on Windows, for now
+# Install a Neo4j development db. You need a separate instance for each database.
+# Windows: Ignore this. Use Neo4j Desktop on Windows for now.
+rake neo4j:install[community-3.5.17,development]
 rake neo4j:config[development,7005]
 rake neo4j:start[development]
+
+# Configure Neo4j development db
 rake neo4j:migrate
 rake neo4j:db:setup
 rake neo4j:db:sample # if you want example data for development
@@ -126,9 +129,13 @@ Visit [http://localhost:3000](http://localhost:3000)
 ### Kosa Test Setup (common to all OSes)
 
 ```
+# Install a Neo4j test db. You need a separate instance for each database.
+# Windows: Ignore this. Use Neo4j Desktop on Windows for now.
 rake neo4j:install[community-3.5.17,test]
 rake neo4j:config[test,7008]
 rake neo4j:start[test]
+
+# Configure Neo4j test db
 RAILS_ENV=test rake neo4j:migrate
 
 rake test
