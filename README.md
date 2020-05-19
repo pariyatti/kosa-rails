@@ -167,8 +167,11 @@ You don't absolutely need to install Neo4j Desktop but it's a neat way of lookin
 
 ```
 dbms.security.auth_enabled=false            # no auth in dev
+dbms.connector.bolt.enabled=true            # turn on bolt
+dbms.connector.bolt.tls_level=OPTIONAL      # turn off SSL
 dbms.connector.bolt.listen_address=:7003    # avoid port conflicts
-dbms.connector.http.listen_address=:7001
+dbms.connector.http.enabled=true            # web UI
+dbms.connector.http.listen_address=:7001    # avoid port conflicts
 ```
 
 - Restart the db.
