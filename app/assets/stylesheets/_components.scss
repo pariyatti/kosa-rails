@@ -134,3 +134,29 @@ There are four types:
         border: 1px solid $brown;
     }
 }
+
+.btn {
+    width: 100%;
+    min-height: 2.5rem;
+
+    padding: 0.5rem 0.75rem;
+
+    border-radius: 2px;
+    outline: none;
+
+    @include fs-r; // 16px
+
+    &.btn-primary {
+        // primary action
+        background: $green;
+        color: $white;
+        border: 1px solid darken($color: $green, $amount: 20%);
+
+        transition: background 150ms ease-out;
+
+        &:hover {
+            cursor: pointer;
+            background: darken($color: $green, $amount: 5%);
+        }
+    }
+}
