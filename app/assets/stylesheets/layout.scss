@@ -9,20 +9,15 @@ This file has all page related scss
 /*
 -----------------
 #################
-INDEX
+Publisher index
 #################
 -----------------
 */
 .section-pariyatti {
-  padding: 1.25rem 1rem; //20px 16px
-  border-bottom: 1px solid $cream;
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   .section-heading {
-    margin-bottom: 0.5rem; //8px
+    padding-bottom: 0.5rem; //8px
+    border-bottom: 1px solid $logo-sand;
   }
 
   span.sub-title {
@@ -40,19 +35,53 @@ INDEX
     font-weight: bold;
   }
 
-  .library-sections {
+  .card-types {
     display: flex;
+    margin-top: 1rem;
 
-    .library-documents {
-      padding: 0.5rem 1rem; //8px 16px
-      padding-left: 0;
-      padding-top: 0;
-    }
-
-    .library-media {
-      padding: 0.5rem 1rem; //8px 16px
-      padding-top: 0;
+    .card-type {
       flex: 1;
+      padding: 1rem 2rem; //16px 31px
+      margin: 0 0.5rem; //8px
+      
+      text-align: center;
+      
+      background: $off-white;
+      border-radius: 3px;
+
+      h3 {
+        // card-title
+        @include fs-m;
+        font-weight: 300;
+      }
+
+      p {
+        // card-description
+        @include fs-r;
+        font-weight: normal;
+        color: rgba($color: $black, $alpha: 0.64);
+        margin: 0.5rem 0;
+      }
+
+      a.link {
+        // manage card
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      a.btn.btn-primary {
+        display: block;
+      }
+
+      &:first-child {
+        // first card
+        margin-left: 0;
+      }
+
+      &:last-child {
+        // last card
+        margin-right: 0;
+      }
     }
   }
 }
