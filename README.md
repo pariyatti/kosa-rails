@@ -162,14 +162,17 @@ sudo apt-get install neo4j
 You don't absolutely need to install Neo4j Desktop but it's a neat way of looking at your Neo4j database with the visualization tools.
 
 - Install from: https://neo4j.com/download/
-- Make the AppImage executable, run it, and then trim the whitespace from the software key the website gave you.
-- Create a `Pariyatti` project with a db named `kosa3`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
+- Create a `Pariyatti` project with a db named `kosa3`.
+- Change the following lines in the `Settings` tab:
 
 ```
-dbms.security.auth_enabled=false
-dbms.connector.bolt.listen_address=:7003
+dbms.security.auth_enabled=false            # no auth in dev
+dbms.connector.bolt.listen_address=:7003    # avoid port conflicts
 dbms.connector.http.listen_address=:7001
 ```
+
+- Restart the db.
+- You may need to come back from time to time to double-check the settings. Neo4j Desktop has a habit of resetting some settings (`dbms.security.auth_enabled` in particular) on its own.
 
 ## Old RSS Feeds
 
