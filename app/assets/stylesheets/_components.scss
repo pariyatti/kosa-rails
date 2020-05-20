@@ -88,8 +88,12 @@ Header - This includes, logo, links, and user actions. Is the same on every page
             padding: 0;
         }
 
-        .link.change-password {
+        .link {
             margin: 0 1rem;
+
+            &.link-settings {
+                margin-left: 0;
+            }
         }
 
         input[type="submit"] {

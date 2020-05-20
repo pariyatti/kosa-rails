@@ -6,8 +6,6 @@
   </head>
 
   <body>
-    <%= render partial: 'layouts/shared/header', locals: {title: 'Pariyatti Library'} %>
-    <%= link_to "Switch to Publisher", publisher_path %>
     <div class="main-container">
       <%= render 'layouts/shared/flash' %>
       <%= yield %>
