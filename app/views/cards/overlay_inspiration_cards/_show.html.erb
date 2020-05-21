@@ -1,4 +1,3 @@
-
 <div class="card">
   <div class="header"><%= card.header || "DEFAULT HEADER" %></div>
   <div class="overlay-image" style="background-image:url(<%= card.image_url %>)">
@@ -14,12 +13,7 @@
       <div class="button">Shareable</div>
     <% end %>
   </div>
-</div>
-
-<div>
-Text Color: <%= card.text_color %>
-</div>
-
-<div class="meta">
-  <%= render 'cards/publish_toggle', card: card %>
+  <div>
+    Text Color: <%= card.text_color %>
+  </div>
 </div>

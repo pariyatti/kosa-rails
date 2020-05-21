@@ -2,37 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-@use 'base';
+@import 'colors';
+@import 'base';
 
-.field {
-  textarea {
-    width: 350px;
-    height: 350px;
+.form-and-preview {
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.form {
+  .image-selector {
+    position: relative;
+    border: 1px solid rgba($color: $black, $alpha: 0.4);
+    border-radius: 2px;
+    
+    padding: 1rem; //16px
+    margin-bottom: 1.25rem;
   }
 }
 
-.image-selector {
-  border-style: solid;
-  border-width: 4px;
-  padding: 8px;
-}
-
 .card-index-content {
-  padding: 20px;
+  padding: 1rem; //16px
 }
 
 .card {
-  width: 350px;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  background-color: #f5f5dc;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  
+  border-radius: 1rem; //16px
+  background-color: $off-white;
 
   .header {
     padding: 10px;
     font-weight: bold;
     text-transform: uppercase;
   }
+
   .footer {
     padding: 10px;
     .button {
@@ -49,11 +55,13 @@
     background-size: 350px;
     align-content: center;
   }
+
   .stacked-image {
     width: 350px;
     height: 350px;
     align-content: center;
   }
+
   .overlay-text {
     position: absolute;
     bottom: 0px;
@@ -61,6 +69,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: x-large;
   }
+
   .stacked-text {
     bottom: 0px;
     padding: 10px;
@@ -72,6 +81,7 @@
   .pali {
     padding: 10px;
   }
+
   .pali-word-translations {
     padding: 10px;
   }

@@ -164,3 +164,16 @@ There are four types:
         }
     }
 }
+
+/*
+-----------------
+#################
+Breadcrumb
+#################
+-----------------
+*/
+.breadcrumb {
+    a.link {
+        @include fs-s;
+    }
+}

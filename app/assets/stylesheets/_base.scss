@@ -17,8 +17,30 @@ body {
     background: lighten($color: $cream, $amount: 8%);
 }
 
+h1 {
+    @include fs-xl;
+    font-weight: 300;
+}
+h2 {@include fs-l}
+h3 {@include fs-m}
+h4 {@include fs-r}
+h5,h6 {@include fs-s}
+
 a, p, li, span {
     @include fs-r;
+}
+
+label {
+    @include fs-s;
+    text-transform: uppercase;
+    color: rgba($color: $black, $alpha: 0.64);
+}
+
+.flex {
+    display: flex !important;
+
+    &.row {flex-direction: row !important;}
+    &.col {flex-direction: column !important;}
 }
 
 .m-0 {margin: 0 !important;}
@@ -58,6 +80,20 @@ Input and button elements
 #################
 -----------------
 */
+textarea {
+    width: 100%;
+    min-height: 20rem;
+
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1.25rem;
+
+    border: 1px solid rgba($color: $black, $alpha: .4);
+    border-radius: 2px;
+    outline: none;
+
+    @include fs-r; // 16px
+}
+
 input {
     width: 100%;
     min-height: 2.5rem;
@@ -102,4 +138,35 @@ ul {
     li {
         list-style-type: none;
     }
+}
+
+.checkmark {
+    display:inline-block;
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 60px;
+    top: 60px;
+}
+
+.checkmark_stem {
+    position: absolute;
+    width: 12px;
+    height: 40px;
+    background-color: $off-white;
+    border: 2px solid rgba($color: $black, $alpha: 0.64);
+    left: 11px;
+    top: -14px;
+}
+
+.checkmark_kick {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: $off-white;
+    border: 2px solid rgba($color: $black, $alpha: 0.64);
+    border-right: 0;
+    left: 1px;
+    top: 14px;
 }
