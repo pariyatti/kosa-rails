@@ -45,8 +45,9 @@ class Card
     cards.to_a.reverse
   end
 
-  def self.all_for_editors
-    cards = Card.order(:updated_at)
+  def self.all_for_editors(type=nil)
+    cards = type ? Card.where(type: Card.types[type]) : Card.all
+    cards = cards.order(:updated_at)
     cards.each(&:reload_from_database!)
     cards.to_a.reverse
   end
