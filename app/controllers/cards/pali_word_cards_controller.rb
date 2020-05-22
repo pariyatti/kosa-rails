@@ -2,6 +2,10 @@ class Cards::PaliWordCardsController < CardsController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   
+  def index
+    @cards = Card.all_for_editors(:pali_word)
+  end
+  
   def show
   end
 

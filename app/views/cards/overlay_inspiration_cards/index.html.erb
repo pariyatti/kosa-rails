@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-heading">
+    <div class="breadcrumb">
+        <%= link_to 'Back', publisher_path, class:'link' %>
+    </div>
+    <div class="header-and-link flex">
+        <h1>Overlay Inspiration Cards</h1>
+        <%= link_to "Create Overlay Inspriation Card", new_cards_overlay_inspiration_card_path %>
+    </div>
+</div>
+
+<% @cards.each do |card| %>
+  <div class="card-index-content">
+    <%= render "cards/#{card.type}_cards/show", card: card %>
+    <%= link_to 'Show', card %>
+    <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit" %>
+    <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>

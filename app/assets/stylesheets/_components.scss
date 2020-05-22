@@ -168,12 +168,22 @@ There are four types:
 /*
 -----------------
 #################
-Breadcrumb
+Breadcrumb and Page Header
 #################
 -----------------
 */
 .breadcrumb {
     a.link {
         @include fs-s;
+    }
+}
+
+.page-heading {
+    padding-bottom: 1rem; //16px
+    border-bottom: 1px solid $logo-sand;
+
+    .header-and-link {
+        justify-content: space-between;
+        align-items: center;
     }
 }
