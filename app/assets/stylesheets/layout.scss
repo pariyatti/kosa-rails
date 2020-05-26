@@ -13,27 +13,7 @@ Publisher index
 #################
 -----------------
 */
-.section-pariyatti {
-
-  .section-heading {
-    padding-bottom: 0.5rem; //8px
-    border-bottom: 1px solid $logo-sand;
-  }
-
-  span.sub-title {
-    @include fs-s;
-    color: rgba($color: $black, $alpha: 0.64);
-  }
-
-  h2 {
-    @include fs-m;
-    font-weight: 300;
-  }
-
-  h3 {
-    @include fs-r;
-    font-weight: bold;
-  }
+.section-all-cards {
 
   .card-types {
     display: flex;
@@ -70,6 +50,7 @@ Publisher index
       }
 
       a.btn.btn-primary {
+        // create card
         display: block;
       }
 

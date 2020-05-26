@@ -175,12 +175,23 @@ Breadcrumb and Page Header
 .breadcrumb {
     a.link {
         @include fs-s;
+        margin-left: 2px;
     }
 }
 
 .page-heading {
     padding-bottom: 1rem; //16px
     border-bottom: 1px solid $logo-sand;
+
+    h1.page-header {
+        @include fs-m;
+        color: rgba($color: $black, $alpha: 0.87);
+    }
+
+    span.page-sub-title {
+        @include fs-r;
+        color: rgba($color: $black, $alpha: 0.64);
+    }
 
     .header-and-link {
         justify-content: space-between;
