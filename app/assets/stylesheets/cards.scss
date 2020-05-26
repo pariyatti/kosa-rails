@@ -75,8 +75,8 @@
 
     // Stacked inspiration text
     .card-stacked-text {
-      position: absolute;
-      bottom: 0;
+      position: relative;
+      max-width: 350px;
 
       padding: 1rem; //16px
       @include fs-r;
