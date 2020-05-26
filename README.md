@@ -124,7 +124,7 @@ rake neo4j:db:sample # if you want example data for development
 rails s
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3000](http://localhost:3000) and login with the default email/password: `kosa@pariyatti.org` / `kosa`.
 
 ### Kosa Test Setup (common to all OSes)
 
