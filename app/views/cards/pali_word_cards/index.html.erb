@@ -5,16 +5,24 @@
         <%= link_to 'Back', publisher_path, class:'link' %>
     </div>
     <div class="header-and-link flex">
-        <h1>Pali Inspiration Cards</h1>
+        <h1 class="page-header">Pali Cards</h1>
         <%= link_to "Create Pali Word Card", new_cards_pali_word_card_path %>
     </div>
 </div>
 
 <% @cards.each do |card| %>
-  <div class="card-index-content">
+  <div class="card-index-content flex">
     <%= render "cards/#{card.type}_cards/show", card: card %>
-    <%= link_to 'Show', card %>
-    <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit" %>
-    <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <ul class="card-action-links">
+      <li class="card-action-link">
+        <%= link_to 'Show', card, class:'show' %>
+      </li>
+      <li class="card-action-link">
+        <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit", class:'edit' %>
+      </li>
+      <li class="card-action-link">
+        <%= link_to 'Destroy', card, class:'destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    </ul>
   </div>
 <% end %>

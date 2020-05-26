@@ -83,15 +83,24 @@
     }
   }
 
-  // Pali Word Cards
-  .pali {
-    padding: 10px;
+  // Pali word
+  .pali-word {
+    padding-top: 1rem;
+    border-top: 1px solid $logo-sand;
+    
+    @include fs-l;
+    text-align: center;
   }
-
+  
   .pali-word-translations {
-    padding: 10px;
-  }
+    padding: 1rem;
+    @include fs-r;
 
+    span {
+      @include fs-s;
+      color: rgba($color: $black, $alpha: 0.64);
+    }
+  }
 }
 
 .card-action-links {
