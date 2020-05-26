@@ -66,19 +66,21 @@
       padding: 1rem; //16px
       @include fs-r;
     }
-  }
 
-  .stacked-image {
-    width: 350px;
-    height: 350px;
-    align-content: center;
-  }
+    // Stacked inspiration image
+    .card-stacked-image {
+      max-width: 100%;
+      height: 350px;
+    }
 
-  .stacked-text {
-    bottom: 0px;
-    padding: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: x-large;
+    // Stacked inspiration text
+    .card-stacked-text {
+      position: absolute;
+      bottom: 0;
+
+      padding: 1rem; //16px
+      @include fs-r;
+    }
   }
 
   // Pali Word Cards

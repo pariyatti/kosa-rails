@@ -184,7 +184,7 @@ Breadcrumb and Page Header
     border-bottom: 1px solid $logo-sand;
 
     h1.page-header {
-        @include fs-m;
+        @include fs-l;
         color: rgba($color: $black, $alpha: 0.87);
     }
 
