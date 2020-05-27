@@ -3,10 +3,8 @@
     <%= card.header || "DEFAULT HEADER" %>
   </div>
   <div class="card-image-and-text">
-    <%= image_tag card.image.url, class:'card-overlay-image' %>
-    <p class="card-overlay-text" style="color: <%= card.text_color %>">
-      <%= card.text.truncate(280) %>
-    </p>
+    <%= image_tag card.image_url, class:'card-overlay-image' %>
+    <p class="card-overlay-text" style="color: <%= card.text_color %>"><%= card.text.truncate(280) %></p>
   </div>
   <div class="card-footer flex row">
     <% if card.bookmarkable %>
