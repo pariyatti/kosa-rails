@@ -26,7 +26,7 @@ h3 {@include fs-m}
 h4 {@include fs-r}
 h5,h6 {@include fs-s}
 
-a, p, li, span {
+a, p, li, span, div.flash {
     @include fs-r;
 }
 
