@@ -19,11 +19,11 @@
 
   <div class="field">
     <% if @image_chosen %>
-      <h2>You chose:</h2>
+      <p>You chose:</p>
        <%= image_tag(@image_chosen.url, size: '128') %>
        <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
     <% else %>
-      <h2>Choose an image:</h2>
+      <%= form.label 'Choose an Image' %>
       <div class="image-selector">
         <%= render "cards/stacked_inspiration_cards/image_selector", image_artefacts: @image_artefacts %>
       </div>

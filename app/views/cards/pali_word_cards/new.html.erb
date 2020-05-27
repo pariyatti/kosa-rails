@@ -1,5 +1,12 @@
-<h1>New Pali Word Card</h1>
+<div class="page-heading">
+    <div class="breadcrumb">
+        <%= link_to 'Back', publisher_path, class:'link' %>
+    </div>
+    <div class="header-and-link flex">
+        <h1 class="page-header">New Pali Word Card</h1>
+    </div>
+</div>
 
-<%= render 'new_form', card: @card %>
-
-<%= link_to 'Back', cards_path %>
+<div class="form-and-preview flex row">
+    <%= render 'new_form', card: @card %>
+</div>
