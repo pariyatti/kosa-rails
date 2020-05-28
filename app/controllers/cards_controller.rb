@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class CardsController < PublisherController
   before_action :set_card, only: [:show, :edit, :update, :destroy, :publish, :draft]
   before_action :require_login
 

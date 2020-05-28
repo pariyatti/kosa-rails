@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Settings</title>
+    <%= render 'layouts/shared/head' %>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/shared/header', locals: {title: 'Settings'} %>
+    <%= link_to "Go to Publisher", publisher_path %> | 
+    <%= link_to "Go to Library", library_path %>
+    <div class="main-container">
+      <%= render 'layouts/shared/flash' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/shared/footer' %>
+  </body>
+</html>

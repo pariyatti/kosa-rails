@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-heading">
+    <div class="breadcrumb">
+        <%= link_to 'Back', publisher_path, class:'link' %>
+    </div>
+    <div class="header-and-link flex">
+        <h1 class="page-header">Stacked Inspiration Cards</h1>
+        <%= link_to "Create Stacked Inspriation Card", new_cards_stacked_inspiration_card_path %>
+    </div>
+</div>
+
+<% @cards.each do |card| %>
+  <div class="card-index-content flex">
+    <%= render "cards/#{card.type}_cards/show", card: card %>
+    <ul class="card-action-links">
+      <li class="card-action-link">
+        <%= link_to 'Show', card %>
+      </li>
+      <li class="card-action-link">
+        <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit" %>
+      </li>
+      <li class="card-action-link">
+        <%= link_to 'Destroy', card, class:'destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    </ul>
+  </div>
+<% end %>

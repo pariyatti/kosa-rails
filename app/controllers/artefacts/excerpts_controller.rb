@@ -1,4 +1,4 @@
-class Artefacts::ExcerptsController < ApplicationController
+class Artefacts::ExcerptsController < LibraryController
   before_action :set_excerpt, only: [:show, :edit, :update, :destroy]
   before_action :require_login
   

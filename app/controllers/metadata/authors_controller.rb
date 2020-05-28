@@ -1,4 +1,4 @@
-class Metadata::AuthorsController < ApplicationController
+class Metadata::AuthorsController < LibraryController
   before_action :require_login
   
   def index

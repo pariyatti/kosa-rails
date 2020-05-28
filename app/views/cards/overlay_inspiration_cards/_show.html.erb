@@ -1,25 +1,22 @@
-
 <div class="card">
-  <div class="header"><%= card.header || "DEFAULT HEADER" %></div>
-  <div class="overlay-image" style="background-image:url(<%= card.image_url %>)">
-    <div class="overlay-text" style="color: <%= card.text_color %>">
-      <%= card.text.truncate(280) %>
-    </div>
+  <div class="card-header">
+    <%= card.header || "DEFAULT HEADER" %>
   </div>
-  <div class="footer">
+  <div class="card-image-and-text">
+    <%= image_tag card.image_url, class:'card-overlay-image' %>
+    <p class="card-overlay-text" style="color: <%= card.text_color %>"><%= card.text.truncate(280) %></p>
+  </div>
+  <div class="card-footer flex row">
     <% if card.bookmarkable %>
-      <div class="button">Bookmarkable</div>
+      <div>Bookmarkable</div>
     <% end %>
     <% if card.shareable %>
-      <div class="button">Shareable</div>
+      <div>Shareable</div>
     <% end %>
   </div>
-</div>
-
-<div>
-Text Color: <%= card.text_color %>
-</div>
-
-<div class="meta">
-  <%= render 'cards/publish_toggle', card: card %>
+  <!-- 
+    <div>
+      Text Color: <%= card.text_color %>
+    </div>
+  -->
 </div>

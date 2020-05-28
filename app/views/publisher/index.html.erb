@@ -1,0 +1,29 @@
+
+<div class="section-all-cards">
+    <div class="page-heading">
+        <div class="header-and-link">
+            <h1 class="page-header">Mobile App</h1>
+            <span class="page-sub-title">Use the links below to create and publish content to the Pariyatti mobile app.</span>
+        </div>
+    </div>
+    <ul class="card-types">
+        <li class="card-type">
+            <h3>Overlay Inspiration Card</h3>
+            <p>An overlay inspiration card has an image and a text. This card is mainly used for quotes</p>
+            <%= link_to 'Manage Cards', cards_overlay_inspiration_cards_path,class: 'link'%>
+            <%= link_to 'Create Card', new_cards_overlay_inspiration_card_path, class: 'btn btn-primary'%>
+        </li>
+        <li class="card-type">
+            <h3>Stacked Inspiration Card</h3>
+            <p>Same as the Overlay card, but the text and image in this card are placed one below the other</p>
+            <%= link_to 'Manage Cards', cards_stacked_inspiration_cards_path,class: 'link'%>
+            <%= link_to 'Create Card', new_cards_stacked_inspiration_card_path, class: 'btn btn-primary'%>
+        </li>
+        <li class="card-type">
+            <h3>Pali Word Card</h3>
+            <p>This card is used to display a Pali word and its translatation for a selected language</p>
+            <%= link_to 'Manage Cards', cards_pali_word_cards_path, class: 'link'%>
+            <%= link_to 'Create Card', new_cards_pali_word_card_path, class: 'btn btn-primary'%>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pariyatti Library</title>
+    <%= render 'layouts/shared/head' %>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/shared/header', locals: {title: 'Pariyatti Library'} %>
+    <div class="main-container">
+      <%= render 'layouts/shared/flash' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/shared/footer' %>
+  </body>
+</html>

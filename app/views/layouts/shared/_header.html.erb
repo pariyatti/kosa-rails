@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="header-logo">
+    <%= link_to image_tag("pariyatti-logo-256-solid.png", size: '40'), root_path %>
+    <span><%= title %></span>
+  </div>
+  <div class="header-user">
+    <% if signed_in? %>
+      <p class="user-email"><%= current_user.email %></p>
+      <%= link_to "Change Password", edit_user_password_path(current_user), data: { confirm: 'Are you sure?' }, class:'link' %>
+      <% if current_page?(publisher_path) %>
+        <%= link_to "Switch to Library", library_path, class:'link ml-0' %>
+      <% else current_page?(library_path) %>
+        <%= link_to "Switch to Publisher", publisher_path, class:'link ml-0' %>
+      <% end %>
+      <%= link_to "Settings", settings_path, class:'link ml-0' %>
+      <div><%= button_to "Sign out", sign_out_path, method: :delete %></div>
+    <% else %>
+      <div>
+        <%= link_to "Sign in", sign_in_path, class:'link' %>
+      </div>
+    <% end %>
+  </div>
+</header>

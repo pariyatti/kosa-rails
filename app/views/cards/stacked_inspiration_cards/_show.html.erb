@@ -1,18 +1,17 @@
-
 <div class="card">
-  <div class="header"><%= card.header || "DEFAULT HEADER" %></div>
-  <div class="stacked-image"><%= card.image_url ? image_tag(card.image_url, size: '350') : "Image Missing" %></div>
-  <div class="stacked-text"><%= card.text.truncate(280) %></div>
-  <div class="footer">
+  <div class="card-header">
+    <%= card.header || "DEFAULT HEADER" %>
+  </div>
+  <div class="card-image-and-text">
+    <%= image_tag card.image_url, class:'card-stacked-image' %>
+    <p class="card-stacked-text"><%= card.text.truncate(280) %></p>
+  </div>
+  <div class="card-footer flex row">
     <% if card.bookmarkable %>
-      <div class="button">Bookmarkable</div>
+      <div>Bookmarkable</div>
     <% end %>
     <% if card.shareable %>
-      <div class="button">Shareable</div>
+      <div>Shareable</div>
     <% end %>
   </div>
-</div>
-
-<div class="meta">
-  <%= render 'cards/publish_toggle', card: card %>
 </div>

@@ -1,24 +1,20 @@
 
 <div class="card">
-  <div class="header"><%= card.header %></div>
-  <div class="pali">
+  <div class="card-header"><%= card.header %></div>
+  <div class="pali-word">
     <%= card.pali %>
   </div>
   <div class="pali-word-translations">
     <% card.translations.each do |t| %>
-      <div>Language: <%= t.language %>, Translation: <%= t.translation %></div>
+      <div><span>Language:</span> <%= t.language %>, <span>Translation:</span> <%= t.translation %></div>
     <% end %>
   </div>
-  <div class="footer">
+  <div class="card-footer flex row">
     <% if card.bookmarkable %>
-      <div class="button">Bookmarkable</div>
+      <div>Bookmarkable</div>
     <% end %>
     <% if card.shareable %>
-      <div class="button">Shareable</div>
+      <div>Shareable</div>
     <% end %>
   </div>
-</div>
-
-<div class="meta">
-  <%= render 'cards/publish_toggle', card: card %>
 </div>

@@ -41,5 +41,8 @@ module Kosa
     config.neo4j.session.options = {ssl: false}
 
     config.neo4j.include_root_in_json = false
+
+    # include carrierwave fallbacks in asset pipeline
+    config.assets.paths << "#{Rails.root}/app/assets/fallback"
   end
 end

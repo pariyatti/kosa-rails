@@ -1,0 +1,51 @@
+
+<div class="section-pariyatti library">
+    <div class="section-heading">
+        <h2>Library Artefacts</h2>
+    </div>
+    <div class="library-sections">
+        <div class="library-documents">
+            <div class="list-heading">
+                <h3>Documents:</h3>
+            </div>
+            <ul>
+                <li>
+                    <%= link_to "Excerpts", artefacts_excerpts_path %>
+                    <span class="sub-title">(book, essay, article, transcripts, excerpt, quote)</span>
+                </li>
+            </ul>
+        </div>
+        <div class="library-media">
+            <div class="list-heading">
+                <h3>Media:</h3>
+                <p></p>
+            </div>
+            <ul>
+                <li><%= link_to "Images", artefacts_images_path %></li>
+                <li>Audio</li>
+                <li>Videos</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section-pariyatti metadata-concrete">
+    <div class="section-heading">
+        <h2>Metadata: Concrete</h2>
+    </div>
+    <ul>
+        <li><%= link_to "Authors", metadata_authors_path %></li>
+        <li>Locations</li>
+    </ul>
+</div>
+
+<div class="section-pariyatti metadata-abstract">
+    <div class="section-heading">
+        <h2>Metadata: Abstract</h2>
+    </div>
+    <ul>
+        <li><%= link_to "Audiences", metadata_audiences_path %></li>
+        <li><%= link_to "Topics", metadata_topics_path %></li>
+        <li>Collections</li>
+    </ul>
+</div>

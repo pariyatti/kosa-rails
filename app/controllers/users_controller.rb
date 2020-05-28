@@ -1,4 +1,5 @@
 class UsersController < Clearance::UsersController
+  layout 'settings'
   before_action :set_user, only: [:show]
   before_action :require_login
 
