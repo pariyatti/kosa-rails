@@ -1,8 +1,7 @@
-<%= form_with(model: card, local: true) do |form| %>
+<%= form_with(model: card, local: true, class: 'form form-stacked-inspiration-card') do |form| %>
   <% if card.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
-
       <ul>
         <% card.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -18,21 +17,27 @@
   </div>
 
   <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="field">
     <% if @image_chosen %>
       <p>You chose:</p>
-       <%= image_tag(@image_chosen.url, size: '128') %>
-       <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
+      <div class="image-selector">
+        <%= image_tag(@image_chosen.url, size: '128', class:'image-selected') %>
+        <span class="checkmark">
+          <div class="checkmark_stem"></div>
+          <div class="checkmark_kick"></div>
+        </span>
+        <%= form.hidden_field :image_filename, value: @image_chosen.filename %>
+      </div>
     <% else %>
       <%= form.label 'Choose an Image' %>
       <div class="image-selector">
         <%= render "cards/stacked_inspiration_cards/image_selector", image_artefacts: @image_artefacts %>
       </div>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
   </div>
 
   <div class="actions">
