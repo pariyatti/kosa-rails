@@ -17,13 +17,17 @@ Kosa is a library, editorial, and publishing service.
 
 The Pariyatti mobile app will consume the API as specified [here](https://github.com/pariyatti/kosa/blob/master/docs/api.md).
 
-### Option 1: Set up a local development server
+### Option 1: Use the Sandbox server
+
+[http://kosa-sandbox.pariyatti.org](http://kosa-sandbox.pariyatti.org) - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
+
+### Option 2: Set up a local development server
 
 Follow the instructions under [Development](https://github.com/pariyatti/kosa#development). Use this option if you need to modify or debug the server itself.
 
-### Option 2: Use the Sandbox server
+## Deployment
 
-[http://kosa-sandbox.pariyatti.org](http://kosa-sandbox.pariyatti.org) - Use this option if you will working exclusively on the mobile app without modifying or debugging the server.
+Deployment instructions: [`/deployment/README.md`](https://github.com/pariyatti/kosa/blob/master/deployment/README.md)
 
 ## Development
 
@@ -35,19 +39,12 @@ There is a lot of old `Neo4j.rb` documentation out there. Use these:
 - https://gitter.im/neo4jrb/neo4j (look for @klobuczek and @amitTheSongadya_twitter)
 - https://neo4j.com/developer/ruby/
 
-### Linux (Ubuntu 19.10)
-
-#### Prepare
-
-```
-git clone git@github.com:pariyatti/kosa.git
-cd kosa
-sudo apt-get update
-```
+### Linux Dev Setup (Ubuntu 19.10)
 
 #### Install Ruby
 
 ```
+sudo apt-get update
 sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 rbenv init # follow the instructions
@@ -64,29 +61,62 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
 sudo apt-get install yarn
+yarn install --check-files    # prevents the "integrity check" error
+```
+
+#### Install Java
+
+OpenJDK 8 is recommended by Neo4j. OpenJDK 11 is the highest "supported" version but OpenJDK 14 seems to work fine.
+
+```
+sudo apt install openjdk-11-jdk
+java --version                     # => openjdk 11.0.6 2020-01-14
+update-java-alternatives --list    # => java-1.11.0-openjdk-amd64
+sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
+```
+
+### Windows Dev Setup
+
+#### Install Ruby
+
+- Use the `Ruby+Devkit 2.6.6-1 (x64)` [RubyInstaller](https://rubyinstaller.org/downloads/). Ruby 2.7 **does not work** on Windows due to a nokogiri conflict. Pick the default options for the MYSYS install.
+
+```
+gem install bundler
+```
+
+#### Install Yarn
+
+- [Install Node.js](https://nodejs.org/en/download/) using the Windows .msi installer.
+
+```
+npm install -g yarn
 yarn install --check-files
 ```
 
 #### Install Java
 
-```
-sudo apt install openjdk-11-jdk
-java --version                  # => openjdk 11.0.6 2020-01-14
-update-java-alternatives --list # => java-1.11.0-openjdk-amd64
-sudo update-java-alternatives --jre --set java-1.11.0-openjdk-amd64
-```
+- Install OpenJDK 11 from [the RedHat .msi installer](https://developers.redhat.com/products/openjdk/download). If you have an existing Java install (> Java 8) that should also work.
 
-#### Setup Rails
+#### Install Neo4j Desktop
+
+- See instructions: [(VERY OPTIONAL) Install Neo4j Desktop](https://github.com/pariyatti/kosa/#very-optional-install-neo4j-desktop)
+
+### Kosa Dev Setup (common to all OSes)
 
 ```
+git clone git@github.com:pariyatti/kosa.git
 cd kosa
-bundle install
-rails webpacker:install
+bundle install          # Windows: you will see a warning about circular dependencies - ignore
+rails webpacker:install # Windows: choose "no" for all the files it wants to replace
 
-# Neo4j uses a separate instance for each database:
+# Install a Neo4j development db. You need a separate instance for each database.
+# Windows: Ignore `:install` / `:configure` / `:start`. Use Neo4j Desktop on Windows.
 rake neo4j:install[community-3.5.17,development]
 rake neo4j:config[development,7005]
 rake neo4j:start[development]
+
+# Configure Neo4j development db
 rake neo4j:migrate
 rake neo4j:db:setup
 rake neo4j:db:sample # if you want example data for development
@@ -94,22 +124,28 @@ rake neo4j:db:sample # if you want example data for development
 rails s
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3000](http://localhost:3000) and login with the default email/password: `kosa@pariyatti.org` / `kosa`.
 
-#### Run the tests
+### Kosa Test Setup (common to all OSes)
 
 ```
+# Install a Neo4j test db. You need a separate instance for each database.
+# Windows: Ignore `:install` / `:configure` / `:start`. Use Neo4j Desktop on Windows.
 rake neo4j:install[community-3.5.17,test]
 rake neo4j:config[test,7008]
 rake neo4j:start[test]
+
+# Configure Neo4j test db
 RAILS_ENV=test rake neo4j:migrate
 
 rake test
 ```
 
-#### (VERY OPTIONAL) Install Neo4j
+### (VERY OPTIONAL) Install Neo4j
 
-You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with. It's strongly recommended that you use `rake neo4j:install` for development and test environments.
+- **Strongly prefer `rake neo4j:install` on Linux and OSX**
+
+You don't absolutely need to install Neo4j from a package. Instructions are provided if you want an instance of Neo4j to play with.
 
 ```
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
@@ -119,46 +155,27 @@ sudo apt-get update
 sudo apt-get install neo4j
 ```
 
-#### (VERY OPTIONAL) Install Neo4j Desktop
+### (VERY OPTIONAL) Install Neo4j Desktop
+
+- **Strongly prefer `rake neo4j:install` on Linux and OSX**
 
 You don't absolutely need to install Neo4j Desktop but it's a neat way of looking at your Neo4j database with the visualization tools.
 
 - Install from: https://neo4j.com/download/
-- Make the AppImage executable, run it, and then trim the whitespace from the software key the website gave you.
-- Create a `Pariyatti` project with a db named `kosa3`. Turn off auth for development (to match the Rake task default). Change the ports (`Settings` tab) to avoid conflicts. Restart the db.
+- Create a `Pariyatti` project with a db named `kosa3`. You must create a Neo4j 3.5.17 db. If you try to use Neo4j 4.0.x you will see the infamous `Couldn't agree on a version (Sent versions [1, 0, 0, 0])` error when you run `neo4j:migrate`.
+- Change the following lines in the `Settings` tab:
 
 ```
-dbms.security.auth_enabled=false
-dbms.connector.bolt.listen_address=:7003
-dbms.connector.http.listen_address=:7001
+dbms.security.auth_enabled=false            # no auth in dev
+dbms.connector.bolt.enabled=true            # turn on bolt
+dbms.connector.bolt.tls_level=OPTIONAL      # turn off SSL
+dbms.connector.bolt.listen_address=:7003    # avoid port conflicts
+dbms.connector.http.enabled=true            # web UI
+dbms.connector.http.listen_address=:7001    # avoid port conflicts
 ```
 
-### Windows
-```
-git clone git@github.com:pariyatti/kosa.git
-cd kosa
-```
-
-### Install Ruby
-```
-- Install using [RubyInstaller](https://rubyinstaller.org/downloads/) (Ruby+Devkit 2.6.6-1 (x64))
-- Pick the default options for MYSYS install
-
-gem install bundler
-```
-
-### Install Yarn
-
-You will need node for this. You can [install node]() here
-```
-npm install -g yarn
-yarn install --check-files
-```
-
-### Install Java
-
-- You will need to install JDK11 from [RedHat](https://developers.redhat.com/products/openjdk/download)
-
+- Restart the db.
+- You may need to come back from time to time to double-check the settings. Neo4j Desktop has a habit of resetting some settings (`dbms.security.auth_enabled` in particular) on its own.
 
 ## Old RSS Feeds
 
