@@ -70,7 +70,7 @@ Publisher index
 /*
 -----------------
 #################
-SIGN IN
+Sign in
 #################
 -----------------
 */
@@ -116,5 +116,21 @@ SIGN IN
     .other-links {
       text-align: center;
     }
+  }
+}
+
+/*
+-----------------
+#################
+Settings
+#################
+-----------------
+*/
+
+.settings-section {
+  padding: 1rem 0; //16px
+
+  h3 {
+    font-weight: 300;
   }
 }
