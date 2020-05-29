@@ -36,9 +36,7 @@ Rails.application.routes.draw do
 
   scope :settings do
     resources :users, controller: "users", only: [:index, :new, :create, :show] do
-      resource :password,
-        controller: "clearance/passwords",
-        only: [:edit, :update]
+      resource :password, controller: "passwords", only: [:edit, :update]
     end
   end
 
@@ -50,8 +48,8 @@ Rails.application.routes.draw do
   # A new user must be created by an existing Admin User.
   get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
-  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
-  resource :session, controller: "clearance/sessions", only: [:create]
+  resources :passwords, controller: "passwords", only: [:create, :new]
+  resource :session, controller: "sessions", only: [:create]
 
   ######################
   ##  Mobile App API  ##
