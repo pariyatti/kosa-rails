@@ -1,16 +1,16 @@
+<%= render 'layouts/shared/flash' %>
 <div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
-
-  <p><%= t(".description") %></p>
-
-  <%= form_for :password_reset,
-        url: user_password_path(@user, token: @user.confirmation_token),
-        html: { method: :put } do |form| %>
+  <div class="page-heading">
+    <div class="header-and-link">
+      <h1 class="page-header"><%= t(".title") %></h1>
+      <span class="page-sub-title"><%= t(".description") %></span>
+    </div>
+  </div>
+  <%= form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put, class: 'form form-change-password'} do |form| %>
     <div class="password-field">
       <%= form.label :password %>
       <%= form.password_field :password %>
     </div>
-
     <div class="submit-field">
       <%= form.submit %>
     </div>
