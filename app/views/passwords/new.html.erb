@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <%= form_for :password, html: {class: 'form form-reset-password'}, url: passwords_path do |form| %>
+    <%= form_for :password, html: {class: 'form form-centered'}, url: passwords_path do |form| %>
     <div class="text-field">
         <%= form.label :email %>
         <%= form.text_field :email, type: 'email' %>

@@ -1,7 +1,14 @@
 <div id="clearance" class="sign-up">
-  <h2>Create New User</h2>
+  <div class="page-heading">
+    <div class="breadcrumb">
+      <%= link_to 'Back', settings_path, class:'link' %>
+    </div>
+    <div class="header-and-link">
+      <h1 class="page-header">Create a New User</h1>
+    </div>
+  </div>
 
-  <%= form_for @user do |form| %>
+  <%= form_for @user, html: {class: 'form form-centered'} do |form| %>
     <%= render partial: '/users/form', object: form %>
 
     <div class="submit-field">
