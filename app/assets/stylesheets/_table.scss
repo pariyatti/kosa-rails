@@ -11,8 +11,12 @@ table {
 }
 
 /* Zebra striping */
-tr:nth-of-type(even) { 
+tr {
     border-bottom: 1px solid $cream;
+
+    &:last-child {
+        border-bottom: none;
+    }
 }
 
 th { 
