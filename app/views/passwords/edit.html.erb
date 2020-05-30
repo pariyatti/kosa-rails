@@ -1,8 +1,11 @@
 <div id="clearance" class="password-reset">
   <div class="page-heading">
+    <div class="breadcrumb">
+      <%= link_to 'Back', publisher_path, class:'link' %>
+    </div>
     <div class="header-and-link">
-      <h1 class="page-header"><%= t(".title") %></h1>
-      <span class="page-sub-title"><%= t(".description") %></span>
+      <h1 class="page-header">Change password for <%= @user.email %></h1>
+      <span class="page-sub-title">The passwod has been reset. Click on 'back' to cancel this change</span>
     </div>
   </div>
   <%= form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put, class: 'form form-centered'} do |form| %>
