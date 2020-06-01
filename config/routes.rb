@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/publisher" => "publisher#index", as: "publisher"
   get "/library" => "library#index", as: "library"
   get "/settings" => "settings#index", as: "settings"
+  get "/session" => "sessions#new", as: "session"
 
   scope :publisher do
     resources :cards, only: [:index] do
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
   get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   resources :passwords, controller: "passwords", only: [:create, :new]
-  resource :session, controller: "sessions", only: [:create]
+  resource :session, controller: "sessions", only: [:create, :new]
 
   ######################
   ##  Mobile App API  ##
