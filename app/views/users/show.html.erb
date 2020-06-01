@@ -1,10 +1,12 @@
-<div class="user-account">
-  <h1><%= @user.email %></h1>
-
-  <div>Admin: <%= @user.admin? %></div>
-  <div><%= link_to 'Change Password', edit_user_password_path(@user) %></div>
-
-  <br>
-
-  <div><%= link_to 'Back to Users List', users_path %>
+<div class="breadcrumb">
+    <%= link_to 'Back', users_path, class:'link' %>
+</div>
+<div class="page-heading">
+  <div class="header-and-link">
+    <h1 class="page-header"><%= @user.email %></h1>
+  </div>
+</div>
+<div class="section-user-account">
+  <p><%= @user.admin ? 'This user is an Admin' : 'This user is not an admin' %></p>
+  <%= link_to 'Change Password', edit_user_password_path(@user) %>
 </div>

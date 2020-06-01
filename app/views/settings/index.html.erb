@@ -1,17 +1,17 @@
-
-<div class="section-pariyatti kosa-admin">
-    <div class="section-heading">
-        <h2>Kosa Admin</h2>
+<div class="page-heading">
+    <div class="header-and-link">
+        <h1 class="page-header">Settings</h1>
+        <span class="page-sub-title">Use this page to add users and access the API</span>
     </div>
+</div>
+<div class="settings-section kosa-admin">
+    <h3>Kosa Admin</h3>
     <ul>
-        <li><%= link_to "Users List", users_path %></li>
+        <li><%= link_to "Manage Users", users_path %></li>
     </ul>
 </div>
-
-<div class="section-pariyatti test-apis">
-    <div class="section-heading">
-        <h2>Test the APIs (for developers)</h2>
-    </div>
+<div class="settings-section test-apis">
+    <h3>Test the APIs (for developers)</h3>
     <ul>
         <li><a href="/api/v1/today.json">/api/today.json</a></li>
     </ul>

@@ -1,18 +1,25 @@
-
-<%= link_to 'Create A New User', new_user_path %>
-
-<br/><br/>
+<div class="page-heading">
+    <div class="breadcrumb">
+        <%= link_to 'Back', settings_path, class:'link' %>
+    </div>
+    <div class="header-and-link flex">
+        <h1 class="page-header">Manage Users</h1>
+        <%= link_to 'Create A New User', new_user_path %>
+    </div>
+</div>
 
 <table>
-<tr><th>Email</th><th>Admin?</th></tr>
+  <tr>
+    <th>Email</th>
+    <th>Admin?</th>
+  </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= link_to user.email, user_path(user) %></td>
+    <td>
+      <p><%= user.email%></p>
+      <%= link_to "Edit User", user_path(user) %>
+    </td>
     <td><%= user.admin? ? "yes" : "no" %></td>
   </tr>
 <% end %>
 </table>
-
-<br/><br/>
-
-<a href="/">Back to Home</a>

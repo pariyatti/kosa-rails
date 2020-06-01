@@ -70,7 +70,7 @@ Publisher index
 /*
 -----------------
 #################
-SIGN IN
+Sign in
 #################
 -----------------
 */
@@ -117,4 +117,46 @@ SIGN IN
       text-align: center;
     }
   }
+}
+
+/*
+-----------------
+#################
+Settings
+#################
+-----------------
+*/
+
+.settings-section {
+  padding: 1rem 0; //16px
+
+  h3 {
+    font-weight: 300;
+  }
+}
+
+/*
+-----------------
+#################
+Change password, reset password, create a new user
+#################
+-----------------
+*/
+
+.form.form-centered {
+  max-width: 40%;
+  margin: 2rem auto;
+  margin-bottom: 0;
+}
+
+/*
+-----------------
+#################
+User page
+#################
+-----------------
+*/
+
+.section-user-account {
+  margin-top: 1rem;
 }
