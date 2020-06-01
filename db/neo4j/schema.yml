@@ -42,6 +42,8 @@
   IS UNIQUE
 - CONSTRAINT ON ( `metadata::person`:`Metadata::Person` ) ASSERT `metadata::person`.uuid
   IS UNIQUE
+- CONSTRAINT ON ( `metadata::tag`:`Metadata::Tag` ) ASSERT `metadata::tag`.uuid IS
+  UNIQUE
 - CONSTRAINT ON ( `metadata::topic`:`Metadata::Topic` ) ASSERT `metadata::topic`.uuid
   IS UNIQUE
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
@@ -68,6 +70,7 @@
 - '20200501000015'
 - '20200501000016'
 - '20200501000017'
+- '20200501000018'
 - '20200501000030'
 - '20200501000031'
 - '20200501000032'
