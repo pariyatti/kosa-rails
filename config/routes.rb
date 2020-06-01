@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :authors
       resources :audiences
       resources :topics
+      resources :tags
     end
   end
 
