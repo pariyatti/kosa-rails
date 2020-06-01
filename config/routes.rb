@@ -48,8 +48,8 @@ Rails.application.routes.draw do
 
   # We intentionally do not have a "sign up" flow. 
   # A new user must be created by an existing Admin User.
-  get "/sign_in" => "sessions#new", as: "sign_in"
-  delete "/sign_out" => "sessions#destroy", as: "sign_out"
+  get "/login" => "sessions#new", as: "login"
+  delete "/logout" => "sessions#destroy", as: "logout"
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create, :new]
 
