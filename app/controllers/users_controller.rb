@@ -27,7 +27,6 @@ class UsersController < Clearance::UsersController
     @user.reset_remember_token!
 
     if @user.save
-      #sign_in @user
       redirect_to user_url(@user), notice: 'User was successfully created.'
     else
       flash[:error] = 'Failed to save user.'

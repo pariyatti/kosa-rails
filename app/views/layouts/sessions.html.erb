@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pariyatti Login</title>
+    <%= render 'layouts/shared/head' %>
+  </head>
+
+  <body>
+    <%= image_tag "pariyatti-logo-256-solid.png", size: "256" %>
+    <div class="main-container">
+      <%= render 'layouts/shared/flash' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/shared/footer' %>
+  </body>
+</html>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/publisher" => "publisher#index", as: "publisher"
   get "/library" => "library#index", as: "library"
   get "/settings" => "settings#index", as: "settings"
+  get "/session" => "sessions#new", as: "session"
 
   scope :publisher do
     resources :cards, only: [:index] do
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
       resources :authors
       resources :audiences
       resources :topics
+      resources :tags
     end
   end
 
@@ -46,10 +48,10 @@ Rails.application.routes.draw do
 
   # We intentionally do not have a "sign up" flow. 
   # A new user must be created by an existing Admin User.
-  get "/sign_in" => "sessions#new", as: "sign_in"
-  delete "/sign_out" => "sessions#destroy", as: "sign_out"
+  get "/login" => "sessions#new", as: "login"
+  delete "/logout" => "sessions#destroy", as: "logout"
   resources :passwords, controller: "passwords", only: [:create, :new]
-  resource :session, controller: "sessions", only: [:create]
+  resource :session, controller: "sessions", only: [:create, :new]
 
   ######################
   ##  Mobile App API  ##
