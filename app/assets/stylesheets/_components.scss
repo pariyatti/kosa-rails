@@ -37,11 +37,11 @@ Main Container - This element is the highest parent
 .main-container {
     max-width: 100%;
     background: $white;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15),
-                0 2px 3px rgba(0,0,0,.2);
+    box-shadow: 0 0 1px rgba(0,0,0,0.25),
+                0 1px 3px rgba(0,0,0,0.1);                
     padding: 1rem; //16px
     margin-top: 1rem; //16px
-    border-radius: 2px;
+    border-radius: 0.4rem; //6px
 
     display: flex;
     flex-direction: column;
