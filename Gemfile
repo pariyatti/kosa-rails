@@ -23,7 +23,7 @@ gem 'dotenv-rails'
 gem 'neo4j', '~> 9.6.0'
 gem 'neo4j-rake_tasks' # not a dev gem; needed for deployment
 gem 'carrierwave', '~> 2.1.0'
-gem 'carrierwave-neo4j', '~> 3.0.1', git: 'https://github.com/pariyatti/carrierwave-neo4j', branch: 'neo4j_9_x_support_cleanup'
+gem 'carrierwave-neo4j', '~> 3.0.0'
 gem 'clearance', '~> 2.2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
