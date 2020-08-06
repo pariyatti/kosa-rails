@@ -9,9 +9,19 @@ class Cards::PaliWordCard < Card
     "Pāli Word of the Day"
   end
 
+  # TODO: HACK: this is just for temporary display in the edit
+  #             screen until we can display translation lists. -sd
+  def language
+    translations[0].language
+  end
+
+  def translation
+    translations[0].translation
+  end
+
   def self.new_from_params(params)
     # TODO: HACK: this is just to get the screen and API working
-    #             ...figure out lists tomorrow. -sd
+    #             ...figure out lists. -sd
     translation_params = params.slice(:language, :translation)
     @translation = Cards::PaliWordTranslation.create(translation_params)
 
