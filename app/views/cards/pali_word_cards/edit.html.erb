@@ -2,5 +2,9 @@
 
 <%= render 'edit_form', card: @card %>
 
+<div class="meta">
+  <%= render 'cards/publish_toggle', card: @card %>
+</div>
+
 <%= link_to 'Show', @card %> |
 <%= link_to 'Back', cards_path %>

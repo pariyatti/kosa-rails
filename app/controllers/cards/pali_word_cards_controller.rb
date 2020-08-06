@@ -36,4 +36,5 @@ class Cards::PaliWordCardsController < CardsController
       allowed = default_card_params.push(:pali, :language, :translation)
       params.require(:cards_pali_word_card).permit(*allowed)
     end
+
 end

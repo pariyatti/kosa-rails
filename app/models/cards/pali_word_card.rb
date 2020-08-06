@@ -12,7 +12,7 @@ class Cards::PaliWordCard < Card
   # TODO: HACK: this is just for temporary display in the edit
   #             screen until we can display translation lists. -sd
   def language
-    translations[0].language
+    translations[0].language if translations[0]
   end
 
   def language=(l)
@@ -21,7 +21,7 @@ class Cards::PaliWordCard < Card
   end
 
   def translation
-    translations[0].translation
+    translations[0].translation if translations[0]
   end
 
   def translation=(t)
