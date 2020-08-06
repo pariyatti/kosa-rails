@@ -9,6 +9,7 @@ Kosa is a library, editorial, and publishing service.
 
 ## Architectural Thinking
 
+- [Architecture Decision Records (ADRs)](https://github.com/pariyatti/kosa/tree/master/docs/arch)
 - [The Pariyatti Data Model](https://github.com/pariyatti/agga/blob/master/docs/data-models.pdf)
 - [What is a (relational) database?](https://docs.google.com/document/d/1QuiWPaAUH9_UOeBouGGCgF_FyRRhoL4uLkfKvSsbw2o/edit#)
 - [What is a graph database?](https://neo4j.com/developer/graph-database/)
