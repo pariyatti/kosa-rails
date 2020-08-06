@@ -15,8 +15,18 @@ class Cards::PaliWordCard < Card
     translations[0].language
   end
 
+  def language=(l)
+    translations[0].language = l
+    translations[0].save!
+  end
+
   def translation
     translations[0].translation
+  end
+
+  def translation=(t)
+    translations[0].translation = t
+    translations[0].save!
   end
 
   def self.new_from_params(params)
