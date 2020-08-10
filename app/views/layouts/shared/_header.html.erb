@@ -7,16 +7,21 @@
     <% if signed_in? %>
       <p class="user-email"><%= current_user.email %></p>
       <%= link_to "Change Password", edit_user_password_path(current_user), data: { confirm: 'Are you sure?' }, class:'link' %>
-      <% if current_page?(publisher_path) %>
+
+      <% if in_namespace?(request, "publisher") %>
         <%= link_to "Switch to Library", library_path, class:'link ml-0' %>
-      <% else current_page?(library_path) %>
+        <%= link_to "Settings", settings_path, class:'link ml-0' %>
+      <% elsif in_namespace?(request, "library") %>
         <%= link_to "Switch to Publisher", publisher_path, class:'link ml-0' %>
+        <%= link_to "Settings", settings_path, class:'link ml-0' %>
+      <% elsif in_namespace?(request, "settings") %>
+        <%= link_to "Home", publisher_path, class: 'link ml-0' %>
       <% end %>
-      <%= link_to "Settings", settings_path, class:'link ml-0' %>
-      <div><%= button_to "Logout", logout_path, method: :delete %></div>
+      
+      <div><%= button_to "Logout", sign_out_path, method: :delete %></div>
     <% else %>
       <div>
-        <%= link_to "Login", login_path, class:'link' %>
+        <%= link_to "Login", sign_in_path, class:'link' %>
       </div>
     <% end %>
   </div>

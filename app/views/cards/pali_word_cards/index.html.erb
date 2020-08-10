@@ -18,7 +18,7 @@
         <%= link_to 'Show', card, class:'show' %>
       </li>
       <li class="card-action-link">
-        <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit", class:'edit' %>
+        <%= link_to 'Edit', edit_cards_pali_word_card_path(card), class:'edit' %>
       </li>
       <li class="card-action-link">
         <%= link_to 'Destroy', card, class:'destroy', method: :delete, data: { confirm: 'Are you sure?' } %>

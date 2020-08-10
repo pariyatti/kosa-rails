@@ -44,12 +44,12 @@ class CardsController < PublisherController
 
   def publish
     @card.publish!
-    redirect_to cards_url, notice: 'Card was successfully published.'
+    redirect_to publisher_url, notice: 'Card was successfully published.'
   end
 
   def draft
     @card.draft!
-    redirect_to cards_url, notice: 'Card was successfully returned to draft.'
+    redirect_to publisher_url, notice: 'Card was successfully returned to draft.'
   end
 
   def default_card_params
@@ -60,7 +60,7 @@ class CardsController < PublisherController
   def set_card
     @card = Card.find(params[:id])
   end
-  
+
   private
 
     # Only allow a list of trusted parameters through.

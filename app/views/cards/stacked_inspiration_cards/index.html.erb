@@ -18,7 +18,7 @@
         <%= link_to 'Show', card %>
       </li>
       <li class="card-action-link">
-        <%= link_to 'Edit', "cards/#{card.type}_cards/#{card.id}/edit" %>
+        <%= link_to 'Edit', edit_cards_stacked_inspiration_card_path(card) %>
       </li>
       <li class="card-action-link">
         <%= link_to 'Destroy', card, class:'destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
