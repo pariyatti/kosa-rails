@@ -90,7 +90,7 @@ GEM
       carrierwave (>= 2.1)
       neo4j (~> 9.6.0)
     childprocess (3.0.0)
-    clearance (2.2.0)
+    clearance (2.3.0)
       actionmailer (>= 5.0)
       activemodel (>= 5.0)
       activerecord (>= 5.0)
@@ -300,7 +300,6 @@ GEM
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
     unicode-display_width (1.7.0)
-    wdm (0.1.1)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -332,7 +331,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.1.0)
   carrierwave-neo4j (~> 3.0.0)
-  clearance (~> 2.2.0)
+  clearance (~> 2.3.0)
   dotenv-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -348,7 +347,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  wdm (>= 0.1.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
