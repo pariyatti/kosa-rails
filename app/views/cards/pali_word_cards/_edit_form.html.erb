@@ -13,8 +13,6 @@
 
   <div class="field">
     <%= form.hidden_field :card_type, value: "pali_word" %>
-    <%= form.hidden_field :bookmarkable, value: true %>
-    <%= form.hidden_field :shareable, value: true %>
   </div>
 
   <div class="field">
@@ -30,6 +28,17 @@
   <div class="field">
     <%= form.label :translation %>
     <%= form.text_field :translation %>
+  </div>
+
+  <div class="field">
+    <span>
+      <%= form.label :bookmarkable %>
+      <%= form.check_box :bookmarkable, value: true %>
+    </span>
+    <span>
+      <%= form.label :shareable %>
+      <%= form.check_box :shareable, value: true %>
+    </span>
   </div>
 
   <div class="actions">
