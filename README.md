@@ -193,7 +193,7 @@ The contribution guidelines can be found [here](https://github.com/pariyatti/agg
 
 ## License and Copyright
 
-[AGPL-3](https://github.com/pariyatti/patta/blob/development/LICENSE)
+[AGPL-3](https://github.com/pariyatti/kosa/blob/development/LICENSE)
 
 Copyright (c) 2019-present, Pariyatti
 
