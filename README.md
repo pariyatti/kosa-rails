@@ -179,11 +179,22 @@ dbms.connector.http.listen_address=:7001    # avoid port conflicts
 - Restart the db.
 - You may need to come back from time to time to double-check the settings. Neo4j Desktop has a habit of resetting some settings (`dbms.security.auth_enabled` in particular) on its own.
 
+
 ## Old RSS Feeds
 
 - [Dhamma Podcast Feed](http://feeds.pariyatti.org/dhammapodcasts)
 - [Daily RSS Feed](https://www.pariyatti.org/Free-Resources/Daily-Words/RSS-Feeds)
 
+
 ## Contributing
 
 The contribution guidelines can be found [here](https://github.com/pariyatti/agga/blob/master/CONTRIBUTING.md).
+
+
+## License and Copyright
+
+[AGPL-3](https://github.com/pariyatti/patta/blob/development/LICENSE)
+
+Copyright (c) 2019-present, Pariyatti
+
+
