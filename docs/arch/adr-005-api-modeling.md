@@ -1,4 +1,4 @@
-# Architecture Decision Record: Ansible
+# Architecture Decision Record: API Modeling
 
 ## Context
 
