@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails'
 gem 'neo4j', '~> 9.6.0'
 gem 'neo4j-rake_tasks' # not a dev gem; needed for deployment
-gem 'carrierwave', '~> 2.1.0'
+gem 'carrierwave', '~> 2.1.1'
 gem 'carrierwave-neo4j', '~> 3.0.0'
 gem 'clearance', '~> 2.3.0'
 
