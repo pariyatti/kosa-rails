@@ -178,7 +178,7 @@ GEM
       ruby-progressbar
       rubyzip (>= 1.1.7)
     net_tcp_client (2.2.0)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.10-x64-mingw32)
@@ -189,7 +189,7 @@ GEM
     parser (2.7.1.4)
       ast (~> 2.4.1)
     public_suffix (4.0.5)
-    puma (4.3.5)
+    puma (4.3.11)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
